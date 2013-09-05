@@ -15,6 +15,13 @@
 		BCD1D54617D9471A00A3EBD4 /* NNKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D52917D9471A00A3EBD4 /* NNKit.framework */; };
 		BCD1D54C17D9471A00A3EBD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCD1D54A17D9471A00A3EBD4 /* InfoPlist.strings */; };
 		BCD1D54E17D9471A00A3EBD4 /* NNKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D54D17D9471A00A3EBD4 /* NNKitTests.m */; };
+		BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D53917D9471A00A3EBD4 /* NNKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D55B17D9476F00A3EBD4 /* despatch.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D55917D9476F00A3EBD4 /* despatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D55C17D9476F00A3EBD4 /* despatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D55A17D9476F00A3EBD4 /* despatch.m */; };
+		BCD1D55F17D947A100A3EBD4 /* NNDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D55D17D947A100A3EBD4 /* NNDelegateProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D56017D947A100A3EBD4 /* NNDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D55E17D947A100A3EBD4 /* NNDelegateProxy.m */; };
+		BCD1D56317D9482600A3EBD4 /* NNSelfInvalidatingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D56117D9482600A3EBD4 /* NNSelfInvalidatingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D56417D9482600A3EBD4 /* NNSelfInvalidatingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +50,12 @@
 		BCD1D54917D9471A00A3EBD4 /* NNKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NNKitTests-Info.plist"; sourceTree = "<group>"; };
 		BCD1D54B17D9471A00A3EBD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BCD1D54D17D9471A00A3EBD4 /* NNKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNKitTests.m; sourceTree = "<group>"; };
+		BCD1D55917D9476F00A3EBD4 /* despatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = despatch.h; sourceTree = "<group>"; };
+		BCD1D55A17D9476F00A3EBD4 /* despatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = despatch.m; sourceTree = "<group>"; };
+		BCD1D55D17D947A100A3EBD4 /* NNDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNDelegateProxy.h; sourceTree = "<group>"; };
+		BCD1D55E17D947A100A3EBD4 /* NNDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNDelegateProxy.m; sourceTree = "<group>"; };
+		BCD1D56117D9482600A3EBD4 /* NNSelfInvalidatingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNSelfInvalidatingObject.h; sourceTree = "<group>"; };
+		BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNSelfInvalidatingObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +122,9 @@
 		BCD1D53217D9471A00A3EBD4 /* NNKit */ = {
 			isa = PBXGroup;
 			children = (
+				BCD1D56117D9482600A3EBD4 /* NNSelfInvalidatingObject.h */,
+				BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */,
+				BCD1D55817D9474600A3EBD4 /* Concurrency */,
 				BCD1D53917D9471A00A3EBD4 /* NNKit.h */,
 				BCD1D53A17D9471A00A3EBD4 /* NNKit.m */,
 				BCD1D53317D9471A00A3EBD4 /* Supporting Files */,
@@ -144,6 +160,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BCD1D55817D9474600A3EBD4 /* Concurrency */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D55917D9476F00A3EBD4 /* despatch.h */,
+				BCD1D55A17D9476F00A3EBD4 /* despatch.m */,
+				BCD1D55D17D947A100A3EBD4 /* NNDelegateProxy.h */,
+				BCD1D55E17D947A100A3EBD4 /* NNDelegateProxy.m */,
+			);
+			name = Concurrency;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -151,6 +178,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD1D55B17D9476F00A3EBD4 /* despatch.h in Headers */,
+				BCD1D55F17D947A100A3EBD4 /* NNDelegateProxy.h in Headers */,
+				BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */,
+				BCD1D56317D9482600A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +280,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD1D56417D9482600A3EBD4 /* NNSelfInvalidatingObject.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
+				BCD1D56017D947A100A3EBD4 /* NNDelegateProxy.m in Sources */,
+				BCD1D55C17D9476F00A3EBD4 /* despatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
