@@ -10,6 +10,7 @@
 
 @interface NNSelfInvalidatingObject : NSObject
 
+// Call [super invalidate] once everything is finished, not before! Any thread! It's ok!
 - (void)invalidate __attribute__((objc_requires_super));
 
 @end

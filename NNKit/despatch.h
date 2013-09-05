@@ -12,15 +12,15 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#ifndef Switch_despatch_h
-#define Switch_despatch_h
+#ifndef NNKit_despatch_h
+#define NNKit_despatch_h
 
-#include <dispatch/dispatch.h>
+#include <dispatch/queue.h>
 
 dispatch_queue_t despatch_lock_create(const char *label) __attribute__((nonnull(1)));
 void despatch_lock_promote(dispatch_queue_t queue) __attribute__((nonnull(1)));
 void despatch_lock_assert(dispatch_queue_t lock) __attribute__((nonnull(1)));
 void despatch_lock_assert_not(dispatch_queue_t lock) __attribute__((nonnull(1)));
-BOOL despatch_lock_is_held(dispatch_queue_t lock) __attribute__((nonnull(1)));
+_Bool despatch_lock_is_held(dispatch_queue_t lock) __attribute__((nonnull(1)));
 
 #endif

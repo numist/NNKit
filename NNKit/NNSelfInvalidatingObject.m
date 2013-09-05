@@ -65,7 +65,7 @@
 - (oneway void)dealloc;
 {
     if (self->_valid) {
-        @throw [NSException exceptionWithName:@"Nope" reason:@"Nope, don't call dealloc directly ever" userInfo:nil];
+        @throw [NSException exceptionWithName:@"NNObjectLifetimeException" reason:@"Calling dealloc directly is not supported." userInfo:nil];
     }
 
     [super dealloc];

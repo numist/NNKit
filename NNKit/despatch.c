@@ -15,8 +15,11 @@
 #include "despatch.h"
 
 #include <assert.h>
+#include <dispatch/dispatch.h>
+#include <stdlib.h>
 
 
+// despatch uses randomised specific keys in order to reduce the possibility of collisions, both accidental and intentional.
 static  intptr_t despatch_lock_marker;
 
 
@@ -24,17 +27,18 @@ __attribute__((constructor))
 static void despatch_init()
 {
     arc4random_buf(&despatch_lock_marker, sizeof(despatch_lock_marker));
+    despatch_lock_promote(dispatch_get_main_queue());
 }
 
 __attribute__((pure))
 static inline const void *despatch_tag_for_queue(dispatch_queue_t queue)
 {
-    return (const void *)((intptr_t)(__bridge void *)queue ^ despatch_lock_marker);
+    return (const void *)((intptr_t)queue ^ despatch_lock_marker);
 }
 
-static inline BOOL despatch_queue_is_lock(dispatch_queue_t queue)
+static inline _Bool despatch_queue_is_lock(dispatch_queue_t queue)
 {
-    return !!dispatch_queue_get_specific(queue, despatch_tag_for_queue(queue));
+    return dispatch_queue_get_specific(queue, despatch_tag_for_queue(queue));
 }
 
 dispatch_queue_t despatch_lock_create(const char *label)
@@ -47,7 +51,7 @@ dispatch_queue_t despatch_lock_create(const char *label)
 void despatch_lock_promote(dispatch_queue_t queue)
 {
     if (!despatch_queue_is_lock(queue)) {
-        dispatch_queue_set_specific(queue, despatch_tag_for_queue(queue), (__bridge void *)(queue), NULL);
+        dispatch_queue_set_specific(queue, despatch_tag_for_queue(queue), (void *)queue, NULL);
     }
 }
 
@@ -61,8 +65,8 @@ void despatch_lock_assert_not(dispatch_queue_t lock)
     assert(!despatch_lock_is_held(lock));
 }
 
-BOOL despatch_lock_is_held(dispatch_queue_t lock)
+_Bool despatch_lock_is_held(dispatch_queue_t lock)
 {
     assert(despatch_queue_is_lock(lock));
-    return !!dispatch_get_specific(despatch_tag_for_queue(lock));
+    return dispatch_get_specific(despatch_tag_for_queue(lock));
 }
