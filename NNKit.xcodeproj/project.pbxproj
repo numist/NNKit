@@ -1,0 +1,465 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BCD1D52D17D9471A00A3EBD4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */; };
+		BCD1D53717D9471A00A3EBD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCD1D53517D9471A00A3EBD4 /* InfoPlist.strings */; };
+		BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D53A17D9471A00A3EBD4 /* NNKit.m */; };
+		BCD1D54217D9471A00A3EBD4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D54117D9471A00A3EBD4 /* XCTest.framework */; };
+		BCD1D54317D9471A00A3EBD4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */; };
+		BCD1D54617D9471A00A3EBD4 /* NNKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D52917D9471A00A3EBD4 /* NNKit.framework */; };
+		BCD1D54C17D9471A00A3EBD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCD1D54A17D9471A00A3EBD4 /* InfoPlist.strings */; };
+		BCD1D54E17D9471A00A3EBD4 /* NNKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D54D17D9471A00A3EBD4 /* NNKitTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCD1D54417D9471A00A3EBD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCD1D52017D9471A00A3EBD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCD1D52817D9471A00A3EBD4;
+			remoteInfo = NNKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BCD1D52917D9471A00A3EBD4 /* NNKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NNKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BCD1D52F17D9471A00A3EBD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BCD1D53017D9471A00A3EBD4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BCD1D53117D9471A00A3EBD4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BCD1D53417D9471A00A3EBD4 /* NNKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NNKit-Info.plist"; sourceTree = "<group>"; };
+		BCD1D53617D9471A00A3EBD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BCD1D53817D9471A00A3EBD4 /* NNKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NNKit-Prefix.pch"; sourceTree = "<group>"; };
+		BCD1D53917D9471A00A3EBD4 /* NNKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NNKit.h; sourceTree = "<group>"; };
+		BCD1D53A17D9471A00A3EBD4 /* NNKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNKit.m; sourceTree = "<group>"; };
+		BCD1D54017D9471A00A3EBD4 /* NNKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NNKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD1D54117D9471A00A3EBD4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BCD1D54917D9471A00A3EBD4 /* NNKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NNKitTests-Info.plist"; sourceTree = "<group>"; };
+		BCD1D54B17D9471A00A3EBD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BCD1D54D17D9471A00A3EBD4 /* NNKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNKitTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCD1D52517D9471A00A3EBD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD1D52D17D9471A00A3EBD4 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD1D53D17D9471A00A3EBD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD1D54317D9471A00A3EBD4 /* Cocoa.framework in Frameworks */,
+				BCD1D54217D9471A00A3EBD4 /* XCTest.framework in Frameworks */,
+				BCD1D54617D9471A00A3EBD4 /* NNKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCD1D51F17D9471A00A3EBD4 = {
+			isa = PBXGroup;
+			children = (
+				BCD1D53217D9471A00A3EBD4 /* NNKit */,
+				BCD1D54717D9471A00A3EBD4 /* NNKitTests */,
+				BCD1D52B17D9471A00A3EBD4 /* Frameworks */,
+				BCD1D52A17D9471A00A3EBD4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BCD1D52A17D9471A00A3EBD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D52917D9471A00A3EBD4 /* NNKit.framework */,
+				BCD1D54017D9471A00A3EBD4 /* NNKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCD1D52B17D9471A00A3EBD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */,
+				BCD1D54117D9471A00A3EBD4 /* XCTest.framework */,
+				BCD1D52E17D9471A00A3EBD4 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCD1D52E17D9471A00A3EBD4 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D52F17D9471A00A3EBD4 /* Foundation.framework */,
+				BCD1D53017D9471A00A3EBD4 /* CoreData.framework */,
+				BCD1D53117D9471A00A3EBD4 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		BCD1D53217D9471A00A3EBD4 /* NNKit */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D53917D9471A00A3EBD4 /* NNKit.h */,
+				BCD1D53A17D9471A00A3EBD4 /* NNKit.m */,
+				BCD1D53317D9471A00A3EBD4 /* Supporting Files */,
+			);
+			path = NNKit;
+			sourceTree = "<group>";
+		};
+		BCD1D53317D9471A00A3EBD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D53417D9471A00A3EBD4 /* NNKit-Info.plist */,
+				BCD1D53517D9471A00A3EBD4 /* InfoPlist.strings */,
+				BCD1D53817D9471A00A3EBD4 /* NNKit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BCD1D54717D9471A00A3EBD4 /* NNKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D54D17D9471A00A3EBD4 /* NNKitTests.m */,
+				BCD1D54817D9471A00A3EBD4 /* Supporting Files */,
+			);
+			path = NNKitTests;
+			sourceTree = "<group>";
+		};
+		BCD1D54817D9471A00A3EBD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D54917D9471A00A3EBD4 /* NNKitTests-Info.plist */,
+				BCD1D54A17D9471A00A3EBD4 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BCD1D52617D9471A00A3EBD4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BCD1D52817D9471A00A3EBD4 /* NNKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD1D55117D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKit" */;
+			buildPhases = (
+				BCD1D52417D9471A00A3EBD4 /* Sources */,
+				BCD1D52517D9471A00A3EBD4 /* Frameworks */,
+				BCD1D52617D9471A00A3EBD4 /* Headers */,
+				BCD1D52717D9471A00A3EBD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NNKit;
+			productName = NNKit;
+			productReference = BCD1D52917D9471A00A3EBD4 /* NNKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		BCD1D53F17D9471A00A3EBD4 /* NNKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD1D55417D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKitTests" */;
+			buildPhases = (
+				BCD1D53C17D9471A00A3EBD4 /* Sources */,
+				BCD1D53D17D9471A00A3EBD4 /* Frameworks */,
+				BCD1D53E17D9471A00A3EBD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCD1D54517D9471A00A3EBD4 /* PBXTargetDependency */,
+			);
+			name = NNKitTests;
+			productName = NNKitTests;
+			productReference = BCD1D54017D9471A00A3EBD4 /* NNKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCD1D52017D9471A00A3EBD4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Scott Perry";
+				TargetAttributes = {
+					BCD1D53F17D9471A00A3EBD4 = {
+						TestTargetID = BCD1D52817D9471A00A3EBD4;
+					};
+				};
+			};
+			buildConfigurationList = BCD1D52317D9471A00A3EBD4 /* Build configuration list for PBXProject "NNKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BCD1D51F17D9471A00A3EBD4;
+			productRefGroup = BCD1D52A17D9471A00A3EBD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCD1D52817D9471A00A3EBD4 /* NNKit */,
+				BCD1D53F17D9471A00A3EBD4 /* NNKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCD1D52717D9471A00A3EBD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD1D53717D9471A00A3EBD4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD1D53E17D9471A00A3EBD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD1D54C17D9471A00A3EBD4 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCD1D52417D9471A00A3EBD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCD1D53C17D9471A00A3EBD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD1D54E17D9471A00A3EBD4 /* NNKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCD1D54517D9471A00A3EBD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCD1D52817D9471A00A3EBD4 /* NNKit */;
+			targetProxy = BCD1D54417D9471A00A3EBD4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BCD1D53517D9471A00A3EBD4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCD1D53617D9471A00A3EBD4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BCD1D54A17D9471A00A3EBD4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCD1D54B17D9471A00A3EBD4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BCD1D54F17D9471A00A3EBD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BCD1D55017D9471A00A3EBD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BCD1D55217D9471A00A3EBD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NNKit/NNKit-Prefix.pch";
+				INFOPLIST_FILE = "NNKit/NNKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		BCD1D55317D9471A00A3EBD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NNKit/NNKit-Prefix.pch";
+				INFOPLIST_FILE = "NNKit/NNKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		BCD1D55517D9471A00A3EBD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NNKit/NNKit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NNKitTests/NNKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BCD1D55617D9471A00A3EBD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NNKit/NNKit-Prefix.pch";
+				INFOPLIST_FILE = "NNKitTests/NNKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCD1D52317D9471A00A3EBD4 /* Build configuration list for PBXProject "NNKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD1D54F17D9471A00A3EBD4 /* Debug */,
+				BCD1D55017D9471A00A3EBD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCD1D55117D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD1D55217D9471A00A3EBD4 /* Debug */,
+				BCD1D55317D9471A00A3EBD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BCD1D55417D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCD1D55517D9471A00A3EBD4 /* Debug */,
+				BCD1D55617D9471A00A3EBD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCD1D52017D9471A00A3EBD4 /* Project object */;
+}
