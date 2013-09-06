@@ -18,8 +18,15 @@
 
 #import "nn_isaSwizzling_Private.h"
 
-#warning make it really random at runtime
-static void *_NNSwizzleSuperclassKey = (void *)1466409828; // arc4rand(), since the address of _NNSwizzleBaseClass isn't obviously available at compile time.
+
+static void *_NNSwizzleSuperclassKey;
+
+
+__attribute__((constructor))
+static void nn_isaSwizzling_init() {
+    arc4random_buf(&_NNSwizzleSuperclassKey, sizeof(_NNSwizzleSuperclassKey));
+}
+
 
 @implementation NNISASwizzledObject
 
