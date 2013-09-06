@@ -61,6 +61,11 @@
     });
 }
 
+- (void)invalid;
+{
+    [(id)self.delegateProxy willChangeValueForKey:@""];
+}
+
 @end
 
 
@@ -104,6 +109,11 @@ static BOOL delegateMessageReceived;
     while (!delegateMessageReceived) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
     }
+}
+
+- (void)testInvalidDelegateMethod;
+{
+    XCTAssertThrows([[[MYClass alloc] initWithDelegate:self] invalid], @"Invalid delegate method was allowed to pass through!");
 }
 
 #pragma mark MYClassDelegate

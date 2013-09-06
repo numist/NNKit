@@ -106,3 +106,27 @@ objc_property_attribute_t *nn_property_copyAttributeList(objc_property_t propert
     
     return attributeList;
 }
+
+BOOL nn_selector_belongsToProtocol(SEL selector, Protocol *protocol, BOOL *requiredPtr, BOOL *instancePtr)
+{
+    BOOL required = requiredPtr ? !!*requiredPtr : NO;
+    BOOL instance = instancePtr ? !!*instancePtr : NO;
+
+    for (int i = 0; i < (1 << 2); ++i) {
+        BOOL checkRequired = required ^ (i & 1);
+        BOOL checkInstance = instance ^ (i & (1 << 1));
+        
+        struct objc_method_description hasMethod = protocol_getMethodDescription(protocol, selector, checkRequired, checkInstance);
+        if (hasMethod.name || hasMethod.types) {
+            if (requiredPtr) {
+                *requiredPtr = required;
+            }
+            if (instancePtr) {
+                *instancePtr = instance;
+            }
+            return YES;
+        }
+    }
+    
+    return NO;
+}

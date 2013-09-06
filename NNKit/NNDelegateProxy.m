@@ -9,6 +9,14 @@
 #import "NNDelegateProxy.h"
 
 #import "despatch.h"
+#import "rantime.h"
+
+
+@interface NNDelegateProxy ()
+
+@property (readonly, assign) Protocol *protocol;
+
+@end
 
 
 @implementation NNDelegateProxy
@@ -21,10 +29,12 @@
 
     NNDelegateProxy *proxy = [self alloc];
     proxy.delegate = delegate;
+    proxy->_protocol = protocol;
     return proxy;
 }
 
 // Helper function to provide an autoreleasing reference to the delegate property
+// Would have subclassed NNStrongifiedProperties, but this class needs to subclass NSProxy--good place for Swizzlers!
 - (id)strongDelegate;
 {
     id delegate = self.delegate;
@@ -38,6 +48,8 @@
 
 - (void)forwardInvocation:(NSInvocation *)invocation;
 {
+    BOOL instanceMethod = YES;
+    NSAssert(nn_selector_belongsToProtocol(invocation.selector, self.protocol, NULL, &instanceMethod) && instanceMethod, @"Instance method %@ not found in protocol %@", NSStringFromSelector(invocation.selector), NSStringFromProtocol(self.protocol));
     despatch_sync_main_reentrant(^{
         [invocation invokeWithTarget:self.strongDelegate];
     });
