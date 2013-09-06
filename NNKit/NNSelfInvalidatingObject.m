@@ -50,7 +50,7 @@
     @synchronized(self) {
         ++self.refCount;
     }
-    [self retain];
+    [super retain];
     return self;
 }
 
@@ -59,13 +59,14 @@
     @synchronized(self) {
         --self.refCount;
     }
-    [self release];
+    [super release];
 }
 
 - (oneway void)dealloc;
 {
     if (self->_valid) {
-        @throw [NSException exceptionWithName:@"NNObjectLifetimeException" reason:@"Calling dealloc directly is not supported." userInfo:nil];
+        [super dealloc];
+        @throw [NSException exceptionWithName:@"NNObjectLifetimeException" reason:@"Calling dealloc directly on a self-invalidating object is not supported (object destroyed without invalidation)." userInfo:nil];
     }
 
     [super dealloc];
