@@ -37,6 +37,7 @@
 		BCD1D59817D9B8CC00A3EBD4 /* NNPollingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D59517D9B8CC00A3EBD4 /* NNPollingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D59917D9B8CC00A3EBD4 /* NNPollingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D59617D9B8CC00A3EBD4 /* NNPollingObject.m */; };
 		BCD1D59A17D9B8CC00A3EBD4 /* NNPollingObject+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D59717D9B8CC00A3EBD4 /* NNPollingObject+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D59C17D9BAB000A3EBD4 /* NNPollingObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		BCD1D59517D9B8CC00A3EBD4 /* NNPollingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNPollingObject.h; sourceTree = "<group>"; };
 		BCD1D59617D9B8CC00A3EBD4 /* NNPollingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNPollingObject.m; sourceTree = "<group>"; };
 		BCD1D59717D9B8CC00A3EBD4 /* NNPollingObject+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NNPollingObject+Protected.h"; sourceTree = "<group>"; };
+		BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNPollingObjectTests.m; path = NNKitTests/NNPollingObjectTests.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				BCD1D59517D9B8CC00A3EBD4 /* NNPollingObject.h */,
 				BCD1D59717D9B8CC00A3EBD4 /* NNPollingObject+Protected.h */,
 				BCD1D59617D9B8CC00A3EBD4 /* NNPollingObject.m */,
+				BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */,
 				BCD1D56117D9482600A3EBD4 /* NNSelfInvalidatingObject.h */,
 				BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */,
 				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
@@ -384,6 +387,7 @@
 				BCD1D59217D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m in Sources */,
 				BCD1D58017D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m in Sources */,
 				BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */,
+				BCD1D59C17D9BAB000A3EBD4 /* NNPollingObjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
