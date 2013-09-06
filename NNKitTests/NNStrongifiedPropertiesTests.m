@@ -39,6 +39,30 @@
 
 
 
+@interface NNSwizzledStrongifierTestClass : NSObject
+
+@property (weak) id foo;
+@property id bar;
+@property (weak) id TLA;
+@property (weak) id qux;
+@property (weak) id Qux;
+
+@end
+@interface NNSwizzledStrongifierTestClass (NNStrongGetters)
+
+- (id)strongFoo; // Good
+- (id)strongBar; // Bad -- strong
+- (id)strongTLA; // Good
+- (id)strongQux; // Bad -- ambiguous
+
+@end
+@implementation NNSwizzledStrongifierTestClass
+
+
+@end
+
+
+
 @implementation NNStrongifiedPropertiesTests
 
 - (void)setUp
@@ -84,6 +108,52 @@
 - (void)testNilling
 {
     NNStrongifyTestClass *obj = [NNStrongifyTestClass new];
+    @autoreleasepool {
+        id boo = [NSObject new];
+        obj.foo = boo;
+        [boo self];
+    }
+    XCTAssertNil([obj strongFoo], @"Weak property did not nil as expected.");
+}
+
+- (void)testSwizzledBasicStrongGetter
+{
+    NNSwizzledStrongifierTestClass *obj = [NNSwizzledStrongifierTestClass new];
+    nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    id boo = [NSObject new];
+    obj.foo = boo;
+    XCTAssertEqual([obj strongFoo], boo, @"Basic weak property did not resolve a strong getter.");
+    [boo self];
+}
+
+- (void)testSwizzledCapitalizedStrongGetter
+{
+    NNSwizzledStrongifierTestClass *obj = [NNSwizzledStrongifierTestClass new];
+    nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    id boo = [NSObject new];
+    obj.TLA = boo;
+    XCTAssertEqual([obj strongTLA], boo, @"Capitalized weak property did not resolve a strong getter.");
+    [boo self];
+}
+
+- (void)testSwizzledStrongGetterWithStrongProperty
+{
+    NNSwizzledStrongifierTestClass *obj = [NNSwizzledStrongifierTestClass new];
+    nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    XCTAssertThrows([obj strongBar], @"Strongified strong property access resulted in a valid IMP.");
+}
+
+- (void)testSwizzledAmbiguousStrongGetter
+{
+    NNSwizzledStrongifierTestClass *obj = [NNSwizzledStrongifierTestClass new];
+    nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    XCTAssertThrows([obj strongQux], @"Ambiguous property access resulted in a single IMP.");
+}
+
+- (void)testSwizzledNilling
+{
+    NNSwizzledStrongifierTestClass *obj = [NNSwizzledStrongifierTestClass new];
+    nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
     @autoreleasepool {
         id boo = [NSObject new];
         obj.foo = boo;

@@ -34,7 +34,6 @@
 }
 
 // Helper function to provide an autoreleasing reference to the delegate property
-// Would have subclassed NNStrongifiedProperties, but this class needs to subclass NSProxy--good place for Swizzlers!
 - (id)strongDelegate;
 {
     id delegate = self.delegate;

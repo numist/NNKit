@@ -10,7 +10,9 @@
 
 #import <NNKit/despatch.h>
 #import <NNKit/rantime.h>
+#import <NNKit/nn_isaSwizzling.h>
 
 #import <NNKit/NNDelegateProxy.h>
+#import <NNKit/NNISASwizzledObject.h>
 #import <NNKit/NNSelfInvalidatingObject.h>
 #import <NNKit/NNStrongifiedProperties.h>

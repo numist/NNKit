@@ -30,7 +30,6 @@ static SEL weakGetterForPropertyName(Class myClass, NSString *propertyName) {
     BOOL propertyIsWeak = NO;
     SEL getter = NSSelectorFromString(propertyName);
     for (int i = 0; attributes[i].name != NULL; ++i) {
-        NSLog(@"%s : %s", attributes[i].name, attributes[i].value);
         if (!strcmp(attributes[i].name, "W")) {
             propertyIsWeak = YES;
         }
