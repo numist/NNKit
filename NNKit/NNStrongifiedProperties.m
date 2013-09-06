@@ -15,6 +15,7 @@
 #import "NNStrongifiedProperties.h"
 
 #import <objc/runtime.h>
+#import <objc/message.h>
 
 #import "rantime.h"
 
@@ -101,11 +102,7 @@ static id strongGetterIMP(id self, SEL _cmd) {
     
     if (!weakSelector) { return nil; }
     
-#   warning we have a better way to deal with this—how?
-#   pragma clang diagnostic push
-#       pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        id strongRef = [self performSelector:weakSelector];
-#   pragma clang diagnostic pop
+    id strongRef = objc_msgSend(self, weakSelector);
     
     return strongRef;
 }
