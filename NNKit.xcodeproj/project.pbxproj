@@ -21,6 +21,8 @@
 		BCD1D56417D9482600A3EBD4 /* NNSelfInvalidatingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BCD1D56817D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */; };
+		BCD1D57317D9797700A3EBD4 /* despatch.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D57217D9797700A3EBD4 /* despatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D57517D9797F00A3EBD4 /* despatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D57417D9797F00A3EBD4 /* despatch.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNSelfInvalidatingObject.m; sourceTree = "<group>"; };
 		BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNSelfInvalidatingObjectTests.m; sourceTree = "<group>"; };
 		BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNDelegateProxyTests.m; sourceTree = "<group>"; };
+		BCD1D57217D9797700A3EBD4 /* despatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = despatch.h; sourceTree = "<group>"; };
+		BCD1D57417D9797F00A3EBD4 /* despatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = despatch.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +124,7 @@
 		BCD1D53217D9471A00A3EBD4 /* NNKit */ = {
 			isa = PBXGroup;
 			children = (
-				BCD1D56117D9482600A3EBD4 /* NNSelfInvalidatingObject.h */,
-				BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */,
+				BCD1D56D17D9776400A3EBD4 /* Actors */,
 				BCD1D55817D9474600A3EBD4 /* Concurrency */,
 				BCD1D53917D9471A00A3EBD4 /* NNKit.h */,
 				BCD1D53A17D9471A00A3EBD4 /* NNKit.m */,
@@ -164,8 +167,19 @@
 			children = (
 				BCD1D55D17D947A100A3EBD4 /* NNDelegateProxy.h */,
 				BCD1D55E17D947A100A3EBD4 /* NNDelegateProxy.m */,
+				BCD1D57217D9797700A3EBD4 /* despatch.h */,
+				BCD1D57417D9797F00A3EBD4 /* despatch.m */,
 			);
 			name = Concurrency;
+			sourceTree = "<group>";
+		};
+		BCD1D56D17D9776400A3EBD4 /* Actors */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D56117D9482600A3EBD4 /* NNSelfInvalidatingObject.h */,
+				BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */,
+			);
+			name = Actors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +189,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD1D57317D9797700A3EBD4 /* despatch.h in Headers */,
 				BCD1D55F17D947A100A3EBD4 /* NNDelegateProxy.h in Headers */,
 				BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */,
 				BCD1D56317D9482600A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
@@ -279,6 +294,7 @@
 				BCD1D56417D9482600A3EBD4 /* NNSelfInvalidatingObject.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
 				BCD1D56017D947A100A3EBD4 /* NNDelegateProxy.m in Sources */,
+				BCD1D57517D9797F00A3EBD4 /* despatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +498,7 @@
 				BCD1D55317D9471A00A3EBD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCD1D55417D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKitTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +507,7 @@
 				BCD1D55617D9471A00A3EBD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

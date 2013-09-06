@@ -8,5 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
+#import <NNKit/despatch.h>
 #import <NNKit/NNDelegateProxy.h>
 #import <NNKit/NNSelfInvalidatingObject.h>
