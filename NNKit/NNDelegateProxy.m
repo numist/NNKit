@@ -12,8 +12,12 @@
 
 @implementation NNDelegateProxy
 
-+ (NNDelegateProxy *)proxyWithDelegate:(id)delegate;
++ (id)proxyWithDelegate:(id)delegate protocol:(Protocol *)protocol;
 {
+    if (protocol && delegate) {
+        NSAssert([delegate conformsToProtocol:protocol], @"Object %@ does not conform to protocol %@", delegate, NSStringFromProtocol(protocol));
+    }
+
     NNDelegateProxy *proxy = [self alloc];
     proxy.delegate = delegate;
     return proxy;
@@ -33,7 +37,9 @@
 
 - (void)forwardInvocation:(NSInvocation *)invocation;
 {
-    dispatch_block_t block = ^{ [invocation invoke]; };
+    dispatch_block_t block = ^{
+        [invocation invokeWithTarget:self.strongDelegate];
+    };
     
     if (despatch_lock_is_held(dispatch_get_main_queue())) {
         block();
