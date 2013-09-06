@@ -138,7 +138,6 @@
     nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
     id boo = [NSObject new];
     obj.TLA = boo;
-    [obj.TLA self];
     XCTAssertEqual([obj strongTLA], boo, @"Capitalized weak property did not resolve a strong getter.");
     [boo self];
 }
