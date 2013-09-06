@@ -33,7 +33,7 @@ objc_property_attribute_t *nn_property_copyAttributeList(objc_property_t propert
     BailWithBlockUnless(constAttributes, failure);
     
     /**
-     *  ┏━━━━━━━━━━━━━━━━┓
+     *  ┏━━━━━━━━┓
      *  ┃nameptr         ┃
      *  ┃valueptr        ┃
      *  ┠────────────────┨
@@ -51,7 +51,7 @@ objc_property_attribute_t *nn_property_copyAttributeList(objc_property_t propert
      *  ┃N0Valueue0N0Valu┃
      *  ┃e0N0Valueueueue0┃
      *  ┃...             ┃
-     *  ┗━━━━━━━━━━━━━━━━┛
+     *  ┗━━━━━━━━┛
      */
     
     // Get the number of attributes
