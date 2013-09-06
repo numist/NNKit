@@ -80,7 +80,6 @@
 		BCD1D58A17D9A14300A3EBD4 /* NNISASwizzledObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNISASwizzledObject.h; path = Swizzling/NNISASwizzledObject.h; sourceTree = "<group>"; };
 		BCD1D58B17D9A14300A3EBD4 /* NNISASwizzledObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNISASwizzledObject.m; path = Swizzling/NNISASwizzledObject.m; sourceTree = "<group>"; };
 		BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nn_isaSwizzlingTests.m; sourceTree = "<group>"; };
-		BCD1D59317D9A69800A3EBD4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +126,6 @@
 		BCD1D52B17D9471A00A3EBD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BCD1D59317D9A69800A3EBD4 /* SenTestingKit.framework */,
 				BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */,
 				BCD1D54117D9471A00A3EBD4 /* XCTest.framework */,
 				BCD1D52E17D9471A00A3EBD4 /* Other Frameworks */,
