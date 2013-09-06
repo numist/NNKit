@@ -31,7 +31,7 @@
 		BCD1D58C17D9A14300A3EBD4 /* nn_isaSwizzling_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D58717D9A14300A3EBD4 /* nn_isaSwizzling_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BCD1D58D17D9A14300A3EBD4 /* nn_isaSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D58817D9A14300A3EBD4 /* nn_isaSwizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D58E17D9A14300A3EBD4 /* nn_isaSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D58917D9A14300A3EBD4 /* nn_isaSwizzling.m */; };
-		BCD1D58F17D9A14300A3EBD4 /* NNISASwizzledObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D58A17D9A14300A3EBD4 /* NNISASwizzledObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D58F17D9A14300A3EBD4 /* NNISASwizzledObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D58A17D9A14300A3EBD4 /* NNISASwizzledObject.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BCD1D59017D9A14300A3EBD4 /* NNISASwizzledObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D58B17D9A14300A3EBD4 /* NNISASwizzledObject.m */; };
 		BCD1D59217D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */; };
 /* End PBXBuildFile section */

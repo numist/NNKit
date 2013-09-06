@@ -14,7 +14,9 @@
 
 #import <Foundation/Foundation.h>
 
+
 @protocol NNISASwizzledObject <NSObject> @end
+
 
 @interface NNISASwizzledObject : NSObject <NNISASwizzledObject>
 
