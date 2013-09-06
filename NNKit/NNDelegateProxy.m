@@ -8,8 +8,6 @@
 
 #import "NNDelegateProxy.h"
 
-#import "despatch.h"
-
 @implementation NNDelegateProxy
 
 + (id)proxyWithDelegate:(id)delegate protocol:(Protocol *)protocol;
@@ -41,7 +39,7 @@
         [invocation invokeWithTarget:self.strongDelegate];
     };
     
-    if (despatch_lock_is_held(dispatch_get_main_queue())) {
+    if ([[NSThread currentThread] isMainThread]) {
         block();
     } else {
         dispatch_sync(dispatch_get_main_queue(), block);

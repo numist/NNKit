@@ -74,7 +74,7 @@ static BOOL objectDestroyed;
 
 - (void)invalidated:(id)obj;
 {
-    XCTAssertTrue(despatch_lock_is_held(dispatch_get_main_queue()), @"Invalidation happened on a queue other than the main queue!");
+    XCTAssertTrue([[NSThread currentThread] isMainThread], @"Invalidation happened on a queue other than the main queue!");
     XCTAssertFalse(objectInvalidated, @"Object was invalidated multiple times!");
     objectInvalidated = YES;
 }
