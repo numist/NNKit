@@ -180,8 +180,6 @@
 			children = (
 				BCD1D55D17D947A100A3EBD4 /* NNDelegateProxy.h */,
 				BCD1D55E17D947A100A3EBD4 /* NNDelegateProxy.m */,
-				BCD1D57217D9797700A3EBD4 /* despatch.h */,
-				BCD1D57417D9797F00A3EBD4 /* despatch.m */,
 			);
 			name = Concurrency;
 			sourceTree = "<group>";
@@ -209,6 +207,8 @@
 			children = (
 				BCD1D57B17D97FC400A3EBD4 /* rantime.h */,
 				BCD1D57D17D97FCA00A3EBD4 /* rantime.c */,
+				BCD1D57217D9797700A3EBD4 /* despatch.h */,
+				BCD1D57417D9797F00A3EBD4 /* despatch.m */,
 			);
 			name = "API extension";
 			sourceTree = "<group>";
