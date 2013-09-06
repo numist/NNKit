@@ -17,8 +17,6 @@
 		BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D53917D9471A00A3EBD4 /* NNKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D55F17D947A100A3EBD4 /* NNDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D55D17D947A100A3EBD4 /* NNDelegateProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D56017D947A100A3EBD4 /* NNDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D55E17D947A100A3EBD4 /* NNDelegateProxy.m */; };
-		BCD1D56317D9482600A3EBD4 /* NNSelfInvalidatingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D56117D9482600A3EBD4 /* NNSelfInvalidatingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BCD1D56417D9482600A3EBD4 /* NNSelfInvalidatingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BCD1D56817D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */; };
 		BCD1D57917D97D0200A3EBD4 /* NNStrongifiedProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D57717D97D0200A3EBD4 /* NNStrongifiedProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,14 +28,16 @@
 		BCD1D58F17D9A14300A3EBD4 /* NNISASwizzledObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D58A17D9A14300A3EBD4 /* NNISASwizzledObject.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BCD1D59017D9A14300A3EBD4 /* NNISASwizzledObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D58B17D9A14300A3EBD4 /* NNISASwizzledObject.m */; };
 		BCD1D59217D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */; };
-		BCD1D59817D9B8CC00A3EBD4 /* NNPollingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D59517D9B8CC00A3EBD4 /* NNPollingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BCD1D59917D9B8CC00A3EBD4 /* NNPollingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D59617D9B8CC00A3EBD4 /* NNPollingObject.m */; };
-		BCD1D59A17D9B8CC00A3EBD4 /* NNPollingObject+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D59717D9B8CC00A3EBD4 /* NNPollingObject+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D59C17D9BAB000A3EBD4 /* NNPollingObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */; };
 		BCD1D5A917D9C72F00A3EBD4 /* despatch.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5A517D9C72F00A3EBD4 /* despatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D5AA17D9C72F00A3EBD4 /* despatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5A617D9C72F00A3EBD4 /* despatch.m */; };
 		BCD1D5AB17D9C72F00A3EBD4 /* runtime.c in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5A717D9C72F00A3EBD4 /* runtime.c */; };
 		BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5A817D9C72F00A3EBD4 /* runtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D5B217D9C79F00A3EBD4 /* NNPollingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5AD17D9C79F00A3EBD4 /* NNPollingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D5B317D9C79F00A3EBD4 /* NNPollingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5AE17D9C79F00A3EBD4 /* NNPollingObject.m */; };
+		BCD1D5B417D9C79F00A3EBD4 /* NNPollingObject+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5AF17D9C79F00A3EBD4 /* NNPollingObject+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D5B517D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5B017D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D5B617D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5B117D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +67,6 @@
 		BCD1D54B17D9471A00A3EBD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BCD1D55D17D947A100A3EBD4 /* NNDelegateProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNDelegateProxy.h; sourceTree = "<group>"; };
 		BCD1D55E17D947A100A3EBD4 /* NNDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNDelegateProxy.m; sourceTree = "<group>"; };
-		BCD1D56117D9482600A3EBD4 /* NNSelfInvalidatingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNSelfInvalidatingObject.h; sourceTree = "<group>"; };
-		BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNSelfInvalidatingObject.m; sourceTree = "<group>"; };
 		BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNSelfInvalidatingObjectTests.m; path = NNKitTests/NNSelfInvalidatingObjectTests.m; sourceTree = SOURCE_ROOT; };
 		BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNDelegateProxyTests.m; path = NNKitTests/NNDelegateProxyTests.m; sourceTree = SOURCE_ROOT; };
 		BCD1D57717D97D0200A3EBD4 /* NNStrongifiedProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNStrongifiedProperties.h; sourceTree = "<group>"; };
@@ -80,14 +78,16 @@
 		BCD1D58A17D9A14300A3EBD4 /* NNISASwizzledObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNISASwizzledObject.h; path = Swizzling/NNISASwizzledObject.h; sourceTree = "<group>"; };
 		BCD1D58B17D9A14300A3EBD4 /* NNISASwizzledObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNISASwizzledObject.m; path = Swizzling/NNISASwizzledObject.m; sourceTree = "<group>"; };
 		BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = nn_isaSwizzlingTests.m; path = NNKitTests/nn_isaSwizzlingTests.m; sourceTree = SOURCE_ROOT; };
-		BCD1D59517D9B8CC00A3EBD4 /* NNPollingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNPollingObject.h; sourceTree = "<group>"; };
-		BCD1D59617D9B8CC00A3EBD4 /* NNPollingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNPollingObject.m; sourceTree = "<group>"; };
-		BCD1D59717D9B8CC00A3EBD4 /* NNPollingObject+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NNPollingObject+Protected.h"; sourceTree = "<group>"; };
 		BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNPollingObjectTests.m; path = NNKitTests/NNPollingObjectTests.m; sourceTree = SOURCE_ROOT; };
 		BCD1D5A517D9C72F00A3EBD4 /* despatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = despatch.h; path = "API Extension/despatch.h"; sourceTree = "<group>"; };
 		BCD1D5A617D9C72F00A3EBD4 /* despatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = despatch.m; path = "API Extension/despatch.m"; sourceTree = "<group>"; };
 		BCD1D5A717D9C72F00A3EBD4 /* runtime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = runtime.c; path = "API Extension/runtime.c"; sourceTree = "<group>"; };
 		BCD1D5A817D9C72F00A3EBD4 /* runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = runtime.h; path = "API Extension/runtime.h"; sourceTree = "<group>"; };
+		BCD1D5AD17D9C79F00A3EBD4 /* NNPollingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNPollingObject.h; path = Actors/NNPollingObject.h; sourceTree = "<group>"; };
+		BCD1D5AE17D9C79F00A3EBD4 /* NNPollingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNPollingObject.m; path = Actors/NNPollingObject.m; sourceTree = "<group>"; };
+		BCD1D5AF17D9C79F00A3EBD4 /* NNPollingObject+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NNPollingObject+Protected.h"; path = "Actors/NNPollingObject+Protected.h"; sourceTree = "<group>"; };
+		BCD1D5B017D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNSelfInvalidatingObject.h; path = Actors/NNSelfInvalidatingObject.h; sourceTree = "<group>"; };
+		BCD1D5B117D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNSelfInvalidatingObject.m; path = Actors/NNSelfInvalidatingObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,12 +205,12 @@
 		BCD1D56D17D9776400A3EBD4 /* Actors */ = {
 			isa = PBXGroup;
 			children = (
-				BCD1D59517D9B8CC00A3EBD4 /* NNPollingObject.h */,
-				BCD1D59717D9B8CC00A3EBD4 /* NNPollingObject+Protected.h */,
-				BCD1D59617D9B8CC00A3EBD4 /* NNPollingObject.m */,
+				BCD1D5AD17D9C79F00A3EBD4 /* NNPollingObject.h */,
+				BCD1D5AF17D9C79F00A3EBD4 /* NNPollingObject+Protected.h */,
+				BCD1D5AE17D9C79F00A3EBD4 /* NNPollingObject.m */,
 				BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */,
-				BCD1D56117D9482600A3EBD4 /* NNSelfInvalidatingObject.h */,
-				BCD1D56217D9482600A3EBD4 /* NNSelfInvalidatingObject.m */,
+				BCD1D5B017D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h */,
+				BCD1D5B117D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m */,
 				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
 			);
 			name = Actors;
@@ -260,15 +260,15 @@
 			files = (
 				BCD1D58D17D9A14300A3EBD4 /* nn_isaSwizzling.h in Headers */,
 				BCD1D58F17D9A14300A3EBD4 /* NNISASwizzledObject.h in Headers */,
+				BCD1D5B417D9C79F00A3EBD4 /* NNPollingObject+Protected.h in Headers */,
 				BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */,
 				BCD1D5A917D9C72F00A3EBD4 /* despatch.h in Headers */,
-				BCD1D59A17D9B8CC00A3EBD4 /* NNPollingObject+Protected.h in Headers */,
 				BCD1D55F17D947A100A3EBD4 /* NNDelegateProxy.h in Headers */,
 				BCD1D58C17D9A14300A3EBD4 /* nn_isaSwizzling_Private.h in Headers */,
+				BCD1D5B517D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
 				BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */,
-				BCD1D59817D9B8CC00A3EBD4 /* NNPollingObject.h in Headers */,
+				BCD1D5B217D9C79F00A3EBD4 /* NNPollingObject.h in Headers */,
 				BCD1D57917D97D0200A3EBD4 /* NNStrongifiedProperties.h in Headers */,
-				BCD1D56317D9482600A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,13 +367,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD1D56417D9482600A3EBD4 /* NNSelfInvalidatingObject.m in Sources */,
 				BCD1D5AA17D9C72F00A3EBD4 /* despatch.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
 				BCD1D5AB17D9C72F00A3EBD4 /* runtime.c in Sources */,
+				BCD1D5B317D9C79F00A3EBD4 /* NNPollingObject.m in Sources */,
 				BCD1D56017D947A100A3EBD4 /* NNDelegateProxy.m in Sources */,
+				BCD1D5B617D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m in Sources */,
 				BCD1D57A17D97D0200A3EBD4 /* NNStrongifiedProperties.m in Sources */,
-				BCD1D59917D9B8CC00A3EBD4 /* NNPollingObject.m in Sources */,
 				BCD1D59017D9A14300A3EBD4 /* NNISASwizzledObject.m in Sources */,
 				BCD1D58E17D9A14300A3EBD4 /* nn_isaSwizzling.m in Sources */,
 			);

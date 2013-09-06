@@ -17,7 +17,7 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-#import "rantime.h"
+#import "runtime.h"
 
 
 static SEL weakGetterForPropertyName(Class myClass, NSString *propertyName) {
