@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import <NNKit/despatch.h>
+#import <NNKit/rantime.h>
+
 #import <NNKit/NNDelegateProxy.h>
 #import <NNKit/NNSelfInvalidatingObject.h>
 #import <NNKit/NNStrongifiedProperties.h>
