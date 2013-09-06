@@ -11,12 +11,14 @@
 #include <stdlib.h>
 
 // Lifted from https://github.com/numist/Debugger/blob/master/debugger.h
+#ifndef BailWithBlockUnless
 #define BailWithBlockUnless(exp,block) \
 do { \
     if (!(exp)) { \
         return block(); \
     } \
 } while(0)
+#endif
 
 // Like the other class_copy* functions, the caller must free the return value of this function with free()
 objc_property_attribute_t *nn_property_copyAttributeList(objc_property_t property, unsigned int *outCount)
