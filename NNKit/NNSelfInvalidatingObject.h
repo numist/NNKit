@@ -1,6 +1,6 @@
 //
 //  NNSelfInvalidatingObject.h
-//  Switch
+//  NNKit
 //
 //  Created by Scott Perry on 09/05/13.
 //  Copyright © 2013 Scott Perry.
