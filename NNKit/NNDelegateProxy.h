@@ -10,4 +10,8 @@
 
 @interface NNDelegateProxy : NSProxy
 
+@property (weak) id delegate;
+
++ (NNDelegateProxy *)proxyWithDelegate:(id)delegate;
+
 @end

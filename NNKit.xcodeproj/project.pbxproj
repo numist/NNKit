@@ -16,7 +16,7 @@
 		BCD1D54C17D9471A00A3EBD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCD1D54A17D9471A00A3EBD4 /* InfoPlist.strings */; };
 		BCD1D54E17D9471A00A3EBD4 /* NNKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D54D17D9471A00A3EBD4 /* NNKitTests.m */; };
 		BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D53917D9471A00A3EBD4 /* NNKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BCD1D55B17D9476F00A3EBD4 /* despatch.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D55917D9476F00A3EBD4 /* despatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D55B17D9476F00A3EBD4 /* despatch.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D55917D9476F00A3EBD4 /* despatch.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BCD1D55C17D9476F00A3EBD4 /* despatch.c in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D55A17D9476F00A3EBD4 /* despatch.c */; };
 		BCD1D55F17D947A100A3EBD4 /* NNDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D55D17D947A100A3EBD4 /* NNDelegateProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D56017D947A100A3EBD4 /* NNDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D55E17D947A100A3EBD4 /* NNDelegateProxy.m */; };
@@ -339,6 +339,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -377,6 +378,7 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;

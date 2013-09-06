@@ -21,6 +21,8 @@ dispatch_queue_t despatch_lock_create(const char *label) __attribute__((nonnull(
 void despatch_lock_promote(dispatch_queue_t queue) __attribute__((nonnull(1)));
 void despatch_lock_assert(dispatch_queue_t lock) __attribute__((nonnull(1)));
 void despatch_lock_assert_not(dispatch_queue_t lock) __attribute__((nonnull(1)));
+
+// Re-entrant locks: For when you just can’t figure out your own lock hierarchy. (https://twitter.com/launchz/status/354372465490804736 )
 _Bool despatch_lock_is_held(dispatch_queue_t lock) __attribute__((nonnull(1)));
 
 #endif
