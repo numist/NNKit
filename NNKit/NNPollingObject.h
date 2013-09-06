@@ -1,8 +1,8 @@
 //
-//  NNKit.h
+//  NNPollingObject.h
 //  NNKit
 //
-//  Created by Scott Perry on 09/05/13.
+//  Created by Scott Perry on 07/10/13.
 //  Copyright © 2013 Scott Perry.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
@@ -14,11 +14,16 @@
 
 #import <Foundation/Foundation.h>
 
-#import <NNKit/despatch.h>
-#import <NNKit/rantime.h>
-#import <NNKit/nn_isaSwizzling.h>
 
-#import <NNKit/NNDelegateProxy.h>
-#import <NNKit/NNPollingObject+Protected.h>
-#import <NNKit/NNSelfInvalidatingObject.h>
-#import <NNKit/NNStrongifiedProperties.h>
+@interface NNPollingObject : NSObject
+
++ (NSString *)notificationName;
+
+// I think this is the first time where I've wanted the default (atomic, assign, readwrite) flags for a property!
+// Too bad I have all warnings turned on:
+@property (atomic, assign, readwrite) NSTimeInterval interval;
+
+- (instancetype)initWithQueue:(dispatch_queue_t)queue;
+- (void)main;
+
+@end
