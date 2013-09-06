@@ -51,7 +51,7 @@ To swizzle your object and use its newfound functionality, just call `nn_object_
 
 See the tests for more explicit examples of what is supposed to work and what is supposed to be an error.
 
-License/Credits
-===============
+Credits
+=======
 
-If not for [Rob Rix](https://github.com/robrix/), the Swizzling portion of NNKit would not exist. Which probably would have been a good thing.
+If not for [Rob Rix](https://github.com/robrix/), the Swizzling component of NNKit would not exist. Which probably would have been a good thing.
