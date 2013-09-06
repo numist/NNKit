@@ -17,7 +17,7 @@ An object has been swizzled by a class if it responds YES to `isKindOfClass:` wi
 
 To avoid any confusion, your swizzling class should not implement an allocator or initializer. They will never be called for swizzled objects.
 
-#### Usage ####
+### Usage ###
 
 First, you'll need to define your swizzling class. For example:
 
@@ -34,7 +34,7 @@ First, you'll need to define your swizzling class. For example:
 
 To swizzle your object and use its newfound functionality, just call `nn_object_swizzleIsa`:
 
-    #import <Swizzlers/Swizzlers.h>
+    #import <NNKit/nn_isaSwizzling.h>
         
     @implementation MYCode
     - (void)main {
