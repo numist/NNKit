@@ -7,11 +7,3 @@
 //
 
 #import "NNKit.h"
-
-@interface NNKit : NSObject
-
-@end
-
-@implementation NNKit
-
-@end

@@ -11,19 +11,24 @@
 #import <NNKit/NNKit.h>
 
 
+// Fuckin' state, man.
 static BOOL objectInvalidated;
 static BOOL objectDestroyed;
 
 
 @interface NNSelfInvalidatingObjectTests : XCTestCase
+// The XCT macros don't work outside of an XCTestCase object, so events have to be forwarded back to the test case.
 - (void)invalidated:(id)obj;
 - (void)destroyed:(id)obj;
 @end
 
 
 @interface NNInvalidatingTestObject : NNSelfInvalidatingObject
-@property (assign) NNSelfInvalidatingObjectTests *test;
+
+@property (assign, readonly) NNSelfInvalidatingObjectTests *test;
+
 @end
+
 
 @implementation NNInvalidatingTestObject
 
