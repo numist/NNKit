@@ -31,14 +31,13 @@ static SEL weakGetterForPropertyName(Class myClass, NSString *propertyName) {
     SEL getter = NSSelectorFromString(propertyName);
     for (int i = 0; attributes[i].name != NULL; ++i) {
         NSLog(@"%s : %s", attributes[i].name, attributes[i].value);
-        if (!strncmp(attributes[i].name, "W", MIN(strlen("W"), strlen(attributes[i].name)))) {
+        if (!strcmp(attributes[i].name, "W")) {
             propertyIsWeak = YES;
         }
         if (!strncmp(attributes[i].name, "G", 1)) {
             getter = NSSelectorFromString([NSString stringWithFormat:@"%s", attributes[i].name + 1]);
         }
-#       warning strnncmp might be nice
-        if (!strncmp(attributes[i].name, "T", MIN(strlen("T"), strlen(attributes[i].name))) && strncmp(attributes[i].value, "@", MIN(strlen("@"), strlen(attributes[i].value)))) {
+        if (!strcmp(attributes[i].name, "T") && strcmp(attributes[i].value, "@")) {
             return NO;
         }
     }
