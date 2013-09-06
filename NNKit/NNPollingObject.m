@@ -43,6 +43,11 @@
     return self;
 }
 
+- (instancetype)init;
+{
+    return [self initWithQueue:dispatch_get_global_queue(0, 0)];
+}
+
 - (void)workerLoop;
 {
     NSDate *start = [NSDate date];

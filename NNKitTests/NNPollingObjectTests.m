@@ -8,27 +8,103 @@
 
 #import <XCTest/XCTest.h>
 
+#import <NNKit/NNKit.h>
+
+
 @interface NNPollingObjectTests : XCTestCase
 
 @end
+
+
+@interface NNTestObject : NNPollingObject
+@end
+@implementation NNTestObject
+
+- (instancetype)init;
+{
+    if (!(self = [super init])) { return nil; }
+    self.interval = 0.0001;
+    return self;
+}
+
+- (void)main;
+{
+    [self postNotification:nil];
+}
+
+@end
+
+
+static int iterations;
+
 
 @implementation NNPollingObjectTests
 
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    iterations = 0;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(objectNotification:) name:[NNTestObject notificationName] object:nil];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testBasicPolling
 {
-    XCTFail(@"Gosh, how do you even test a polling object that takes *time*");
+    NNTestObject *obj = [NNTestObject new];
+    
+    NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.5];
+    while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
+    }
+    XCTAssert(iterations > 0, @"Polling object iterated zero times!");
+    [obj self];
+}
+
+- (void)testZeroInterval
+{
+    NNTestObject *obj = [NNTestObject new];
+    obj.interval = 0.0;
+    
+    NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    while ([[NSDate date] compare:until] == NSOrderedAscending && iterations < 2) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
+    }
+    XCTAssert(iterations == 1, @"Polling object iterated more than once!");
+    [obj self];
+}
+
+- (void)testObjectDeath
+{
+    @autoreleasepool {
+        NNTestObject *obj = [NNTestObject new];
+        
+        NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
+        while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
+        }
+        [obj self];
+    }
+    iterations = 0;
+    NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
+    }
+    XCTAssert(iterations == 0, @"Object continued polling after it was released!");
+}
+
+- (void)objectNotification:(NSNotification *)notification;
+{
+    XCTAssert([[NSThread currentThread] isMainThread], @"Poll notification was not dispatched on the main thread!");
+    
+    iterations++;
 }
 
 @end
