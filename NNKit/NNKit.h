@@ -11,3 +11,4 @@
 #import <NNKit/despatch.h>
 #import <NNKit/NNDelegateProxy.h>
 #import <NNKit/NNSelfInvalidatingObject.h>
+#import <NNKit/NNStrongifiedProperties.h>

@@ -23,6 +23,11 @@
 		BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */; };
 		BCD1D57317D9797700A3EBD4 /* despatch.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D57217D9797700A3EBD4 /* despatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D57517D9797F00A3EBD4 /* despatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D57417D9797F00A3EBD4 /* despatch.m */; };
+		BCD1D57917D97D0200A3EBD4 /* NNStrongifiedProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D57717D97D0200A3EBD4 /* NNStrongifiedProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D57A17D97D0200A3EBD4 /* NNStrongifiedProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D57817D97D0200A3EBD4 /* NNStrongifiedProperties.m */; };
+		BCD1D57C17D97FC400A3EBD4 /* rantime.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D57B17D97FC400A3EBD4 /* rantime.h */; };
+		BCD1D57E17D97FCA00A3EBD4 /* rantime.c in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D57D17D97FCA00A3EBD4 /* rantime.c */; };
+		BCD1D58017D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,11 @@
 		BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNDelegateProxyTests.m; sourceTree = "<group>"; };
 		BCD1D57217D9797700A3EBD4 /* despatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = despatch.h; sourceTree = "<group>"; };
 		BCD1D57417D9797F00A3EBD4 /* despatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = despatch.m; sourceTree = "<group>"; };
+		BCD1D57717D97D0200A3EBD4 /* NNStrongifiedProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNStrongifiedProperties.h; sourceTree = "<group>"; };
+		BCD1D57817D97D0200A3EBD4 /* NNStrongifiedProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNStrongifiedProperties.m; sourceTree = "<group>"; };
+		BCD1D57B17D97FC400A3EBD4 /* rantime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rantime.h; sourceTree = "<group>"; };
+		BCD1D57D17D97FCA00A3EBD4 /* rantime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rantime.c; sourceTree = "<group>"; };
+		BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNStrongifiedPropertiesTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +136,7 @@
 			children = (
 				BCD1D56D17D9776400A3EBD4 /* Actors */,
 				BCD1D55817D9474600A3EBD4 /* Concurrency */,
+				BCD1D57617D97CB100A3EBD4 /* Hacks */,
 				BCD1D53917D9471A00A3EBD4 /* NNKit.h */,
 				BCD1D53A17D9471A00A3EBD4 /* NNKit.m */,
 				BCD1D53317D9471A00A3EBD4 /* Supporting Files */,
@@ -146,6 +157,7 @@
 		BCD1D54717D9471A00A3EBD4 /* NNKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */,
 				BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */,
 				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
 				BCD1D54817D9471A00A3EBD4 /* Supporting Files */,
@@ -182,6 +194,17 @@
 			name = Actors;
 			sourceTree = "<group>";
 		};
+		BCD1D57617D97CB100A3EBD4 /* Hacks */ = {
+			isa = PBXGroup;
+			children = (
+				BCD1D57717D97D0200A3EBD4 /* NNStrongifiedProperties.h */,
+				BCD1D57817D97D0200A3EBD4 /* NNStrongifiedProperties.m */,
+				BCD1D57B17D97FC400A3EBD4 /* rantime.h */,
+				BCD1D57D17D97FCA00A3EBD4 /* rantime.c */,
+			);
+			name = Hacks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -190,8 +213,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD1D57317D9797700A3EBD4 /* despatch.h in Headers */,
+				BCD1D57C17D97FC400A3EBD4 /* rantime.h in Headers */,
 				BCD1D55F17D947A100A3EBD4 /* NNDelegateProxy.h in Headers */,
 				BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */,
+				BCD1D57917D97D0200A3EBD4 /* NNStrongifiedProperties.h in Headers */,
 				BCD1D56317D9482600A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +319,8 @@
 				BCD1D56417D9482600A3EBD4 /* NNSelfInvalidatingObject.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
 				BCD1D56017D947A100A3EBD4 /* NNDelegateProxy.m in Sources */,
+				BCD1D57A17D97D0200A3EBD4 /* NNStrongifiedProperties.m in Sources */,
+				BCD1D57E17D97FCA00A3EBD4 /* rantime.c in Sources */,
 				BCD1D57517D9797F00A3EBD4 /* despatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD1D56817D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m in Sources */,
+				BCD1D58017D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m in Sources */,
 				BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
