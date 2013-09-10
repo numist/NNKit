@@ -3,6 +3,17 @@ NNKit Hacks
 
 This portion of NNKit contains things that, while well-tested and reliable, shouldn't pass a sane person's test for acceptable complexity per unit utility.
 
+Automatically Freed C Buffers
+-----------------------------
+
+Have a complicated function with a lot of logic and early returns? Avoid the possibility of forgetting to free your buffers with `nn_autofree`!
+
+    @autoreleasepool {
+        int *foo = nn_autofree(malloc(size));
+    }
+
+Don't forget, you're still in charge of NULLing your pointers, so it's easiest if you create your own autorelease pool, which will also create an extra scope for the buffer's pointer which it can't escape.
+
 Strongified Property Access
 ---------------------------
 

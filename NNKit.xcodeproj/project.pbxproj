@@ -38,6 +38,8 @@
 		BCD1D5BA17D9C84000A3EBD4 /* NNDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5B817D9C84000A3EBD4 /* NNDelegateProxy.m */; };
 		BCD1D5BD17D9C88F00A3EBD4 /* NNStrongifiedProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5BB17D9C88F00A3EBD4 /* NNStrongifiedProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D5BE17D9C88F00A3EBD4 /* NNStrongifiedProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5BC17D9C88F00A3EBD4 /* NNStrongifiedProperties.m */; };
+		BCD1D5C117DECC8E00A3EBD4 /* nn_autofree.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5BF17DECC8E00A3EBD4 /* nn_autofree.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCD1D5C217DECC8E00A3EBD4 /* nn_autofree.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5C017DECC8E00A3EBD4 /* nn_autofree.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		BCD1D5B817D9C84000A3EBD4 /* NNDelegateProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNDelegateProxy.m; path = Concurrency/NNDelegateProxy.m; sourceTree = "<group>"; };
 		BCD1D5BB17D9C88F00A3EBD4 /* NNStrongifiedProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNStrongifiedProperties.h; path = Hacks/NNStrongifiedProperties.h; sourceTree = "<group>"; };
 		BCD1D5BC17D9C88F00A3EBD4 /* NNStrongifiedProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNStrongifiedProperties.m; path = Hacks/NNStrongifiedProperties.m; sourceTree = "<group>"; };
+		BCD1D5BF17DECC8E00A3EBD4 /* nn_autofree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nn_autofree.h; path = Hacks/nn_autofree.h; sourceTree = "<group>"; };
+		BCD1D5C017DECC8E00A3EBD4 /* nn_autofree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = nn_autofree.m; path = Hacks/nn_autofree.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,8 @@
 				BCD1D5BB17D9C88F00A3EBD4 /* NNStrongifiedProperties.h */,
 				BCD1D5BC17D9C88F00A3EBD4 /* NNStrongifiedProperties.m */,
 				BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */,
+				BCD1D5BF17DECC8E00A3EBD4 /* nn_autofree.h */,
+				BCD1D5C017DECC8E00A3EBD4 /* nn_autofree.m */,
 			);
 			name = Hacks;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 				BCD1D58D17D9A14300A3EBD4 /* nn_isaSwizzling.h in Headers */,
 				BCD1D58F17D9A14300A3EBD4 /* NNISASwizzledObject.h in Headers */,
 				BCD1D5B917D9C84000A3EBD4 /* NNDelegateProxy.h in Headers */,
+				BCD1D5C117DECC8E00A3EBD4 /* nn_autofree.h in Headers */,
 				BCD1D5B417D9C79F00A3EBD4 /* NNPollingObject+Protected.h in Headers */,
 				BCD1D5BD17D9C88F00A3EBD4 /* NNStrongifiedProperties.h in Headers */,
 				BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */,
@@ -371,6 +378,7 @@
 				BCD1D5BE17D9C88F00A3EBD4 /* NNStrongifiedProperties.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
 				BCD1D5AB17D9C72F00A3EBD4 /* runtime.c in Sources */,
+				BCD1D5C217DECC8E00A3EBD4 /* nn_autofree.m in Sources */,
 				BCD1D5B317D9C79F00A3EBD4 /* NNPollingObject.m in Sources */,
 				BCD1D5B617D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m in Sources */,
 				BCD1D59017D9A14300A3EBD4 /* NNISASwizzledObject.m in Sources */,

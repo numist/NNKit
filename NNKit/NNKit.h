@@ -15,7 +15,8 @@
 #import <Foundation/Foundation.h>
 
 #import <NNKit/despatch.h>
-#import <NNKit/rantime.h>
+#import <NNKit/runtime.h>
+#import <NNKit/nn_autofree.h>
 #import <NNKit/nn_isaSwizzling.h>
 
 #import <NNKit/NNDelegateProxy.h>
