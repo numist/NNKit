@@ -18,6 +18,7 @@
 
 #import "runtime.h"
 #import "NNISASwizzledObject.h"
+#import "nn_autofree.h"
 
 
 static NSString *_prefixForSwizzlingClass(Class aClass) __attribute__((nonnull(1), pure));
@@ -44,81 +45,72 @@ static NSString * _classNameForObjectWithSwizzlingClass(id anObject, Class aClas
 
 static BOOL _class_addClassMethodsFromClass(Class target, Class source)
 {
-    BOOL success = NO;
-    Method *methods = class_copyMethodList(object_getClass(source), NULL);
+    BOOL success = YES;
+    Method *methods = nn_autofree(class_copyMethodList(object_getClass(source), NULL));
     Method method;
     
     for (NSUInteger i = 0; methods && (method = methods[i]); i++) {
         // targetClass is a brand new shiny class, so this should never fail because it already implements a method (even though its superclass(es) might).
         if(!class_addMethod(object_getClass(target), method_getName(method), method_getImplementation(method), method_getTypeEncoding(method))) {
-            goto finished;
+            success = NO;
+            break;
         }
     }
-    
-    success = YES;
-finished:
-    free(methods); methods = NULL;
+
     return success;
 }
 
 static BOOL _class_addInstanceMethodsFromClass(Class target, Class source)
 {
-    BOOL success = NO;
-    Method *methods = class_copyMethodList(source, NULL);
+    BOOL success = YES;
+    Method *methods = nn_autofree(class_copyMethodList(source, NULL));
     Method method;
     
     for (NSUInteger i = 0; methods && (method = methods[i]); i++) {
         // targetClass is a brand new shiny class, so this should never fail because it already implements a method (even though its superclass(es) might).
         if(!class_addMethod(target, method_getName(method), method_getImplementation(method), method_getTypeEncoding(method))) {
-            goto finished;
+            success = NO;
+            break;
         }
     }
     
-    success = YES;
-finished:
-    free(methods); methods = NULL;
     return success;
 }
 
 static BOOL _class_addProtocolsFromClass(Class targetClass, Class aClass)
 {
-    BOOL success = NO;
-    Protocol * __unsafe_unretained *protocols = class_copyProtocolList(aClass, NULL);
+    BOOL success = YES;
+    Protocol * __unsafe_unretained *protocols = (Protocol * __unsafe_unretained *)nn_autofree(class_copyProtocolList(aClass, NULL));
     Protocol __unsafe_unretained *protocol;
     
     for (NSUInteger i = 0; protocols && (protocol = protocols[i]); i++) {
         // targetClass is a brand new shiny class, so this should never fail because it already conforms to a protocol (even though its superclass(es) might).
         if (!class_addProtocol(targetClass, protocol)) {
-            goto finished;
+            success = NO;
+            break;
         }
     }
-    
-    success = YES;
-finished:
-    free(protocols); protocols = NULL;
+
     return success;
 }
 
 static BOOL _class_addPropertiesFromClass(Class targetClass, Class aClass)
 {
-    BOOL success = NO;
+    BOOL success = YES;
     objc_property_t *properties = class_copyPropertyList(aClass, NULL);
     objc_property_t property;
     
     for (NSUInteger i = 0; properties && (property = properties[i]); i++) {
         unsigned attributeCount;
-        objc_property_attribute_t *attributes = nn_property_copyAttributeList(property, &attributeCount);
+        objc_property_attribute_t *attributes = nn_autofree(nn_property_copyAttributeList(property, &attributeCount));
 
         // targetClass is a brand new shiny class, so this should never fail because it already has certain properties (even though its superclass(es) might).
         if(!class_addProperty(targetClass, property_getName(property), attributes, attributeCount)) {
-            free(attributes);
-            goto finished;
+            success = NO;
+            break;
         }
     }
     
-    success = YES;
-finished:
-    free(properties);
     return success;
 }
 
@@ -126,11 +118,11 @@ finished:
 
 static BOOL _class_containsNonDynamicProperties(Class aClass)
 {
-    objc_property_t *properties = class_copyPropertyList(aClass, NULL);
+    objc_property_t *properties = nn_autofree(class_copyPropertyList(aClass, NULL));
     BOOL propertyIsDynamic = NO;
     
     for (unsigned i = 0; properties && properties[i]; i++) {
-        objc_property_attribute_t *attributes = nn_property_copyAttributeList(properties[i], NULL);
+        objc_property_attribute_t *attributes = nn_autofree(nn_property_copyAttributeList(properties[i], NULL));
         
         for (unsigned j = 0; attributes && attributes[j].name; j++) {
             if (!strcmp(attributes[j].name, "D")) { // The property is dynamic (@dynamic).
@@ -139,16 +131,14 @@ static BOOL _class_containsNonDynamicProperties(Class aClass)
             }
         }
         
-        free(attributes); attributes = NULL;
+        attributes = NULL;
         
         if (!propertyIsDynamic) {
             NSLog(@"Swizzling class %s cannot contain non-dynamic properties", class_getName(aClass));
-            free(properties);
             return YES;
         }
     }
     
-    free(properties); properties = NULL;
     return NO;
 }
 
