@@ -97,7 +97,7 @@ static BOOL _class_addProtocolsFromClass(Class targetClass, Class aClass)
 static BOOL _class_addPropertiesFromClass(Class targetClass, Class aClass)
 {
     BOOL success = YES;
-    objc_property_t *properties = class_copyPropertyList(aClass, NULL);
+    objc_property_t *properties = nn_autofree(class_copyPropertyList(aClass, NULL));
     objc_property_t property;
     
     for (NSUInteger i = 0; properties && (property = properties[i]); i++) {
