@@ -15,6 +15,10 @@
 #ifndef NNKit_despatch_h
 #define NNKit_despatch_h
 
+/// Run a block on the main queue synchronously, even if you're already running on the main queue.
 void despatch_sync_main_reentrant(dispatch_block_t block);
+
+/// Yield control of the current runloop. Return value indicates if the dispatch group is clear.
+BOOL despatch_group_yield(dispatch_group_t group);
 
 #endif

@@ -12,6 +12,22 @@ despatch
 
 `despatch_sync_main_reentrant` is a function for making synchronous dispatch onto the main queue simpler. The block argument is invoked directly if the sender is already executing on the main thread, and dispatched synchronously onto the main queue otherwise.
 
+### `despatch_group_yield` ###
+
+The yield concept is borrowed from Python and other languages as a way for a path of execution to pause and allow other work scheduled for that thread to proceed. In this case it's most useful in unit tests to allow asynchronous work that takes place on the main thread to proceed.
+
+A very basic example from `NNDelegateProxyTests.m`:
+
+    - (void)testGlobalAsync;
+    {
+        dispatch_group_enter(group);
+        [[[MYClass alloc] initWithDelegate:self] globalAsync];
+        
+        NSDate *timeout = [NSDate dateWithTimeIntervalSinceNow:0.1];
+        while (!despatch_group_yield(group) && [[NSDate date] compare:timeout] == NSOrderedAscending);
+        XCTAssertFalse(dispatch_group_wait(group, DISPATCH_TIME_NOW), @"Delegate message was never received (timed out)!");
+    }
+
 runtime
 -------
 

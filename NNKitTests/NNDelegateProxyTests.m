@@ -75,7 +75,7 @@
 @end
 
 
-static BOOL delegateMessageReceived;
+static dispatch_group_t group;
 
 
 @implementation NNDelegateProxyTests
@@ -84,7 +84,7 @@ static BOOL delegateMessageReceived;
 {
     [super setUp];
     
-    delegateMessageReceived = NO;
+    group = dispatch_group_create();
 }
 
 - (void)tearDown
@@ -95,26 +95,29 @@ static BOOL delegateMessageReceived;
 
 - (void)testGlobalAsync;
 {
+    dispatch_group_enter(group);
     [[[MYClass alloc] initWithDelegate:self] globalAsync];
     
-    while (!delegateMessageReceived) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-    }
+    NSDate *timeout = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    while (!despatch_group_yield(group) && [[NSDate date] compare:timeout] == NSOrderedAscending);
+    XCTAssertFalse(dispatch_group_wait(group, DISPATCH_TIME_NOW), @"Delegate message was never received (timed out)!");
 }
 
 - (void)testGlobalSync;
 {
+    dispatch_group_enter(group);
     [[[MYClass alloc] initWithDelegate:self] globalSync];
-    XCTAssertTrue(delegateMessageReceived, @"Delegate message was not received synchronously!");
+    XCTAssertFalse(dispatch_group_wait(group, DISPATCH_TIME_NOW), @"Delegate message was not received synchronously!");
 }
 
 - (void)testMainAsync;
 {
+    dispatch_group_enter(group);
     [[[MYClass alloc] initWithDelegate:self] mainAsync];
     
-    while (!delegateMessageReceived) {
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-    }
+    NSDate *timeout = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    while (!despatch_group_yield(group) && [[NSDate date] compare:timeout] == NSOrderedAscending);
+    XCTAssertFalse(dispatch_group_wait(group, DISPATCH_TIME_NOW), @"Delegate message was never received (timed out)!");
 }
 
 - (void)testInvalidDelegateMethod;
@@ -127,7 +130,7 @@ static BOOL delegateMessageReceived;
 - (void)objectCalledDelegateMethod:(id)obj;
 {
     XCTAssertTrue([[NSThread currentThread] isMainThread], @"Delegate message was not dispatched on the main queue!");
-    delegateMessageReceived = YES;
+    dispatch_group_leave(group);
 }
 
 @end

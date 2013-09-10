@@ -12,6 +12,9 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#include "despatch.h"
+
+
 void despatch_sync_main_reentrant(dispatch_block_t block)
 {
     if ([[NSThread currentThread] isMainThread]) {
@@ -19,4 +22,15 @@ void despatch_sync_main_reentrant(dispatch_block_t block)
     } else {
         dispatch_sync(dispatch_get_main_queue(), block);
     }
+}
+
+BOOL despatch_group_yield(dispatch_group_t group)
+{
+    // Let the runloop consume another event.
+    NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
+    assert(currentRunLoop); // I sure have gotten paranoid in my old age.
+    (void)[currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
+    
+    // dispatch_group_wait docs say it returns zero or nonzero. Luckily, it needs to be inverted anyway, so a valid BOOL value gets enforced.
+    return !dispatch_group_wait(group, DISPATCH_TIME_NOW);
 }
