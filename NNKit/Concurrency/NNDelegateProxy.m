@@ -53,11 +53,22 @@
 
 - (void)forwardInvocation:(NSInvocation *)invocation;
 {
-    BOOL instanceMethod = YES;
-    NSAssert(nn_selector_belongsToProtocol(invocation.selector, self.protocol, NULL, &instanceMethod) && instanceMethod, @"Instance method %@ not found in protocol %@", NSStringFromSelector(invocation.selector), NSStringFromProtocol(self.protocol));
-    despatch_sync_main_reentrant(^{
-        [invocation invokeWithTarget:self.strongDelegate];
-    });
+#   ifndef NS_BLOCK_ASSERTIONS
+    {
+        BOOL instanceMethod = YES;
+        NSAssert(nn_selector_belongsToProtocol(invocation.selector, self.protocol, NULL, &instanceMethod) && instanceMethod, @"Instance method %@ not found in protocol %@", NSStringFromSelector(invocation.selector), NSStringFromProtocol(self.protocol));
+    }
+#   endif
+    
+    if (invocation.methodSignature.isOneway) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [invocation invokeWithTarget:self.strongDelegate];
+        });
+    } else {
+        despatch_sync_main_reentrant(^{
+            [invocation invokeWithTarget:self.strongDelegate];
+        });
+    }
 }
 
 @end

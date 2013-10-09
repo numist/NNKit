@@ -98,6 +98,7 @@ static int iterations;
         }
         [obj self];
     }
+    usleep(1000);
     iterations = 0;
     NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
     while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {

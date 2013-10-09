@@ -97,8 +97,13 @@ static _Bool selectorIsStrongGetter(Class myClass, SEL sel, SEL *weakGetter) {
 
 static id strongGetterIMP(id self, SEL _cmd) {
     SEL weakSelector = NULL;
-    BOOL sane = selectorIsStrongGetter([self class], _cmd, &weakSelector);
-    NSAssert(sane, @"Selector %@ does not represent a valid strongifying getter method", NSStringFromSelector(_cmd));
+    
+#   ifndef NS_BLOCK_ASSERTIONS
+    {
+        BOOL sane = selectorIsStrongGetter([self class], _cmd, &weakSelector);
+        NSAssert(sane, @"Selector %@ does not represent a valid strongifying getter method", NSStringFromSelector(_cmd));
+    }
+#   endif
     
     if (!weakSelector) { return nil; }
     
