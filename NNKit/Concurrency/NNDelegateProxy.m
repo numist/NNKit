@@ -60,13 +60,21 @@
     }
 #   endif
     
+    id delegate = self.delegate;
+    BOOL requiredMethod = NO;
+    nn_selector_belongsToProtocol(invocation.selector, self.protocol, &requiredMethod, NULL);
+    if (!requiredMethod && ![delegate respondsToSelector:invocation.selector]) {
+        [invocation invokeWithTarget:nil];
+        return;
+    }
+    
     if (invocation.methodSignature.isOneway) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [invocation invokeWithTarget:self.strongDelegate];
+            [invocation invokeWithTarget:delegate];
         });
     } else {
         despatch_sync_main_reentrant(^{
-            [invocation invokeWithTarget:self.strongDelegate];
+            [invocation invokeWithTarget:delegate];
         });
     }
 }

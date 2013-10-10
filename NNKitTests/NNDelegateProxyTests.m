@@ -20,6 +20,11 @@
 @protocol MYClassDelegate <NSObject>
 
 - (void)objectCalledDelegateMethod:(id)obj;
+- (oneway void)asyncMethod;
+
+@optional
+
+- (void)unimplementedOptionalMethod;
 
 @end
 
@@ -70,6 +75,16 @@
 - (void)invalid;
 {
     [(id)self.delegateProxy willChangeValueForKey:@""];
+}
+
+- (void)async;
+{
+    [self.delegateProxy asyncMethod];
+}
+
+- (void)optional;
+{
+    [self.delegateProxy unimplementedOptionalMethod];
 }
 
 @end
@@ -125,7 +140,30 @@ static dispatch_group_t group;
     XCTAssertThrows([[[MYClass alloc] initWithDelegate:self] invalid], @"Invalid delegate method was allowed to pass through!");
 }
 
+- (void)testOnewayAsync;
+{
+    dispatch_group_enter(group);
+    [[[MYClass alloc] initWithDelegate:self] async];
+    
+    XCTAssertTrue(dispatch_group_wait(group, DISPATCH_TIME_NOW), @"Delegate message was not supposed to be sent synchronously.");
+    
+    NSDate *timeout = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    while (!despatch_group_yield(group) && [[NSDate date] compare:timeout] == NSOrderedAscending);
+    XCTAssertFalse(dispatch_group_wait(group, DISPATCH_TIME_NOW), @"Delegate message was never received (timed out)!");
+}
+
+- (void)testOptional;
+{
+    XCTAssertNoThrow([[[MYClass alloc] initWithDelegate:self] optional], @"Sending optional messages to delegate proxies should never blow up.");
+}
+
+
 #pragma mark MYClassDelegate
+
+- (oneway void)asyncMethod;
+{
+    [self objectCalledDelegateMethod:nil];
+}
 
 - (void)objectCalledDelegateMethod:(id)obj;
 {
