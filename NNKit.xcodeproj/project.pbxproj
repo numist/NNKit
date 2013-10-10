@@ -89,18 +89,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		BCCA79F118075C6F00CE36E5 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		BCCA79F318075C6F00CE36E5 /* libNNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNNKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA79F418075C6F00CE36E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -381,10 +369,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCCA7A1118075C6F00CE36E5 /* Build configuration list for PBXNativeTarget "NNKit iOS" */;
 			buildPhases = (
+				BCCA7A3F1807627C00CE36E5 /* Headers */,
 				BCCA79EF18075C6F00CE36E5 /* Sources */,
 				BCCA79F018075C6F00CE36E5 /* Frameworks */,
-				BCCA79F118075C6F00CE36E5 /* CopyFiles */,
-				BCCA7A3F1807627C00CE36E5 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -417,10 +404,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCD1D55117D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKit Mac" */;
 			buildPhases = (
+				BCD1D52617D9471A00A3EBD4 /* Headers */,
 				BCD1D52417D9471A00A3EBD4 /* Sources */,
 				BCD1D52517D9471A00A3EBD4 /* Frameworks */,
-				BCD1D52617D9471A00A3EBD4 /* Headers */,
-				BCD1D52717D9471A00A3EBD4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -488,13 +474,6 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		BCCA7A1B1807608600CE36E5 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BCD1D52717D9471A00A3EBD4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
