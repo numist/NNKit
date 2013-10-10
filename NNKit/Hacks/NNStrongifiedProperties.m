@@ -82,7 +82,8 @@ static _Bool selectorIsStrongGetter(Class myClass, SEL sel, SEL *weakGetter) {
     SEL upperGetter = weakGetterForPropertyName(myClass, upperName);
     
     if (lowerGetter && upperGetter) {
-        @throw [NSException exceptionWithName:@"NNAmbiguousImplementationException" reason:[NSString stringWithFormat:@"Strong getter method %@ may refer to either %@ or %@ properties", selectorName, lowerName, upperName] userInfo:nil];
+        // Selector is ambiguous, do not support synthesizing a strongified getter for this property.
+        return NO;
     }
     
     if (!lowerGetter && !upperGetter) {

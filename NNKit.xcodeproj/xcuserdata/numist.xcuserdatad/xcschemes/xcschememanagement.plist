@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>NNKit iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>NNKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,21 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>BCCA79F218075C6F00CE36E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BCCA7A0018075C6F00CE36E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BCCA7A1C1807608600CE36E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BCD1D52817D9471A00A3EBD4</key>
 		<dict>
 			<key>primary</key>

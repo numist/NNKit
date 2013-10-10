@@ -108,7 +108,7 @@
 
 - (void)testAmbiguousStrongGetter
 {
-    XCTAssertThrows([[NNStrongifyTestClass new] strongQux], @"Ambiguous property access resulted in a single IMP.");
+    XCTAssertThrows([[NNStrongifyTestClass new] strongQux], @"Ambiguous property access found an IMP.");
 }
 
 - (void)testNilling

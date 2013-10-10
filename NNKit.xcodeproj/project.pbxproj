@@ -7,13 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCCA79F518075C6F00CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
+		BCCA7A1E1807608600CE36E5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D54117D9471A00A3EBD4 /* XCTest.framework */; };
+		BCCA7A1F1807608600CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
+		BCCA7A201807608600CE36E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA7A0418075C6F00CE36E5 /* UIKit.framework */; };
+		BCCA7A301807622200CE36E5 /* NNPollingObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */; };
+		BCCA7A311807622200CE36E5 /* NNSelfInvalidatingObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BCCA7A321807622200CE36E5 /* NNDelegateProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */; };
+		BCCA7A331807622200CE36E5 /* NNStrongifiedPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */; };
+		BCCA7A341807622200CE36E5 /* nn_isaSwizzlingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */; };
+		BCCA7A351807626200CE36E5 /* despatch.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5A617D9C72F00A3EBD4 /* despatch.m */; };
+		BCCA7A361807626200CE36E5 /* runtime.c in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5A717D9C72F00A3EBD4 /* runtime.c */; };
+		BCCA7A371807626200CE36E5 /* NNPollingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5AE17D9C79F00A3EBD4 /* NNPollingObject.m */; };
+		BCCA7A381807626200CE36E5 /* NNSelfInvalidatingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5B117D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BCCA7A391807626200CE36E5 /* NNDelegateProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5B817D9C84000A3EBD4 /* NNDelegateProxy.m */; };
+		BCCA7A3A1807626200CE36E5 /* NNStrongifiedProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5BC17D9C88F00A3EBD4 /* NNStrongifiedProperties.m */; };
+		BCCA7A3B1807626200CE36E5 /* nn_autofree.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D5C017DECC8E00A3EBD4 /* nn_autofree.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BCCA7A3C1807626200CE36E5 /* nn_isaSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D58917D9A14300A3EBD4 /* nn_isaSwizzling.m */; };
+		BCCA7A3D1807626200CE36E5 /* NNISASwizzledObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D58B17D9A14300A3EBD4 /* NNISASwizzledObject.m */; };
+		BCCA7A3E1807626200CE36E5 /* NNKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D53A17D9471A00A3EBD4 /* NNKit.m */; };
+		BCCA7A401807628B00CE36E5 /* despatch.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5A517D9C72F00A3EBD4 /* despatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A411807629100CE36E5 /* runtime.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5A817D9C72F00A3EBD4 /* runtime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A421807629700CE36E5 /* NNPollingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5AD17D9C79F00A3EBD4 /* NNPollingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A431807629C00CE36E5 /* NNPollingObject+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5AF17D9C79F00A3EBD4 /* NNPollingObject+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A44180762A200CE36E5 /* NNSelfInvalidatingObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5B017D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A45180762A800CE36E5 /* NNDelegateProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5B717D9C84000A3EBD4 /* NNDelegateProxy.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A46180762AF00CE36E5 /* NNStrongifiedProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5BB17D9C88F00A3EBD4 /* NNStrongifiedProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A47180762B500CE36E5 /* nn_autofree.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D5BF17DECC8E00A3EBD4 /* nn_autofree.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A48180762BB00CE36E5 /* nn_isaSwizzling_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D58717D9A14300A3EBD4 /* nn_isaSwizzling_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BCCA7A49180762C000CE36E5 /* nn_isaSwizzling.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D58817D9A14300A3EBD4 /* nn_isaSwizzling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A4A180762C700CE36E5 /* NNISASwizzledObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D58A17D9A14300A3EBD4 /* NNISASwizzledObject.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BCCA7A4B180762CC00CE36E5 /* NNKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D53917D9471A00A3EBD4 /* NNKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCA7A4C180765D800CE36E5 /* libNNKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F318075C6F00CE36E5 /* libNNKit.a */; };
 		BCD1D52D17D9471A00A3EBD4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */; };
-		BCD1D53717D9471A00A3EBD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCD1D53517D9471A00A3EBD4 /* InfoPlist.strings */; };
 		BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D53A17D9471A00A3EBD4 /* NNKit.m */; };
 		BCD1D54217D9471A00A3EBD4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D54117D9471A00A3EBD4 /* XCTest.framework */; };
 		BCD1D54317D9471A00A3EBD4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */; };
 		BCD1D54617D9471A00A3EBD4 /* NNKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D52917D9471A00A3EBD4 /* NNKit.framework */; };
-		BCD1D54C17D9471A00A3EBD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCD1D54A17D9471A00A3EBD4 /* InfoPlist.strings */; };
 		BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D53917D9471A00A3EBD4 /* NNKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCD1D56817D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */; };
@@ -43,6 +73,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BCCA7A2A1807608700CE36E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCD1D52017D9471A00A3EBD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCCA79F218075C6F00CE36E5;
+			remoteInfo = "NNKit iOS";
+		};
 		BCD1D54417D9471A00A3EBD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BCD1D52017D9471A00A3EBD4 /* Project object */;
@@ -52,21 +89,37 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BCCA79F118075C6F00CE36E5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BCCA79F318075C6F00CE36E5 /* libNNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNNKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCA79F418075C6F00CE36E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BCCA7A0418075C6F00CE36E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		BCCA7A1718075DDB00CE36E5 /* NNKit iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NNKit iOS-Prefix.pch"; sourceTree = "<group>"; };
+		BCCA7A1D1807608600CE36E5 /* NNKit iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NNKit iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCA7A2F180761DB00CE36E5 /* NNKit iOS Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NNKit iOS Tests-Info.plist"; sourceTree = "<group>"; };
 		BCD1D52917D9471A00A3EBD4 /* NNKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NNKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BCD1D52F17D9471A00A3EBD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCD1D53017D9471A00A3EBD4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BCD1D53117D9471A00A3EBD4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		BCD1D53417D9471A00A3EBD4 /* NNKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NNKit-Info.plist"; sourceTree = "<group>"; };
-		BCD1D53617D9471A00A3EBD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BCD1D53817D9471A00A3EBD4 /* NNKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NNKit-Prefix.pch"; sourceTree = "<group>"; };
+		BCD1D53817D9471A00A3EBD4 /* NNKit Mac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NNKit Mac-Prefix.pch"; sourceTree = "<group>"; };
 		BCD1D53917D9471A00A3EBD4 /* NNKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NNKit.h; sourceTree = "<group>"; };
 		BCD1D53A17D9471A00A3EBD4 /* NNKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NNKit.m; sourceTree = "<group>"; };
-		BCD1D54017D9471A00A3EBD4 /* NNKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NNKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCD1D54017D9471A00A3EBD4 /* NNKit Mac Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NNKit Mac Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD1D54117D9471A00A3EBD4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		BCD1D54917D9471A00A3EBD4 /* NNKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NNKitTests-Info.plist"; sourceTree = "<group>"; };
-		BCD1D54B17D9471A00A3EBD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BCD1D54917D9471A00A3EBD4 /* NNKit Mac Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NNKit Mac Tests-Info.plist"; sourceTree = "<group>"; };
 		BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNSelfInvalidatingObjectTests.m; path = NNKitTests/NNSelfInvalidatingObjectTests.m; sourceTree = SOURCE_ROOT; };
 		BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNDelegateProxyTests.m; path = NNKitTests/NNDelegateProxyTests.m; sourceTree = SOURCE_ROOT; };
 		BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNStrongifiedPropertiesTests.m; path = NNKitTests/NNStrongifiedPropertiesTests.m; sourceTree = SOURCE_ROOT; };
@@ -95,6 +148,25 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BCCA79F018075C6F00CE36E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCA79F518075C6F00CE36E5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCA7A1A1807608600CE36E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCA7A4C180765D800CE36E5 /* libNNKit.a in Frameworks */,
+				BCCA7A1E1807608600CE36E5 /* XCTest.framework in Frameworks */,
+				BCCA7A201807608600CE36E5 /* UIKit.framework in Frameworks */,
+				BCCA7A1F1807608600CE36E5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCD1D52517D9471A00A3EBD4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,7 +202,9 @@
 			isa = PBXGroup;
 			children = (
 				BCD1D52917D9471A00A3EBD4 /* NNKit.framework */,
-				BCD1D54017D9471A00A3EBD4 /* NNKitTests.xctest */,
+				BCD1D54017D9471A00A3EBD4 /* NNKit Mac Tests.xctest */,
+				BCCA79F318075C6F00CE36E5 /* libNNKit.a */,
+				BCCA7A1D1807608600CE36E5 /* NNKit iOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,21 +212,23 @@
 		BCD1D52B17D9471A00A3EBD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */,
-				BCD1D54117D9471A00A3EBD4 /* XCTest.framework */,
-				BCD1D52E17D9471A00A3EBD4 /* Other Frameworks */,
+				BCD1D52E17D9471A00A3EBD4 /* System Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BCD1D52E17D9471A00A3EBD4 /* Other Frameworks */ = {
+		BCD1D52E17D9471A00A3EBD4 /* System Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BCD1D52F17D9471A00A3EBD4 /* Foundation.framework */,
-				BCD1D53017D9471A00A3EBD4 /* CoreData.framework */,
 				BCD1D53117D9471A00A3EBD4 /* AppKit.framework */,
+				BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */,
+				BCD1D53017D9471A00A3EBD4 /* CoreData.framework */,
+				BCD1D52F17D9471A00A3EBD4 /* Foundation.framework */,
+				BCCA79F418075C6F00CE36E5 /* Foundation.framework */,
+				BCCA7A0418075C6F00CE36E5 /* UIKit.framework */,
+				BCD1D54117D9471A00A3EBD4 /* XCTest.framework */,
 			);
-			name = "Other Frameworks";
+			name = "System Frameworks";
 			sourceTree = "<group>";
 		};
 		BCD1D53217D9471A00A3EBD4 /* NNKit */ = {
@@ -173,9 +249,9 @@
 		BCD1D53317D9471A00A3EBD4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BCCA7A1718075DDB00CE36E5 /* NNKit iOS-Prefix.pch */,
+				BCD1D53817D9471A00A3EBD4 /* NNKit Mac-Prefix.pch */,
 				BCD1D53417D9471A00A3EBD4 /* NNKit-Info.plist */,
-				BCD1D53517D9471A00A3EBD4 /* InfoPlist.strings */,
-				BCD1D53817D9471A00A3EBD4 /* NNKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -183,6 +259,11 @@
 		BCD1D54717D9471A00A3EBD4 /* NNKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */,
+				BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */,
+				BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */,
+				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
+				BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */,
 				BCD1D54817D9471A00A3EBD4 /* Supporting Files */,
 			);
 			path = NNKitTests;
@@ -191,8 +272,8 @@
 		BCD1D54817D9471A00A3EBD4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BCD1D54917D9471A00A3EBD4 /* NNKitTests-Info.plist */,
-				BCD1D54A17D9471A00A3EBD4 /* InfoPlist.strings */,
+				BCCA7A2F180761DB00CE36E5 /* NNKit iOS Tests-Info.plist */,
+				BCD1D54917D9471A00A3EBD4 /* NNKit Mac Tests-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -202,7 +283,6 @@
 			children = (
 				BCD1D5B717D9C84000A3EBD4 /* NNDelegateProxy.h */,
 				BCD1D5B817D9C84000A3EBD4 /* NNDelegateProxy.m */,
-				BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */,
 			);
 			name = Concurrency;
 			sourceTree = "<group>";
@@ -213,10 +293,8 @@
 				BCD1D5AD17D9C79F00A3EBD4 /* NNPollingObject.h */,
 				BCD1D5AF17D9C79F00A3EBD4 /* NNPollingObject+Protected.h */,
 				BCD1D5AE17D9C79F00A3EBD4 /* NNPollingObject.m */,
-				BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */,
 				BCD1D5B017D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h */,
 				BCD1D5B117D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m */,
-				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
 			);
 			name = Actors;
 			sourceTree = "<group>";
@@ -224,11 +302,10 @@
 		BCD1D57617D97CB100A3EBD4 /* Hacks */ = {
 			isa = PBXGroup;
 			children = (
-				BCD1D5BB17D9C88F00A3EBD4 /* NNStrongifiedProperties.h */,
-				BCD1D5BC17D9C88F00A3EBD4 /* NNStrongifiedProperties.m */,
-				BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */,
 				BCD1D5BF17DECC8E00A3EBD4 /* nn_autofree.h */,
 				BCD1D5C017DECC8E00A3EBD4 /* nn_autofree.m */,
+				BCD1D5BB17D9C88F00A3EBD4 /* NNStrongifiedProperties.h */,
+				BCD1D5BC17D9C88F00A3EBD4 /* NNStrongifiedProperties.m */,
 			);
 			name = Hacks;
 			sourceTree = "<group>";
@@ -247,10 +324,9 @@
 		BCD1D58617D9A0AF00A3EBD4 /* Swizzling */ = {
 			isa = PBXGroup;
 			children = (
-				BCD1D58717D9A14300A3EBD4 /* nn_isaSwizzling_Private.h */,
 				BCD1D58817D9A14300A3EBD4 /* nn_isaSwizzling.h */,
+				BCD1D58717D9A14300A3EBD4 /* nn_isaSwizzling_Private.h */,
 				BCD1D58917D9A14300A3EBD4 /* nn_isaSwizzling.m */,
-				BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */,
 				BCD1D58A17D9A14300A3EBD4 /* NNISASwizzledObject.h */,
 				BCD1D58B17D9A14300A3EBD4 /* NNISASwizzledObject.m */,
 			);
@@ -260,6 +336,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		BCCA7A3F1807627C00CE36E5 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCA7A401807628B00CE36E5 /* despatch.h in Headers */,
+				BCCA7A47180762B500CE36E5 /* nn_autofree.h in Headers */,
+				BCCA7A44180762A200CE36E5 /* NNSelfInvalidatingObject.h in Headers */,
+				BCCA7A421807629700CE36E5 /* NNPollingObject.h in Headers */,
+				BCCA7A49180762C000CE36E5 /* nn_isaSwizzling.h in Headers */,
+				BCCA7A4A180762C700CE36E5 /* NNISASwizzledObject.h in Headers */,
+				BCCA7A431807629C00CE36E5 /* NNPollingObject+Protected.h in Headers */,
+				BCCA7A45180762A800CE36E5 /* NNDelegateProxy.h in Headers */,
+				BCCA7A48180762BB00CE36E5 /* nn_isaSwizzling_Private.h in Headers */,
+				BCCA7A4B180762CC00CE36E5 /* NNKit.h in Headers */,
+				BCCA7A46180762AF00CE36E5 /* NNStrongifiedProperties.h in Headers */,
+				BCCA7A411807629100CE36E5 /* runtime.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCD1D52617D9471A00A3EBD4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -282,9 +377,45 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		BCD1D52817D9471A00A3EBD4 /* NNKit */ = {
+		BCCA79F218075C6F00CE36E5 /* NNKit iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BCD1D55117D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKit" */;
+			buildConfigurationList = BCCA7A1118075C6F00CE36E5 /* Build configuration list for PBXNativeTarget "NNKit iOS" */;
+			buildPhases = (
+				BCCA79EF18075C6F00CE36E5 /* Sources */,
+				BCCA79F018075C6F00CE36E5 /* Frameworks */,
+				BCCA79F118075C6F00CE36E5 /* CopyFiles */,
+				BCCA7A3F1807627C00CE36E5 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NNKit iOS";
+			productName = "NNKit iOS";
+			productReference = BCCA79F318075C6F00CE36E5 /* libNNKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BCCA7A1C1807608600CE36E5 /* NNKit iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCCA7A2C1807608700CE36E5 /* Build configuration list for PBXNativeTarget "NNKit iOS Tests" */;
+			buildPhases = (
+				BCCA7A191807608600CE36E5 /* Sources */,
+				BCCA7A1A1807608600CE36E5 /* Frameworks */,
+				BCCA7A1B1807608600CE36E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCCA7A2B1807608700CE36E5 /* PBXTargetDependency */,
+			);
+			name = "NNKit iOS Tests";
+			productName = "NNKit iOS Tests";
+			productReference = BCCA7A1D1807608600CE36E5 /* NNKit iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BCD1D52817D9471A00A3EBD4 /* NNKit Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCD1D55117D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKit Mac" */;
 			buildPhases = (
 				BCD1D52417D9471A00A3EBD4 /* Sources */,
 				BCD1D52517D9471A00A3EBD4 /* Frameworks */,
@@ -295,14 +426,14 @@
 			);
 			dependencies = (
 			);
-			name = NNKit;
+			name = "NNKit Mac";
 			productName = NNKit;
 			productReference = BCD1D52917D9471A00A3EBD4 /* NNKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		BCD1D53F17D9471A00A3EBD4 /* NNKitTests */ = {
+		BCD1D53F17D9471A00A3EBD4 /* NNKit Mac Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BCD1D55417D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKitTests" */;
+			buildConfigurationList = BCD1D55417D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKit Mac Tests" */;
 			buildPhases = (
 				BCD1D53C17D9471A00A3EBD4 /* Sources */,
 				BCD1D53D17D9471A00A3EBD4 /* Frameworks */,
@@ -313,9 +444,9 @@
 			dependencies = (
 				BCD1D54517D9471A00A3EBD4 /* PBXTargetDependency */,
 			);
-			name = NNKitTests;
+			name = "NNKit Mac Tests";
 			productName = NNKitTests;
-			productReference = BCD1D54017D9471A00A3EBD4 /* NNKitTests.xctest */;
+			productReference = BCD1D54017D9471A00A3EBD4 /* NNKit Mac Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -327,6 +458,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Scott Perry";
 				TargetAttributes = {
+					BCCA7A1C1807608600CE36E5 = {
+						TestTargetID = BCCA79F218075C6F00CE36E5;
+					};
 					BCD1D53F17D9471A00A3EBD4 = {
 						TestTargetID = BCD1D52817D9471A00A3EBD4;
 					};
@@ -344,18 +478,26 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BCD1D52817D9471A00A3EBD4 /* NNKit */,
-				BCD1D53F17D9471A00A3EBD4 /* NNKitTests */,
+				BCD1D52817D9471A00A3EBD4 /* NNKit Mac */,
+				BCD1D53F17D9471A00A3EBD4 /* NNKit Mac Tests */,
+				BCCA79F218075C6F00CE36E5 /* NNKit iOS */,
+				BCCA7A1C1807608600CE36E5 /* NNKit iOS Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BCCA7A1B1807608600CE36E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCD1D52717D9471A00A3EBD4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD1D53717D9471A00A3EBD4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,13 +505,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD1D54C17D9471A00A3EBD4 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BCCA79EF18075C6F00CE36E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCA7A351807626200CE36E5 /* despatch.m in Sources */,
+				BCCA7A361807626200CE36E5 /* runtime.c in Sources */,
+				BCCA7A371807626200CE36E5 /* NNPollingObject.m in Sources */,
+				BCCA7A381807626200CE36E5 /* NNSelfInvalidatingObject.m in Sources */,
+				BCCA7A391807626200CE36E5 /* NNDelegateProxy.m in Sources */,
+				BCCA7A3A1807626200CE36E5 /* NNStrongifiedProperties.m in Sources */,
+				BCCA7A3B1807626200CE36E5 /* nn_autofree.m in Sources */,
+				BCCA7A3C1807626200CE36E5 /* nn_isaSwizzling.m in Sources */,
+				BCCA7A3D1807626200CE36E5 /* NNISASwizzledObject.m in Sources */,
+				BCCA7A3E1807626200CE36E5 /* NNKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCA7A191807608600CE36E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCA7A301807622200CE36E5 /* NNPollingObjectTests.m in Sources */,
+				BCCA7A311807622200CE36E5 /* NNSelfInvalidatingObjectTests.m in Sources */,
+				BCCA7A321807622200CE36E5 /* NNDelegateProxyTests.m in Sources */,
+				BCCA7A331807622200CE36E5 /* NNStrongifiedPropertiesTests.m in Sources */,
+				BCCA7A341807622200CE36E5 /* nn_isaSwizzlingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCD1D52417D9471A00A3EBD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,33 +572,105 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BCCA7A2B1807608700CE36E5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCCA79F218075C6F00CE36E5 /* NNKit iOS */;
+			targetProxy = BCCA7A2A1807608700CE36E5 /* PBXContainerItemProxy */;
+		};
 		BCD1D54517D9471A00A3EBD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BCD1D52817D9471A00A3EBD4 /* NNKit */;
+			target = BCD1D52817D9471A00A3EBD4 /* NNKit Mac */;
 			targetProxy = BCD1D54417D9471A00A3EBD4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		BCD1D53517D9471A00A3EBD4 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCD1D53617D9471A00A3EBD4 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		BCD1D54A17D9471A00A3EBD4 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCD1D54B17D9471A00A3EBD4 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
+		BCCA7A1218075C6F00CE36E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				DSTROOT = /tmp/NNKit_iOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NNKit/$(TARGET_NAME)-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRIVATE_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)/Private";
+				PUBLIC_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BCCA7A1318075C6F00CE36E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				DSTROOT = /tmp/NNKit_iOS.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NNKit/$(TARGET_NAME)-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
+				PRIVATE_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)/Private";
+				PUBLIC_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BCCA7A2D1807608700CE36E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NNKit/NNKit iOS-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NNKitTests/NNKit iOS Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BCCA7A2E1807608700CE36E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NNKit/NNKit iOS-Prefix.pch";
+				INFOPLIST_FILE = "NNKitTests/NNKit iOS Tests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		BCD1D54F17D9471A00A3EBD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -463,8 +705,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-Wno-incompatible-pointer-types";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -499,6 +741,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CFLAGS = "-Wno-incompatible-pointer-types";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -511,9 +754,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NNKit/NNKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "NNKit/$(TARGET_NAME)-Prefix.pch";
 				INFOPLIST_FILE = "NNKit/NNKit-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -526,9 +768,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NNKit/NNKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "NNKit/$(TARGET_NAME)-Prefix.pch";
 				INFOPLIST_FILE = "NNKit/NNKit-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -536,19 +777,22 @@
 		BCD1D55517D9471A00A3EBD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NNKit/NNKit-Prefix.pch";
+				GCC_PREFIX_HEADER = "NNKit/NNKit Mac-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "NNKitTests/NNKitTests-Info.plist";
+				INFOPLIST_FILE = "NNKitTests/NNKit Mac Tests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -556,15 +800,18 @@
 		BCD1D55617D9471A00A3EBD4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "NNKit/NNKit-Prefix.pch";
-				INFOPLIST_FILE = "NNKitTests/NNKitTests-Info.plist";
+				GCC_PREFIX_HEADER = "NNKit/NNKit Mac-Prefix.pch";
+				INFOPLIST_FILE = "NNKitTests/NNKit Mac Tests-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -572,6 +819,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BCCA7A1118075C6F00CE36E5 /* Build configuration list for PBXNativeTarget "NNKit iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCA7A1218075C6F00CE36E5 /* Debug */,
+				BCCA7A1318075C6F00CE36E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCCA7A2C1807608700CE36E5 /* Build configuration list for PBXNativeTarget "NNKit iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCA7A2D1807608700CE36E5 /* Debug */,
+				BCCA7A2E1807608700CE36E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BCD1D52317D9471A00A3EBD4 /* Build configuration list for PBXProject "NNKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -581,7 +846,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BCD1D55117D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKit" */ = {
+		BCD1D55117D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKit Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCD1D55217D9471A00A3EBD4 /* Debug */,
@@ -590,7 +855,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BCD1D55417D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKitTests" */ = {
+		BCD1D55417D9471A00A3EBD4 /* Build configuration list for PBXNativeTarget "NNKit Mac Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCD1D55517D9471A00A3EBD4 /* Debug */,
