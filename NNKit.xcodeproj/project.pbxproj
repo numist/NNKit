@@ -735,6 +735,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NNKit/$(TARGET_NAME)-Prefix.pch";
 				INFOPLIST_FILE = "NNKit/NNKit-Info.plist";
+				INSTALL_PATH = "@rpath";
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -749,6 +751,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NNKit/$(TARGET_NAME)-Prefix.pch";
 				INFOPLIST_FILE = "NNKit/NNKit-Info.plist";
+				INSTALL_PATH = "@rpath";
+				LD_DYLIB_INSTALL_NAME = "@rpath/$(EXECUTABLE_PATH)";
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
