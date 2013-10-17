@@ -14,6 +14,8 @@
 
 #import "NNPollingObject.h"
 
+#import "despatch.h"
+
 
 @interface NNPollingObject ()
 
@@ -50,22 +52,15 @@
 
 - (void)workerLoop;
 {
-    NSDate *start = [NSDate date];
-
     [self main];
     
-    if (self.interval <= 0.0) {
-        NSLog(@"Interval is negative, disabling polling loop for %@", self);
+    NSTimeInterval interval = self.interval;
+    if (interval <= 0.0) {
         return;
     }
     
-    double elapsed = [[NSDate date] timeIntervalSinceDate:start];
-    if (elapsed > self.interval) {
-        NSLog(@"Worker loop interation took %f seconds (interval %f)!", elapsed, self.interval);
-    }
-
     __weak id weakSelf = self;
-    double delayInSeconds = MAX(self.interval - elapsed, 0.0);
+    double delayInSeconds = interval;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, self.queue, ^(void){
         id self = weakSelf;
@@ -75,9 +70,13 @@
 
 - (void)postNotification:(NSDictionary *)userInfo;
 {
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_enter(group);
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:[[self class] notificationName] object:self userInfo:userInfo];
+        dispatch_group_leave(group);
     });
+    while(!despatch_group_yield(group));
 }
 
 - (void)main;
