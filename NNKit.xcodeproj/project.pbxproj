@@ -19,8 +19,6 @@
 		BC19D3721810C85B009CEC1F /* NNServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D36F1810C85B009CEC1F /* NNServiceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC19D3731810C85B009CEC1F /* NNServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D3701810C85B009CEC1F /* NNServiceManager.m */; };
 		BC19D3741810C85B009CEC1F /* NNServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D3701810C85B009CEC1F /* NNServiceManager.m */; };
-		BC19D3771810CD90009CEC1F /* NNServiceManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3751810CD90009CEC1F /* NNServiceManager+Protected.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		BC19D3781810CD90009CEC1F /* NNServiceManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3751810CD90009CEC1F /* NNServiceManager+Protected.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BC19D3A01811BBC9009CEC1F /* NNServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */; };
 		BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */; };
 		BCCA79F518075C6F00CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
@@ -112,7 +110,6 @@
 		BC19D36A1810C7F7009CEC1F /* NNTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNTestService.m; path = Services/NNTestService.m; sourceTree = "<group>"; };
 		BC19D36F1810C85B009CEC1F /* NNServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNServiceManager.h; path = Services/NNServiceManager.h; sourceTree = "<group>"; };
 		BC19D3701810C85B009CEC1F /* NNServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNServiceManager.m; path = Services/NNServiceManager.m; sourceTree = "<group>"; };
-		BC19D3751810CD90009CEC1F /* NNServiceManager+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NNServiceManager+Protected.h"; path = "Services/NNServiceManager+Protected.h"; sourceTree = "<group>"; };
 		BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNServiceTests.m; sourceTree = "<group>"; };
 		BCCA79F318075C6F00CE36E5 /* libNNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNNKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA79F418075C6F00CE36E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -208,7 +205,6 @@
 				BC19D3631810C6C3009CEC1F /* NNService.h */,
 				BC19D3641810C6C3009CEC1F /* NNService.m */,
 				BC19D36F1810C85B009CEC1F /* NNServiceManager.h */,
-				BC19D3751810CD90009CEC1F /* NNServiceManager+Protected.h */,
 				BC19D3701810C85B009CEC1F /* NNServiceManager.m */,
 			);
 			name = Services;
@@ -286,11 +282,11 @@
 		BCD1D54717D9471A00A3EBD4 /* NNKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */,
 				BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */,
 				BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */,
 				BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */,
 				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
+				BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */,
 				BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */,
 				BCD1D54817D9471A00A3EBD4 /* Supporting Files */,
 			);
@@ -383,7 +379,6 @@
 				BCCA7A4B180762CC00CE36E5 /* NNKit.h in Headers */,
 				BCCA7A46180762AF00CE36E5 /* NNStrongifiedProperties.h in Headers */,
 				BCCA7A411807629100CE36E5 /* runtime.h in Headers */,
-				BC19D3781810CD90009CEC1F /* NNServiceManager+Protected.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,7 +401,6 @@
 				BCD1D5B517D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
 				BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */,
 				BCD1D5B217D9C79F00A3EBD4 /* NNPollingObject.h in Headers */,
-				BC19D3771810CD90009CEC1F /* NNServiceManager+Protected.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
