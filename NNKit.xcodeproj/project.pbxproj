@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC19D3651810C6C3009CEC1F /* NNService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3631810C6C3009CEC1F /* NNService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC19D3661810C6C3009CEC1F /* NNService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3631810C6C3009CEC1F /* NNService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC19D3671810C6C3009CEC1F /* NNService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D3641810C6C3009CEC1F /* NNService.m */; };
+		BC19D3681810C6C3009CEC1F /* NNService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D3641810C6C3009CEC1F /* NNService.m */; };
+		BC19D36B1810C7F7009CEC1F /* NNTestService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3691810C7F7009CEC1F /* NNTestService.h */; };
+		BC19D36C1810C7F7009CEC1F /* NNTestService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3691810C7F7009CEC1F /* NNTestService.h */; };
+		BC19D36D1810C7F7009CEC1F /* NNTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D36A1810C7F7009CEC1F /* NNTestService.m */; };
+		BC19D36E1810C7F7009CEC1F /* NNTestService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D36A1810C7F7009CEC1F /* NNTestService.m */; };
+		BC19D3711810C85B009CEC1F /* NNServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D36F1810C85B009CEC1F /* NNServiceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC19D3721810C85B009CEC1F /* NNServiceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D36F1810C85B009CEC1F /* NNServiceManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC19D3731810C85B009CEC1F /* NNServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D3701810C85B009CEC1F /* NNServiceManager.m */; };
+		BC19D3741810C85B009CEC1F /* NNServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D3701810C85B009CEC1F /* NNServiceManager.m */; };
+		BC19D3771810CD90009CEC1F /* NNServiceManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3751810CD90009CEC1F /* NNServiceManager+Protected.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BC19D3781810CD90009CEC1F /* NNServiceManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3751810CD90009CEC1F /* NNServiceManager+Protected.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BC19D3A01811BBC9009CEC1F /* NNServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */; };
+		BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */; };
 		BCCA79F518075C6F00CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
 		BCCA7A1E1807608600CE36E5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D54117D9471A00A3EBD4 /* XCTest.framework */; };
 		BCCA7A1F1807608600CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
@@ -90,6 +106,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC19D3631810C6C3009CEC1F /* NNService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNService.h; path = Services/NNService.h; sourceTree = "<group>"; };
+		BC19D3641810C6C3009CEC1F /* NNService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNService.m; path = Services/NNService.m; sourceTree = "<group>"; };
+		BC19D3691810C7F7009CEC1F /* NNTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNTestService.h; path = Services/NNTestService.h; sourceTree = "<group>"; };
+		BC19D36A1810C7F7009CEC1F /* NNTestService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNTestService.m; path = Services/NNTestService.m; sourceTree = "<group>"; };
+		BC19D36F1810C85B009CEC1F /* NNServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNServiceManager.h; path = Services/NNServiceManager.h; sourceTree = "<group>"; };
+		BC19D3701810C85B009CEC1F /* NNServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNServiceManager.m; path = Services/NNServiceManager.m; sourceTree = "<group>"; };
+		BC19D3751810CD90009CEC1F /* NNServiceManager+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NNServiceManager+Protected.h"; path = "Services/NNServiceManager+Protected.h"; sourceTree = "<group>"; };
+		BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNServiceTests.m; sourceTree = "<group>"; };
 		BCCA79F318075C6F00CE36E5 /* libNNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNNKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA79F418075C6F00CE36E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCCA7A0418075C6F00CE36E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -176,6 +200,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC19D3621810C63E009CEC1F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BC19D3691810C7F7009CEC1F /* NNTestService.h */,
+				BC19D36A1810C7F7009CEC1F /* NNTestService.m */,
+				BC19D3631810C6C3009CEC1F /* NNService.h */,
+				BC19D3641810C6C3009CEC1F /* NNService.m */,
+				BC19D36F1810C85B009CEC1F /* NNServiceManager.h */,
+				BC19D3751810CD90009CEC1F /* NNServiceManager+Protected.h */,
+				BC19D3701810C85B009CEC1F /* NNServiceManager.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		BCD1D51F17D9471A00A3EBD4 = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +264,7 @@
 				BCD1D56D17D9776400A3EBD4 /* Actors */,
 				BCD1D55817D9474600A3EBD4 /* Concurrency */,
 				BCD1D57617D97CB100A3EBD4 /* Hacks */,
+				BC19D3621810C63E009CEC1F /* Services */,
 				BCD1D58617D9A0AF00A3EBD4 /* Swizzling */,
 				BCD1D53917D9471A00A3EBD4 /* NNKit.h */,
 				BCD1D53A17D9471A00A3EBD4 /* NNKit.m */,
@@ -247,6 +286,7 @@
 		BCD1D54717D9471A00A3EBD4 /* NNKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */,
 				BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */,
 				BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */,
 				BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */,
@@ -336,10 +376,14 @@
 				BCCA7A4A180762C700CE36E5 /* NNISASwizzledObject.h in Headers */,
 				BCCA7A431807629C00CE36E5 /* NNPollingObject+Protected.h in Headers */,
 				BCCA7A45180762A800CE36E5 /* NNDelegateProxy.h in Headers */,
+				BC19D36C1810C7F7009CEC1F /* NNTestService.h in Headers */,
 				BCCA7A48180762BB00CE36E5 /* nn_isaSwizzling_Private.h in Headers */,
+				BC19D3661810C6C3009CEC1F /* NNService.h in Headers */,
+				BC19D3721810C85B009CEC1F /* NNServiceManager.h in Headers */,
 				BCCA7A4B180762CC00CE36E5 /* NNKit.h in Headers */,
 				BCCA7A46180762AF00CE36E5 /* NNStrongifiedProperties.h in Headers */,
 				BCCA7A411807629100CE36E5 /* runtime.h in Headers */,
+				BC19D3781810CD90009CEC1F /* NNServiceManager+Protected.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,10 +399,14 @@
 				BCD1D5BD17D9C88F00A3EBD4 /* NNStrongifiedProperties.h in Headers */,
 				BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */,
 				BCD1D5A917D9C72F00A3EBD4 /* despatch.h in Headers */,
+				BC19D36B1810C7F7009CEC1F /* NNTestService.h in Headers */,
 				BCD1D58C17D9A14300A3EBD4 /* nn_isaSwizzling_Private.h in Headers */,
+				BC19D3651810C6C3009CEC1F /* NNService.h in Headers */,
+				BC19D3711810C85B009CEC1F /* NNServiceManager.h in Headers */,
 				BCD1D5B517D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
 				BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */,
 				BCD1D5B217D9C79F00A3EBD4 /* NNPollingObject.h in Headers */,
+				BC19D3771810CD90009CEC1F /* NNServiceManager+Protected.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,12 +545,15 @@
 				BCCA7A351807626200CE36E5 /* despatch.m in Sources */,
 				BCCA7A361807626200CE36E5 /* runtime.c in Sources */,
 				BCCA7A371807626200CE36E5 /* NNPollingObject.m in Sources */,
+				BC19D36E1810C7F7009CEC1F /* NNTestService.m in Sources */,
 				BCCA7A381807626200CE36E5 /* NNSelfInvalidatingObject.m in Sources */,
 				BCCA7A391807626200CE36E5 /* NNDelegateProxy.m in Sources */,
+				BC19D3681810C6C3009CEC1F /* NNService.m in Sources */,
 				BCCA7A3A1807626200CE36E5 /* NNStrongifiedProperties.m in Sources */,
 				BCCA7A3B1807626200CE36E5 /* nn_autofree.m in Sources */,
 				BCCA7A3C1807626200CE36E5 /* nn_isaSwizzling.m in Sources */,
 				BCCA7A3D1807626200CE36E5 /* NNISASwizzledObject.m in Sources */,
+				BC19D3741810C85B009CEC1F /* NNServiceManager.m in Sources */,
 				BCCA7A3E1807626200CE36E5 /* NNKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,6 +565,7 @@
 				BCCA7A301807622200CE36E5 /* NNPollingObjectTests.m in Sources */,
 				BCCA7A311807622200CE36E5 /* NNSelfInvalidatingObjectTests.m in Sources */,
 				BCCA7A321807622200CE36E5 /* NNDelegateProxyTests.m in Sources */,
+				BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCCA7A331807622200CE36E5 /* NNStrongifiedPropertiesTests.m in Sources */,
 				BCCA7A341807622200CE36E5 /* nn_isaSwizzlingTests.m in Sources */,
 			);
@@ -526,12 +578,15 @@
 				BCD1D5AA17D9C72F00A3EBD4 /* despatch.m in Sources */,
 				BCD1D5BE17D9C88F00A3EBD4 /* NNStrongifiedProperties.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
+				BC19D36D1810C7F7009CEC1F /* NNTestService.m in Sources */,
 				BCD1D5AB17D9C72F00A3EBD4 /* runtime.c in Sources */,
 				BCD1D5C217DECC8E00A3EBD4 /* nn_autofree.m in Sources */,
+				BC19D3671810C6C3009CEC1F /* NNService.m in Sources */,
 				BCD1D5B317D9C79F00A3EBD4 /* NNPollingObject.m in Sources */,
 				BCD1D5B617D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m in Sources */,
 				BCD1D59017D9A14300A3EBD4 /* NNISASwizzledObject.m in Sources */,
 				BCD1D5BA17D9C84000A3EBD4 /* NNDelegateProxy.m in Sources */,
+				BC19D3731810C85B009CEC1F /* NNServiceManager.m in Sources */,
 				BCD1D58E17D9A14300A3EBD4 /* nn_isaSwizzling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,6 +598,7 @@
 				BCD1D56817D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m in Sources */,
 				BCD1D59217D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m in Sources */,
 				BCD1D58017D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m in Sources */,
+				BC19D3A01811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */,
 				BCD1D59C17D9BAB000A3EBD4 /* NNPollingObjectTests.m in Sources */,
 			);
@@ -760,7 +816,6 @@
 		BCD1D55517D9471A00A3EBD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -775,7 +830,6 @@
 				INFOPLIST_FILE = "NNKitTests/NNKit Mac Tests-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -783,7 +837,6 @@
 		BCD1D55617D9471A00A3EBD4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -794,7 +847,6 @@
 				INFOPLIST_FILE = "NNKitTests/NNKit Mac Tests-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
