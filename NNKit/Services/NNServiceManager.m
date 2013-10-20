@@ -225,7 +225,10 @@ static BOOL _serviceIsValid(Class service)
 {
     NSParameterAssert(![self.runningServices containsObject:service]);
 
-    [SERVICEINFO(service).instance startService];
+    id<NNService> instance = SERVICEINFO(service).instance;
+    if ([instance respondsToSelector:@selector(startService)]) {
+        [instance startService];
+    }
     [self.runningServices addObject:service];
     
     for (Class dependantClass in self.dependantServices[service]) {
@@ -243,7 +246,10 @@ static BOOL _serviceIsValid(Class service)
         [self _stopServiceIfDone:dependantClass];
     }
     
-    [SERVICEINFO(service).instance stopService];
+    id<NNService> instance = SERVICEINFO(service).instance;
+    if ([instance respondsToSelector:@selector(stopService)]) {
+        [instance stopService];
+    }
 }
 
 @end

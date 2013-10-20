@@ -25,7 +25,7 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
 @protocol NNService <NSObject>
 @required
 
-+ (instancetype)sharedService;
++ (id)sharedService;
 - (NNServiceType)serviceType;
 - (NSSet *)dependencies;
 

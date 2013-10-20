@@ -19,7 +19,7 @@
 
 @implementation NNService
 
-+ (instancetype)sharedService;
++ (id)sharedService;
 {
     static NSMutableDictionary *instances;
 
