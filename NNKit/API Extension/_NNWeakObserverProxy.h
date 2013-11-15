@@ -10,6 +10,6 @@
 
 @interface _NNWeakObserverProxy : NSProxy
 
-+ (_NNWeakObserverProxy *)weakObserverProxyWithObserver:(id)notificationObserver notificationCenter:(NSNotificationCenter *)notificationCenter;
++ (_NNWeakObserverProxy *)weakObserverProxyWithObserver:(id)observer selector:(SEL)aSelector notificationCenter:(NSNotificationCenter *)notificationCenter;
 
 @end

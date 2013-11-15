@@ -15,7 +15,7 @@
 
 - (void)addWeakObserver:(id)observer selector:(SEL)aSelector name:(NSString *)aName object:(id)anObject;
 {
-    [self addObserver:[_NNWeakObserverProxy weakObserverProxyWithObserver:observer notificationCenter:self] selector:aSelector name:aName object:anObject];
+    [self addObserver:[_NNWeakObserverProxy weakObserverProxyWithObserver:observer selector:aSelector notificationCenter:self] selector:aSelector name:aName object:anObject];
 }
 
 @end

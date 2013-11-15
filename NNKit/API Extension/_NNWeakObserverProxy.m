@@ -12,8 +12,9 @@
 
 
 @interface _NNWeakObserverProxy ()
+
 @property (atomic, readonly, weak) id notificationObserver;
-@property (nonatomic, readonly, assign) Class observerClass;
+@property (nonatomic, readonly, assign) NSMethodSignature *notificationMethodSignature;
 @property (nonatomic, readonly, strong) NSNotificationCenter *notificationCenter;
 
 @end
@@ -23,20 +24,18 @@
 
 #pragma mark - Initialization
 
-+ (_NNWeakObserverProxy *)weakObserverProxyWithObserver:(id)notificationObserver notificationCenter:(NSNotificationCenter *)notificationCenter;
++ (_NNWeakObserverProxy *)weakObserverProxyWithObserver:(id)observer selector:(SEL)aSelector notificationCenter:(NSNotificationCenter *)notificationCenter;
 {
-    return [[_NNWeakObserverProxy alloc] initWithObserver:notificationObserver notificationCenter:notificationCenter];
+    return [[_NNWeakObserverProxy alloc] initWithObserver:observer selector:(SEL)aSelector notificationCenter:notificationCenter];
 }
 
-- (id)initWithObserver:(id)notificationObserver notificationCenter:(NSNotificationCenter *)notificationCenter;
+- (id)initWithObserver:(id)observer selector:(SEL)aSelector notificationCenter:(NSNotificationCenter *)notificationCenter;
 {
-    self->_notificationObserver = notificationObserver;
-    // Or maybe object_getClass is more appropriate?
-    self->_observerClass = [notificationObserver class];
-    
+    self->_notificationObserver = observer;
+    self->_notificationMethodSignature = [observer methodSignatureForSelector:aSelector];
     self->_notificationCenter = notificationCenter;
     
-    objc_setAssociatedObject(notificationObserver, (__bridge const void *)self, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(observer, (__bridge const void *)self, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     return self;
 }
@@ -55,14 +54,14 @@
 
 - (BOOL)isEqual:(id)anObject;
 {
-    return anObject == self;
+    return (uintptr_t)anObject == (uintptr_t)self;
 }
 
 #pragma mark Message forwarding
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
-    return [self.observerClass instanceMethodSignatureForSelector:aSelector];
+    return self.notificationMethodSignature;
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation;
