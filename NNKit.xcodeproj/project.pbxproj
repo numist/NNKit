@@ -53,6 +53,16 @@
 		BCCA7A4A180762C700CE36E5 /* NNISASwizzledObject.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D58A17D9A14300A3EBD4 /* NNISASwizzledObject.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BCCA7A4B180762CC00CE36E5 /* NNKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BCD1D53917D9471A00A3EBD4 /* NNKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCCA7A4C180765D800CE36E5 /* libNNKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F318075C6F00CE36E5 /* libNNKit.a */; };
+		BCCB1BF31835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCB1BF11835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCB1BF41835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCB1BF11835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCCB1BF51835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB1BF21835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m */; };
+		BCCB1BF61835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB1BF21835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m */; };
+		BCCB1BF91835F6970029EBF6 /* _NNWeakObserverProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCB1BF71835F6970029EBF6 /* _NNWeakObserverProxy.h */; };
+		BCCB1BFA1835F6970029EBF6 /* _NNWeakObserverProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BCCB1BF71835F6970029EBF6 /* _NNWeakObserverProxy.h */; };
+		BCCB1BFB1835F6970029EBF6 /* _NNWeakObserverProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB1BF81835F6970029EBF6 /* _NNWeakObserverProxy.m */; };
+		BCCB1BFC1835F6970029EBF6 /* _NNWeakObserverProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB1BF81835F6970029EBF6 /* _NNWeakObserverProxy.m */; };
+		BCCB1BFE1835FD9A0029EBF6 /* NNWeakObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB1BFD1835FD9A0029EBF6 /* NNWeakObserverTests.m */; };
+		BCCB1BFF1835FD9A0029EBF6 /* NNWeakObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCB1BFD1835FD9A0029EBF6 /* NNWeakObserverTests.m */; };
 		BCD1D52D17D9471A00A3EBD4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */; };
 		BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD1D53A17D9471A00A3EBD4 /* NNKit.m */; };
 		BCD1D54217D9471A00A3EBD4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D54117D9471A00A3EBD4 /* XCTest.framework */; };
@@ -117,6 +127,11 @@
 		BCCA7A1718075DDB00CE36E5 /* NNKit iOS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NNKit iOS-Prefix.pch"; sourceTree = "<group>"; };
 		BCCA7A1D1807608600CE36E5 /* NNKit iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NNKit iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA7A2F180761DB00CE36E5 /* NNKit iOS Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NNKit iOS Tests-Info.plist"; sourceTree = "<group>"; };
+		BCCB1BF11835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+NNAdditions.h"; path = "API Extension/NSNotificationCenter+NNAdditions.h"; sourceTree = "<group>"; };
+		BCCB1BF21835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+NNAdditions.m"; path = "API Extension/NSNotificationCenter+NNAdditions.m"; sourceTree = "<group>"; };
+		BCCB1BF71835F6970029EBF6 /* _NNWeakObserverProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _NNWeakObserverProxy.h; path = "API Extension/_NNWeakObserverProxy.h"; sourceTree = "<group>"; };
+		BCCB1BF81835F6970029EBF6 /* _NNWeakObserverProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _NNWeakObserverProxy.m; path = "API Extension/_NNWeakObserverProxy.m"; sourceTree = "<group>"; };
+		BCCB1BFD1835FD9A0029EBF6 /* NNWeakObserverTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNWeakObserverTests.m; sourceTree = "<group>"; };
 		BCD1D52917D9471A00A3EBD4 /* NNKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NNKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD1D52C17D9471A00A3EBD4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BCD1D52F17D9471A00A3EBD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -288,6 +303,7 @@
 				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
 				BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */,
 				BCD1D57F17D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m */,
+				BCCB1BFD1835FD9A0029EBF6 /* NNWeakObserverTests.m */,
 				BCD1D54817D9471A00A3EBD4 /* Supporting Files */,
 			);
 			path = NNKitTests;
@@ -337,10 +353,14 @@
 		BCD1D58117D9940500A3EBD4 /* API extension */ = {
 			isa = PBXGroup;
 			children = (
+				BCCB1BF71835F6970029EBF6 /* _NNWeakObserverProxy.h */,
+				BCCB1BF81835F6970029EBF6 /* _NNWeakObserverProxy.m */,
 				BCD1D5A517D9C72F00A3EBD4 /* despatch.h */,
 				BCD1D5A617D9C72F00A3EBD4 /* despatch.m */,
 				BCD1D5A817D9C72F00A3EBD4 /* runtime.h */,
 				BCD1D5A717D9C72F00A3EBD4 /* runtime.c */,
+				BCCB1BF11835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h */,
+				BCCB1BF21835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m */,
 			);
 			name = "API extension";
 			sourceTree = "<group>";
@@ -367,6 +387,7 @@
 				BCCA7A401807628B00CE36E5 /* despatch.h in Headers */,
 				BCCA7A47180762B500CE36E5 /* nn_autofree.h in Headers */,
 				BCCA7A44180762A200CE36E5 /* NNSelfInvalidatingObject.h in Headers */,
+				BCCB1BF41835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h in Headers */,
 				BCCA7A421807629700CE36E5 /* NNPollingObject.h in Headers */,
 				BCCA7A49180762C000CE36E5 /* nn_isaSwizzling.h in Headers */,
 				BCCA7A4A180762C700CE36E5 /* NNISASwizzledObject.h in Headers */,
@@ -374,6 +395,7 @@
 				BCCA7A45180762A800CE36E5 /* NNDelegateProxy.h in Headers */,
 				BC19D36C1810C7F7009CEC1F /* NNTestService.h in Headers */,
 				BCCA7A48180762BB00CE36E5 /* nn_isaSwizzling_Private.h in Headers */,
+				BCCB1BFA1835F6970029EBF6 /* _NNWeakObserverProxy.h in Headers */,
 				BC19D3661810C6C3009CEC1F /* NNService.h in Headers */,
 				BC19D3721810C85B009CEC1F /* NNServiceManager.h in Headers */,
 				BCCA7A4B180762CC00CE36E5 /* NNKit.h in Headers */,
@@ -389,6 +411,7 @@
 				BCD1D58D17D9A14300A3EBD4 /* nn_isaSwizzling.h in Headers */,
 				BCD1D58F17D9A14300A3EBD4 /* NNISASwizzledObject.h in Headers */,
 				BCD1D5B917D9C84000A3EBD4 /* NNDelegateProxy.h in Headers */,
+				BCCB1BF31835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h in Headers */,
 				BCD1D5C117DECC8E00A3EBD4 /* nn_autofree.h in Headers */,
 				BCD1D5B417D9C79F00A3EBD4 /* NNPollingObject+Protected.h in Headers */,
 				BCD1D5BD17D9C88F00A3EBD4 /* NNStrongifiedProperties.h in Headers */,
@@ -396,6 +419,7 @@
 				BCD1D5A917D9C72F00A3EBD4 /* despatch.h in Headers */,
 				BC19D36B1810C7F7009CEC1F /* NNTestService.h in Headers */,
 				BCD1D58C17D9A14300A3EBD4 /* nn_isaSwizzling_Private.h in Headers */,
+				BCCB1BF91835F6970029EBF6 /* _NNWeakObserverProxy.h in Headers */,
 				BC19D3651810C6C3009CEC1F /* NNService.h in Headers */,
 				BC19D3711810C85B009CEC1F /* NNServiceManager.h in Headers */,
 				BCD1D5B517D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
@@ -537,9 +561,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCCA7A351807626200CE36E5 /* despatch.m in Sources */,
+				BCCB1BFC1835F6970029EBF6 /* _NNWeakObserverProxy.m in Sources */,
 				BCCA7A361807626200CE36E5 /* runtime.c in Sources */,
 				BCCA7A371807626200CE36E5 /* NNPollingObject.m in Sources */,
 				BC19D36E1810C7F7009CEC1F /* NNTestService.m in Sources */,
+				BCCB1BF61835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m in Sources */,
 				BCCA7A381807626200CE36E5 /* NNSelfInvalidatingObject.m in Sources */,
 				BCCA7A391807626200CE36E5 /* NNDelegateProxy.m in Sources */,
 				BC19D3681810C6C3009CEC1F /* NNService.m in Sources */,
@@ -558,6 +584,7 @@
 			files = (
 				BCCA7A301807622200CE36E5 /* NNPollingObjectTests.m in Sources */,
 				BCCA7A311807622200CE36E5 /* NNSelfInvalidatingObjectTests.m in Sources */,
+				BCCB1BFF1835FD9A0029EBF6 /* NNWeakObserverTests.m in Sources */,
 				BCCA7A321807622200CE36E5 /* NNDelegateProxyTests.m in Sources */,
 				BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCCA7A331807622200CE36E5 /* NNStrongifiedPropertiesTests.m in Sources */,
@@ -570,9 +597,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCD1D5AA17D9C72F00A3EBD4 /* despatch.m in Sources */,
+				BCCB1BFB1835F6970029EBF6 /* _NNWeakObserverProxy.m in Sources */,
 				BCD1D5BE17D9C88F00A3EBD4 /* NNStrongifiedProperties.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
 				BC19D36D1810C7F7009CEC1F /* NNTestService.m in Sources */,
+				BCCB1BF51835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m in Sources */,
 				BCD1D5AB17D9C72F00A3EBD4 /* runtime.c in Sources */,
 				BCD1D5C217DECC8E00A3EBD4 /* nn_autofree.m in Sources */,
 				BC19D3671810C6C3009CEC1F /* NNService.m in Sources */,
@@ -591,6 +620,7 @@
 			files = (
 				BCD1D56817D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m in Sources */,
 				BCD1D59217D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m in Sources */,
+				BCCB1BFE1835FD9A0029EBF6 /* NNWeakObserverTests.m in Sources */,
 				BCD1D58017D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m in Sources */,
 				BC19D3A01811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */,

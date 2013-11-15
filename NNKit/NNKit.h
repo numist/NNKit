@@ -25,3 +25,5 @@
 #import <NNKit/NNService.h>
 #import <NNKit/NNServiceManager.h>
 #import <NNKit/NNStrongifiedProperties.h>
+
+#import <NNKit/NSNotificationCenter+NNAdditions.h>
