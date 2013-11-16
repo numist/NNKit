@@ -37,6 +37,18 @@
     
     objc_setAssociatedObject(observer, (__bridge const void *)self, self, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
+    
+    __unsafe_unretained id brak;
+    @autoreleasepool {
+        __attribute__((objc_precise_lifetime)) void (^block)() = [^{} copy];
+        brak = block;
+        block = nil;
+    }
+    void (^bluck)() = brak;
+    bluck();
+    
+    
+    
     return self;
 }
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC1243751837051000461433 /* NNMutableWeakSet.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1243731837051000461433 /* NNMutableWeakSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1243761837051000461433 /* NNMutableWeakSet.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1243731837051000461433 /* NNMutableWeakSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC1243771837051000461433 /* NNMutableWeakSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1243741837051000461433 /* NNMutableWeakSet.m */; };
+		BC1243781837051000461433 /* NNMutableWeakSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1243741837051000461433 /* NNMutableWeakSet.m */; };
 		BC19D3651810C6C3009CEC1F /* NNService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3631810C6C3009CEC1F /* NNService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC19D3661810C6C3009CEC1F /* NNService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3631810C6C3009CEC1F /* NNService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC19D3671810C6C3009CEC1F /* NNService.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D3641810C6C3009CEC1F /* NNService.m */; };
@@ -114,6 +118,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC1243731837051000461433 /* NNMutableWeakSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNMutableWeakSet.h; path = Collections/NNMutableWeakSet.h; sourceTree = "<group>"; };
+		BC1243741837051000461433 /* NNMutableWeakSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMutableWeakSet.m; path = Collections/NNMutableWeakSet.m; sourceTree = "<group>"; };
 		BC19D3631810C6C3009CEC1F /* NNService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNService.h; path = Services/NNService.h; sourceTree = "<group>"; };
 		BC19D3641810C6C3009CEC1F /* NNService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNService.m; path = Services/NNService.m; sourceTree = "<group>"; };
 		BC19D3691810C7F7009CEC1F /* NNTestService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNTestService.h; path = Services/NNTestService.h; sourceTree = "<group>"; };
@@ -212,6 +218,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC1243631837022700461433 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				BC1243731837051000461433 /* NNMutableWeakSet.h */,
+				BC1243741837051000461433 /* NNMutableWeakSet.m */,
+				BC1243791837065E00461433 /* Supporting Files */,
+			);
+			name = Collections;
+			sourceTree = "<group>";
+		};
+		BC1243791837065E00461433 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BC19D3621810C63E009CEC1F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +296,7 @@
 			children = (
 				BCD1D58117D9940500A3EBD4 /* API extension */,
 				BCD1D56D17D9776400A3EBD4 /* Actors */,
+				BC1243631837022700461433 /* Collections */,
 				BCD1D55817D9474600A3EBD4 /* Concurrency */,
 				BCD1D57617D97CB100A3EBD4 /* Hacks */,
 				BC19D3621810C63E009CEC1F /* Services */,
@@ -396,6 +420,7 @@
 				BC19D36C1810C7F7009CEC1F /* NNTestService.h in Headers */,
 				BCCA7A48180762BB00CE36E5 /* nn_isaSwizzling_Private.h in Headers */,
 				BCCB1BFA1835F6970029EBF6 /* _NNWeakObserverProxy.h in Headers */,
+				BC1243761837051000461433 /* NNMutableWeakSet.h in Headers */,
 				BC19D3661810C6C3009CEC1F /* NNService.h in Headers */,
 				BC19D3721810C85B009CEC1F /* NNServiceManager.h in Headers */,
 				BCCA7A4B180762CC00CE36E5 /* NNKit.h in Headers */,
@@ -420,6 +445,7 @@
 				BC19D36B1810C7F7009CEC1F /* NNTestService.h in Headers */,
 				BCD1D58C17D9A14300A3EBD4 /* nn_isaSwizzling_Private.h in Headers */,
 				BCCB1BF91835F6970029EBF6 /* _NNWeakObserverProxy.h in Headers */,
+				BC1243751837051000461433 /* NNMutableWeakSet.h in Headers */,
 				BC19D3651810C6C3009CEC1F /* NNService.h in Headers */,
 				BC19D3711810C85B009CEC1F /* NNServiceManager.h in Headers */,
 				BCD1D5B517D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
@@ -567,6 +593,7 @@
 				BC19D36E1810C7F7009CEC1F /* NNTestService.m in Sources */,
 				BCCB1BF61835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m in Sources */,
 				BCCA7A381807626200CE36E5 /* NNSelfInvalidatingObject.m in Sources */,
+				BC1243781837051000461433 /* NNMutableWeakSet.m in Sources */,
 				BCCA7A391807626200CE36E5 /* NNDelegateProxy.m in Sources */,
 				BC19D3681810C6C3009CEC1F /* NNService.m in Sources */,
 				BCCA7A3A1807626200CE36E5 /* NNStrongifiedProperties.m in Sources */,
@@ -603,6 +630,7 @@
 				BC19D36D1810C7F7009CEC1F /* NNTestService.m in Sources */,
 				BCCB1BF51835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m in Sources */,
 				BCD1D5AB17D9C72F00A3EBD4 /* runtime.c in Sources */,
+				BC1243771837051000461433 /* NNMutableWeakSet.m in Sources */,
 				BCD1D5C217DECC8E00A3EBD4 /* nn_autofree.m in Sources */,
 				BC19D3671810C6C3009CEC1F /* NNService.m in Sources */,
 				BCD1D5B317D9C79F00A3EBD4 /* NNPollingObject.m in Sources */,

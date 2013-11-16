@@ -21,6 +21,7 @@
 
 #import <NNKit/NNDelegateProxy.h>
 #import <NNKit/NNPollingObject+Protected.h>
+#import <NNKit/NNMutableWeakSet.h>
 #import <NNKit/NNSelfInvalidatingObject.h>
 #import <NNKit/NNService.h>
 #import <NNKit/NNServiceManager.h>
