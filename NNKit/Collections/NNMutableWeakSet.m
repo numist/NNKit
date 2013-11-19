@@ -8,20 +8,21 @@
 
 #import "NNMutableWeakSet.h"
 
-#import <objc/runtime.h>
+#import "NNCleanupProxy.h"
 
 
 @interface NNMutableWeakSet ()
 
 @property (nonatomic, readonly, strong) NSMutableSet *backingStore;
 
-- (void)_removeTombstoneAllowingNil:(id)object;
+- (void)_removeObjectAllowingNil:(id)object;
 
 @end
 
 
 @interface _NNWeakArrayTombstone : NSObject
 @property (nonatomic, readonly, weak) id target;
+@property (nonatomic, readonly, assign) NSUInteger hash;
 @end
 @implementation _NNWeakArrayTombstone
 + (_NNWeakArrayTombstone *)tombstoneWithTarget:(id)target;
@@ -30,30 +31,27 @@
     tombstone->_target = target;
     return tombstone;
 }
-@end
 
-
-@interface _NNWeakArrayCleanupObject : NSObject
-@property (atomic, readonly, weak) _NNWeakArrayTombstone *tombstone;
-@property (atomic, readonly, weak) NNMutableWeakSet *collection;
-@end
-@implementation _NNWeakArrayCleanupObject
-+ (_NNWeakArrayCleanupObject *)cleanupProxyWithTombstone:(_NNWeakArrayTombstone *)tombstone collection:(NNMutableWeakSet *)collection;
+@synthesize hash = _hash;
+- (NSUInteger)hash;
 {
-    _NNWeakArrayCleanupObject *proxy = [_NNWeakArrayCleanupObject new];
-    proxy->_tombstone = tombstone;
-    proxy->_collection = collection;
-    return proxy;
-}
-- (void)dealloc;
-{
-    // atomic properties retain/autorelease so this warning is invalid. Additionally, due to rdar://15478132, strongifying the property in a local variable causes the property to be retained and then not released, causing a memory leak.
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wreceiver-is-weak"
-    @autoreleasepool {
-        [self.collection _removeTombstoneAllowingNil:self.tombstone];
+    if (!self->_hash) {
+        @synchronized(self) {
+            if (!self->_hash) {
+                id target = self.target;
+                self->_hash = [target hash];
+            }
+        }
     }
-    #pragma clang diagnostic pop
+    
+    return self->_hash;
+}
+
+- (BOOL)isEqual:(id)object;
+{
+    id target = self.target;
+    if ([target isEqual:object]) { return YES; }
+    return (uintptr_t)object == (uintptr_t)self;
 }
 @end
 
@@ -72,6 +70,24 @@
 
 @implementation NNMutableWeakSet
 
+- (instancetype)initWithCapacity:(NSUInteger)numItems;
+{
+    if (!(self = [super init])) { return nil; }
+    
+    self->_backingStore = [[NSMutableSet alloc] initWithCapacity:numItems];
+    
+    return self;
+}
+
+- (id)init;
+{
+    if (!(self = [super init])) { return nil; }
+    
+    self->_backingStore = [[NSMutableSet alloc] init];
+    
+    return self;
+}
+
 #pragma mark NSSet
 
 - (NSUInteger)count;
@@ -81,8 +97,7 @@
 
 - (id)member:(id)object;
 {
-    @throw nil;
-    // if associated tombstone object exists with a key of self, use it to find the member
+    return ((_NNWeakArrayTombstone *)[self.backingStore member:object]).target;
 }
 
 - (NSEnumerator *)objectEnumerator;
@@ -95,22 +110,26 @@
 - (void)addObject:(id)object;
 {
     _NNWeakArrayTombstone *tombstone = [_NNWeakArrayTombstone tombstoneWithTarget:object];
-    _NNWeakArrayCleanupObject *proxy = [_NNWeakArrayCleanupObject cleanupProxyWithTombstone:tombstone collection:self];
-    // TODO: Fuuuuuuck I need to implement yet another self-cleaning weak reference API for this to work
-    objc_setAssociatedObject(object, (__bridge void *)self, tombstone, OBJC_ASSOCIATION_ASSIGN);
-    // Make the proxy's lifecycle dependant on the object it is shadowing.
-    objc_setAssociatedObject(object, (__bridge void *)proxy, proxy, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:object];
+    
+    __weak NNMutableWeakSet *weakCollection = self;
+    __weak _NNWeakArrayTombstone *weakTombstone = tombstone;
+    proxy.cleanupBlock = ^{
+        NNMutableWeakSet *collection = weakCollection;
+        [collection _removeObjectAllowingNil:weakTombstone];
+    };
+    
+    [self.backingStore addObject:tombstone];
 }
 
 - (void)removeObject:(id)object;
 {
-    // get tombstone by looking up self against object's associations
-    // remove tombstone from self
+    [self.backingStore removeObject:object];
 }
 
 #pragma mark Private
 
-- (void)_removeTombstoneAllowingNil:(id)object;
+- (void)_removeObjectAllowingNil:(id)object;
 {
     if (!object) { return; }
     
