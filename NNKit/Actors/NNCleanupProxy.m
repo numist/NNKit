@@ -48,10 +48,11 @@
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
     NSMethodSignature *signature = [self.signatureCache objectForKey:NSStringFromSelector(aSelector)];
-    NSAssert(signature, @"RACE CONDITION: method signature for selector %@ was not already known. Cache signatures with cacheMethodSignatureForSelector: to avoid crashing when the proxy's target is deallocated.", NSStringFromSelector(aSelector));
 
+    NSAssert(signature, @"Selector %@ was not pre-declared to proxy. Cache signatures before use with cacheMethodSignatureForSelector: while the target is still valid.", NSStringFromSelector(aSelector));
+    
     if (!signature) {
-        signature = [self _cacheMethodSignatureForSelector:aSelector];
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"Unrecognized selector sent to instance %p", self] userInfo:nil];
     }
     
     return signature;
@@ -67,13 +68,6 @@
 
 - (void)cacheMethodSignatureForSelector:(SEL)aSelector;
 {
-    (void)[self _cacheMethodSignatureForSelector:aSelector];
-}
-
-#pragma mark Private
-
-- (NSMethodSignature *)_cacheMethodSignatureForSelector:(SEL)aSelector;
-{
     NSMethodSignature *signature = nil;
     
     // XXX: rdar://15478132 means no explicit local strongification here due to retain leak :(
@@ -84,9 +78,11 @@
 
     if (signature) {
         [self.signatureCache setObject:signature forKey:NSStringFromSelector(aSelector)];
+    } else {
+        NSAssert(!self.target, @"Target was non-nil, but method signature lookup failed anyway?");
+        
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"Unable to get method signature from target of instance %p", self] userInfo:nil];
     }
-    
-    return signature;
 }
 
 @end
