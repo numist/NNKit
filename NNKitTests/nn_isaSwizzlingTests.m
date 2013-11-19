@@ -42,7 +42,7 @@
 
 // Class ISAAddsProperties adds legal properties to its superclass
 @protocol ISAAddsLegalProperties <NSObject> @end
-@interface ISAAddsLegalProperties : NSObject <ISAAddsLegalProperties> @property (nonatomic, assign) NSUInteger bar; @end
+@interface ISAAddsLegalProperties : NSObject <ISAAddsLegalProperties> @property (nonatomic, readonly, assign) NSUInteger bar; @end
 @implementation ISAAddsLegalProperties @dynamic bar; - (NSUInteger)bar { NSLog(@"foooooo! "); return 7; } @end
 
 
