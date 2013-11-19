@@ -70,13 +70,9 @@
 
 - (void)postNotification:(NSDictionary *)userInfo;
 {
-    dispatch_group_t group = dispatch_group_create();
-    dispatch_group_enter(group);
-    dispatch_async(dispatch_get_main_queue(), ^{
+    despatch_sync_main_reentrant(^{
         [[NSNotificationCenter defaultCenter] postNotificationName:[[self class] notificationName] object:self userInfo:userInfo];
-        dispatch_group_leave(group);
     });
-    while(!despatch_group_yield(group));
 }
 
 - (void)main;
