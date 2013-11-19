@@ -14,9 +14,27 @@
 
 #import <Foundation/Foundation.h>
 
+
+/*!
+ * @class NNSelfInvalidatingObject
+ *
+ * @discussion
+ * For use when an object has to do cleanup work asynchronously, or outside of
+ * <code>dealloc</code>. Simply implement the <code>invalidate</code> method and
+ * call <code>[super invalidate]</code> when the actor has finished cleaning up.
+ */
 @interface NNSelfInvalidatingObject : NSObject
 
-// Call [super invalidate] once everything is finished, not before! Any thread! It's ok!
-- (void)invalidate __attribute__((objc_requires_super));
+/*!
+ * @method invalidate
+ *
+ * @discussion
+ * Called only once, either explicitly (by an interested object) or when the
+ * object has been fully-released.
+ *
+ * When invalidation is complete, [super invalidate] must be called to complete
+ * deallocation of the object.
+ */
+- (void)invalidate;
 
 @end

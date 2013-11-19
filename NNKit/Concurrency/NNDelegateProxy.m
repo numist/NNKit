@@ -20,6 +20,7 @@
 
 @interface NNDelegateProxy ()
 
+@property (readonly, weak) id delegate;
 @property (readonly, assign) Protocol *protocol;
 
 @end
@@ -34,7 +35,7 @@
     }
 
     NNDelegateProxy *proxy = [self alloc];
-    proxy.delegate = delegate;
+    proxy->_delegate = delegate;
     proxy->_protocol = protocol;
     return proxy;
 }

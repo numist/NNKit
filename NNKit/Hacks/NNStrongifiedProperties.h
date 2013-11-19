@@ -14,6 +14,15 @@
 
 #import <Foundation/Foundation.h>
 
+/*!
+ * @class NNStrongifiedProperties
+ *
+ * @discussion
+ * Used with isa-swizzling to provide strong getters for weak properties in the
+ * form of methods named <code>strong<i>Property</i></code>, where
+ * <code><i>Property</i></code> is the unambiguous capitalized name of a weak
+ * property on the object.
+ */
 @interface NNStrongifiedProperties : NSObject
 
 @end

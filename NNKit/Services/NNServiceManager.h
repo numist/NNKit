@@ -17,16 +17,74 @@
 #import <NNKit/NNService.h>
 
 
+/*!
+ * @class NNServiceManager
+ *
+ * @discussion
+ * Manages the running state of registered services based on their dependencies and subscriptions.
+ */
 @interface NNServiceManager : NSObject
 
+/*!
+ * @method sharedManager
+ *
+ * @discussion
+ * Singleton service manager accessor.
+ *
+ * @result
+ * Global shared service manager object.
+ */
 + (NNServiceManager *)sharedManager;
 
 //- (void)registerAllPossibleServices;
+
+/*!
+ * @method registerService:
+ *
+ * @discussion
+ * Registers <i>service</i> with the service manager, and starts it if its
+ * dependencies have all been met.
+ *
+ * @param service
+ * The Class of a service to be registered with this service manager.
+ */
 - (void)registerService:(Class)service;
+
+/*!
+ * @method instanceForService
+ *
+ * @discussion
+ * Accessor method to get the instance of a service class, started or not,
+ * managed by this service manager.
+ *
+ * @result
+ * An instance of the requested service. <code>nil</code> if the service has
+ * not been registered with this service manager.
+ */
 - (id<NNService>)instanceForService:(Class)service;
 
-// On-demand service subscription.
+/*!
+ * @method subscribeToService:
+ *
+ * @discussion
+ * Increments the service's subscriber count. Services that are run on demand
+ * will be started by calls to this method if there were not other subscribers.
+ *
+ * @param service
+ * The service to which the caller is subscribing.
+ */
 - (void)subscribeToService:(Class)service;
+
+/*!
+ * @method unsubscribeFromService:
+ *
+ * @discussion
+ * Decrements the service's subscriber count. Services that are run on demand
+ * will be stopped by calls to this method when the subscriber count reaches zero.
+ *
+ * @param service
+ * The service to which the caller is unsubscribing.
+ */
 - (void)unsubscribeFromService:(Class)service;
 
 @end

@@ -15,6 +15,14 @@
 #import <Foundation/Foundation.h>
 
 
+/*!
+ * @enum NNServiceType
+ *
+ * @discussion
+ * Represents the type of a service. Persistent services are started once all of
+ * their dependencies have been started, on-demand services are started when an
+ * object subscribes to the service.
+ */
 typedef NS_ENUM(uint8_t, NNServiceType) {
     NNServiceTypeNone,
     NNServiceTypePersistent,
@@ -22,20 +30,78 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
 };
 
 
+/*!
+ * @protocol NNService
+ *
+ * @discussion
+ * Protocol that all services must implement to be supported by a
+ * <code>NNServiceManager</code>.
+ */
 @protocol NNService <NSObject>
-@required
 
+@required
+/*!
+ * @method sharedService
+ *
+ * @discussion
+ * Service singleton accessor.
+ *
+ * @result
+ * Singleton object for the service.
+ */
 + (id)sharedService;
+
+/*!
+ * @method serviceType
+ *
+ * @discussion
+ * The type of the service. Must not be NNServiceTypeNone.
+ */
 - (NNServiceType)serviceType;
+
+/*!
+ * @method dependencies
+ *
+ * @discussion
+ * Services are not started until their dependencies have all been started first.
+ * This means multiple services can be made on-demand by having a root service
+ * that is on-demand and multiple dependant services that are persistent.
+ *
+ * @result
+ * Returns a set of <code>Class</code>es that this service depends on to run.
+ * Can be <code>nil</code>.
+ */
 - (NSSet *)dependencies;
 
 @optional
+/*!
+ * @method startService
+ *
+ * @discussion
+ * Called when the service is started. Optional.
+ */
 - (void)startService;
+
+/*!
+ * @method stopService
+ *
+ * @discussion
+ * Called when the service is stopped. Optional.
+ */
 - (void)stopService;
 
 @end
 
 
+/*!
+ * @class NNService
+ *
+ * @discussion
+ * The <code>NNService</code> class contains generic implementations for most of
+ * the methods in the <code>NNService</code> protocol. Only
+ * <code>serviceType</code> still needs to be overridden for a service to be
+ * legal.
+ */
 @interface NNService : NSObject <NNService>
 
 @end

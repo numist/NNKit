@@ -14,4 +14,17 @@
 
 #import <Foundation/Foundation.h>
 
+/*!
+ * @function nn_autofree
+ *
+ * @abstract
+ * Adds the buffer to the current autorelease pool.
+ *
+ * @discussion
+ * This function ties the buffer's lifetime to that of an object added to the
+ * current autorelease pool, causing it to be freed when the pool is drained.
+ *
+ * @param ptr
+ * The buffer to add to the current autorelease pool.
+ */
 void *nn_autofree(void *ptr);

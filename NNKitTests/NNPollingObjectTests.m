@@ -15,6 +15,7 @@
 #import <XCTest/XCTest.h>
 
 #import <NNKit/NNKit.h>
+#import <NNKit/NNPollingObject+Protected.h>
 
 
 @interface NNPollingObjectTests : XCTestCase

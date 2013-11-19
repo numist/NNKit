@@ -14,6 +14,17 @@
 
 #import <Foundation/Foundation.h>
 
+
+/*!
+ * @class NNMutableWeakSet
+ *
+ * @discussion
+ * NNMutableWeakSet implements the same API as NSMutableSet, but holds weak
+ * references to its members.
+ *
+ * No compaction is required, members are automatically removed when they are
+ * deallocated.
+ */
 @interface NNMutableWeakSet : NSMutableSet
 
 @end

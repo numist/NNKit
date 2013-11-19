@@ -15,10 +15,42 @@
 #ifndef NNKit_despatch_h
 #define NNKit_despatch_h
 
-/// Run a block on the main queue synchronously, even if you're already running on the main queue.
+/*!
+ * @function despatch_sync_main_reentrant
+ *
+ * @abstract
+ * Runs a block on the main queue, reentrantly if already on the main queue.
+ *
+ * @discussion
+ * When on the main queue, executes the block synchronously before returning.
+ * Otherwise, submits a block to the main queue and does not return until the block
+ * has finished.
+ *
+ * @param block
+ * The block to be invoked on the main queue.
+ * The result of passing <code>NULL</code> in this parameter is undefined.
+ * Which is to say it will probably crash.
+ */
 void despatch_sync_main_reentrant(dispatch_block_t block);
 
-/// Yield control of the current runloop. Return value indicates if the dispatch group is clear.
+/*!
+ * @function despatch_group_yield
+ *
+ * @abstract
+ * Yields control of the current runloop. Return value indicates if the dispatch
+ * group is clear.
+ *
+ * @discussion
+ * When waiting for asynchronous jobs in a dispatch group that may block on the
+ * current thread, this function yields the runloop and then returns the group
+ * state.
+ *
+ * @param group
+ * The group for which the caller is waiting.
+ *
+ * @result
+ * <code>YES</code> if the group has no members, <code>NO</code> otherwise.
+ */
 BOOL despatch_group_yield(dispatch_group_t group);
 
 #endif

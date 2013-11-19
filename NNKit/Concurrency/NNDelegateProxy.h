@@ -14,11 +14,38 @@
 
 #import <Foundation/Foundation.h>
 
+
+/*!
+ * @class NNDelegateProxy
+ *
+ * @discussion
+ * A proxy object ensuring that messages to the delegate are dispatched on the
+ * main thread.
+ *
+ * Messages declared as oneway void are dispatched asynchronously, messages that
+ * are optional are dispatched against nil if the delegate does not implement them.
+ * Messages that are optional and non-void are a bad idea and you shouldn't use them.
+ */
 @interface NNDelegateProxy : NSProxy
 
-@property (weak) id delegate;
-
-// protocol can be NULL, but shouldn't be—only messages appropriate to the delegate's protocol should be passed to the delegate!
+/*!
+ * @method proxyWithDelegate:protocol:
+ *
+ * @discussion
+ * Creates a new proxy for <i>delegate</i> conforming to
+ * <i>protocol</i>.
+ *
+ * @param delegate
+ * The object to receive delegate messages.
+ *
+ * @param protocol
+ * The protocol to which <i>delegate</i> conforms. Can be <code>NULL</code>,
+ * but shouldn't be.
+ *
+ * @result
+ * Proxy to stand in for <i>delegate</i> for messages conforming to
+ * <i>protocol</i>.
+ */
 + (id)proxyWithDelegate:(id)delegate protocol:(Protocol *)protocol;
 
 @end

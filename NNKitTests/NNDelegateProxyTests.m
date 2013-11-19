@@ -25,6 +25,7 @@
 @optional
 
 - (void)unimplementedOptionalMethod;
+- (oneway void)unimplementedOnewayOptionalMethod;
 
 @end
 
@@ -85,6 +86,11 @@
 - (void)optional;
 {
     [self.delegateProxy unimplementedOptionalMethod];
+}
+
+- (void)onewayOptional;
+{
+    [self.delegateProxy unimplementedOnewayOptionalMethod];
 }
 
 @end
@@ -155,6 +161,7 @@ static dispatch_group_t group;
 - (void)testOptional;
 {
     XCTAssertNoThrow([[[MYClass alloc] initWithDelegate:self] optional], @"Sending optional messages to delegate proxies should never blow up.");
+    XCTAssertNoThrow([[[MYClass alloc] initWithDelegate:self] onewayOptional], @"Sending optional messages to delegate proxies should never blow up.");
 }
 
 

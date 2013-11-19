@@ -64,12 +64,12 @@
 
 /**
  
- collection -> tombstone                        // Unavoidable. The whole point of this exercise.
- tombstone -> object [style = "dotted"];        // Obvious.
- cleanup -> tombstone [style = "dotted"];         // For removing the tombstone from the collection.
- cleanup -> collection [style = "dotted"];        // For removing the tombstone from the collection.
- object -> cleanup;                               // Object association, the only strong reference to the proxy.
- object -> tombstone [style = "dotted];         // Object association so the collection can look at the object and find the tombstone.
+ collection -> tombstone                    // Unavoidable. The whole point of this exercise.
+ tombstone -> object [style = "dotted"];    // Obvious.
+ cleanup -> tombstone [style = "dotted"];   // For removing the tombstone from the collection.
+ cleanup -> collection [style = "dotted"];  // For removing the tombstone from the collection.
+ object -> cleanup;                         // Object association, the only strong reference to the proxy.
+ object -> tombstone [style = "dotted];     // Object association so the collection can look at the object and find the tombstone.
  
  */
 
