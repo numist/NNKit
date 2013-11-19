@@ -41,7 +41,6 @@
                 if (target) {
                     self->_hash = [target hash];
                 } else {
-                    #pragma message "Do something instead of just casting uintptr_t in case there's a platform that gets super fancy with address spaces in the future"
                     self->_hash = (uintptr_t)self;
                 }
             }
