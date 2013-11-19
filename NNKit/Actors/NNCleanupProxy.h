@@ -21,4 +21,6 @@
 
 @property (nonatomic, readwrite, copy) void (^cleanupBlock)();
 
+- (void)cacheMethodSignatureForSelector:(SEL)aSelector;
+
 @end

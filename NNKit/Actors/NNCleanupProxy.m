@@ -20,6 +20,7 @@
 @interface NNCleanupProxy ()
 
 @property (nonatomic, readonly, weak) id target;
+@property (nonatomic, readonly, strong) NSMutableDictionary *signatureCache;
 
 @end
 
@@ -30,6 +31,7 @@
 {
     NNCleanupProxy *result = [NNCleanupProxy alloc];
     result->_target = target;
+    result->_signatureCache = [NSMutableDictionary new];
     objc_setAssociatedObject(target, (__bridge void *)result, result, OBJC_ASSOCIATION_RETAIN);
     return result;
 }
@@ -45,17 +47,46 @@
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
 {
-    // XXX: rdar://15478132 means no local strongification here due to retain leak :(
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wreceiver-is-weak"
-    return [self.target methodSignatureForSelector:aSelector];
-    #pragma clang diagnostic pop
+    NSMethodSignature *signature = [self.signatureCache objectForKey:NSStringFromSelector(aSelector)];
+    NSAssert(signature, @"RACE CONDITION: method signature for selector %@ was not already known. Cache signatures with cacheMethodSignatureForSelector: to avoid crashing when the proxy's target is deallocated.", NSStringFromSelector(aSelector));
+
+    if (!signature) {
+        signature = [self _cacheMethodSignatureForSelector:aSelector];
+    }
+    
+    return signature;
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation;
 {
     invocation.target = self.target;
     [invocation invoke];
+}
+
+#pragma mark NNCleanupProxy
+
+- (void)cacheMethodSignatureForSelector:(SEL)aSelector;
+{
+    (void)[self _cacheMethodSignatureForSelector:aSelector];
+}
+
+#pragma mark Private
+
+- (NSMethodSignature *)_cacheMethodSignatureForSelector:(SEL)aSelector;
+{
+    NSMethodSignature *signature = nil;
+    
+    // XXX: rdar://15478132 means no explicit local strongification here due to retain leak :(
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wreceiver-is-weak"
+    signature = [self.target methodSignatureForSelector:aSelector];
+    #pragma clang diagnostic pop
+
+    if (signature) {
+        [self.signatureCache setObject:signature forKey:NSStringFromSelector(aSelector)];
+    }
+    
+    return signature;
 }
 
 @end

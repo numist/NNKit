@@ -24,6 +24,7 @@
     NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:observer];
     __weak NSNotificationCenter *weakCenter = self;
     __unsafe_unretained NNCleanupProxy *unsafeProxy = proxy;
+    [proxy cacheMethodSignatureForSelector:aSelector];
     proxy.cleanupBlock = ^{
         NSNotificationCenter *center = weakCenter;
         
