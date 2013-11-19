@@ -43,6 +43,15 @@
 + (NNCleanupProxy *)cleanupProxyForTarget:(id)target;
 
 /*!
+ * @method cleanupProxyForTarget:conformingToProtocol:
+ *
+ * @abstract
+ * Creates a proxy object holding a weak reference to, forwarding messages to, and with an object
+ * lifetime dependant on <i>target</i>, conforming to protocol <i>protocol</i>.
+ */
++ (NNCleanupProxy *)cleanupProxyForTarget:(id)target conformingToProtocol:(Protocol *)protocol;
+
+/*!
  * @property cleanupBlock
  *
  * @abstract

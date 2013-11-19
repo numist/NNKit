@@ -16,14 +16,21 @@
 
 #import <objc/runtime.h>
 
+#import "nn_autofree.h"
+
 
 @interface NNCleanupProxy ()
 
-@property (nonatomic, readonly, weak) id target;
+@property (nonatomic, readonly, weak) NSObject *target;
+@property (nonatomic, readonly, assign) NSUInteger hash;
 @property (nonatomic, readonly, strong) NSMutableDictionary *signatureCache;
 
 @end
 
+
+// XXX: rdar://15478132 means no explicit local strongification here due to retain leak :(
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wreceiver-is-weak"
 
 @implementation NNCleanupProxy
 
@@ -36,11 +43,42 @@
     return result;
 }
 
++ (NNCleanupProxy *)cleanupProxyForTarget:(id)target conformingToProtocol:(Protocol *)protocol;
+{
+    NSParameterAssert([target conformsToProtocol:protocol]);
+    
+    NNCleanupProxy *result = [NNCleanupProxy cleanupProxyForTarget:target];
+    [result cacheMethodSignaturesForProcotol:protocol];
+    
+    return result;
+}
+
 - (void)dealloc;
 {
     if (self->_cleanupBlock) {
         self->_cleanupBlock();
     }
+}
+
+#pragma mark NSObject protocol
+
+@synthesize hash = _hash;
+- (NSUInteger)hash;
+{
+    if (!self->_hash) {
+        @synchronized(self) {
+            if (!self->_hash) {
+                self->_hash = self.target.hash;
+            }
+        }
+    }
+    
+    return self->_hash;
+}
+
+- (BOOL)isEqual:(id)object;
+{
+    return [object isEqual:self.target];
 }
 
 #pragma mark Message forwarding
@@ -68,13 +106,7 @@
 
 - (void)cacheMethodSignatureForSelector:(SEL)aSelector;
 {
-    NSMethodSignature *signature = nil;
-    
-    // XXX: rdar://15478132 means no explicit local strongification here due to retain leak :(
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wreceiver-is-weak"
-    signature = [self.target methodSignatureForSelector:aSelector];
-    #pragma clang diagnostic pop
+    NSMethodSignature *signature = [self.target methodSignatureForSelector:aSelector];
 
     if (signature) {
         [self.signatureCache setObject:signature forKey:NSStringFromSelector(aSelector)];
@@ -85,4 +117,26 @@
     }
 }
 
+// This could be faster/lighter if method signature was late-binding, at the cost of higher complexity.
+- (void)cacheMethodSignaturesForProcotol:(Protocol *)protocol;
+{
+    unsigned int totalCount;
+    for (uint8_t i = 0; i < 1 << 1; ++i) {
+        struct objc_method_description *methodDescriptions = nn_autofree(protocol_copyMethodDescriptionList(protocol, i & 1, YES, &totalCount));
+        
+        for (unsigned j = 0; j < totalCount; j++) {
+            struct objc_method_description *methodDescription = methodDescriptions + j;
+            [self.signatureCache setObject:[NSMethodSignature signatureWithObjCTypes:methodDescription->types] forKey:NSStringFromSelector(methodDescription->name)];
+        }
+    }
+
+    // Recurse to include other protocols to which this protocol adopts
+    Protocol * __unsafe_unretained *adoptions = protocol_copyProtocolList(protocol, &totalCount);
+    for (unsigned j = 0; j < totalCount; j++) {
+        [self cacheMethodSignaturesForProcotol:adoptions[j]];
+    }
+}
+
 @end
+
+#pragma clang diagnostic pop
