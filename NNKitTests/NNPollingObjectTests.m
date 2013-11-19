@@ -65,19 +65,21 @@ static int iterations;
 
 - (void)testBasicPolling
 {
-    NNTestObject *obj = [NNTestObject new];
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wunused-variable"
+    __attribute__((objc_precise_lifetime)) NNTestObject *obj = [NNTestObject new];
+    #pragma clang diagnostic pop
     
     NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.5];
     while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
     }
     XCTAssert(iterations > 0, @"Polling object iterated zero times!");
-    [obj self];
 }
 
 - (void)testZeroInterval
 {
-    NNTestObject *obj = [NNTestObject new];
+    __attribute__((objc_precise_lifetime)) NNTestObject *obj = [NNTestObject new];
     obj.interval = 0.0;
     
     NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
@@ -85,21 +87,23 @@ static int iterations;
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
     }
     XCTAssert(iterations == 1, @"Polling object iterated more than once!");
-    [obj self];
 }
 
 - (void)testObjectDeath
 {
     @autoreleasepool {
-        NNTestObject *obj = [NNTestObject new];
+        #pragma clang diagnostic push
+        #pragma clang diagnostic ignored "-Wunused-variable"
+        __attribute__((objc_precise_lifetime)) NNTestObject *obj = [NNTestObject new];
+        #pragma clang diagnostic pop
         
         NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
         while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
         }
-        [obj self];
     }
-    usleep(1000);
+    (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
+    
     iterations = 0;
     NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
     while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {
