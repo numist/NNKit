@@ -324,9 +324,9 @@
 		BCD1D54717D9471A00A3EBD4 /* NNKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				BC82B3B4183AFDB700FDD3B9 /* NNMutableWeakSetTests.m */,
 				BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */,
 				BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */,
+				BC82B3B4183AFDB700FDD3B9 /* NNMutableWeakSetTests.m */,
 				BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */,
 				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
 				BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */,

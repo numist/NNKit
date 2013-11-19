@@ -18,6 +18,7 @@
 
 
 static NSString *notificationName = @"somenotification";
+unsigned receivedNotifications;
 
 
 @interface _NNWeakObserverTestObserver : NSObject
@@ -25,7 +26,7 @@ static NSString *notificationName = @"somenotification";
 @implementation _NNWeakObserverTestObserver
 - (void)notify:(NSNotification *)note;
 {
-    @throw [NSException exceptionWithName:notificationName reason:@"BECAUSE I WANNA" userInfo:nil];
+    receivedNotifications++;
 }
 - (void)dealloc;
 {
@@ -44,23 +45,20 @@ static NSString *notificationName = @"somenotification";
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    receivedNotifications = 0;
 }
 
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-- (void)testExample
+- (void)testWeakObservers
 {
     @autoreleasepool {
         __attribute__((objc_precise_lifetime)) _NNWeakObserverTestObserver *observer = [_NNWeakObserverTestObserver new];
         [[NSNotificationCenter defaultCenter] addWeakObserver:observer selector:@selector(notify:) name:notificationName object:nil];
-        XCTAssertThrows([[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self], @"");
+        [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self];
+        XCTAssertEqual(receivedNotifications, (unsigned)1, @"");
     }
     XCTAssertNoThrow([[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:self], @"");
+    XCTAssertEqual(receivedNotifications, (unsigned)1, @"");
 }
 
 @end
