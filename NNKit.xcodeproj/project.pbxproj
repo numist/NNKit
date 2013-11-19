@@ -11,8 +11,8 @@
 		BC1243761837051000461433 /* NNMutableWeakSet.h in Headers */ = {isa = PBXBuildFile; fileRef = BC1243731837051000461433 /* NNMutableWeakSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC1243771837051000461433 /* NNMutableWeakSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1243741837051000461433 /* NNMutableWeakSet.m */; };
 		BC1243781837051000461433 /* NNMutableWeakSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1243741837051000461433 /* NNMutableWeakSet.m */; };
-		BC12437F183AEFAC00461433 /* NNCleanupProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BC12437D183AEFAC00461433 /* NNCleanupProxy.h */; };
-		BC124380183AEFAC00461433 /* NNCleanupProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BC12437D183AEFAC00461433 /* NNCleanupProxy.h */; };
+		BC12437F183AEFAC00461433 /* NNCleanupProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BC12437D183AEFAC00461433 /* NNCleanupProxy.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BC124380183AEFAC00461433 /* NNCleanupProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = BC12437D183AEFAC00461433 /* NNCleanupProxy.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		BC124381183AEFAC00461433 /* NNCleanupProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC12437E183AEFAC00461433 /* NNCleanupProxy.m */; };
 		BC124382183AEFAC00461433 /* NNCleanupProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = BC12437E183AEFAC00461433 /* NNCleanupProxy.m */; };
 		BC19D3651810C6C3009CEC1F /* NNService.h in Headers */ = {isa = PBXBuildFile; fileRef = BC19D3631810C6C3009CEC1F /* NNService.h */; settings = {ATTRIBUTES = (Public, ); }; };

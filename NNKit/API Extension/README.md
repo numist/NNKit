@@ -37,8 +37,7 @@ Runtime provides functions that should exist in the Objective-C runtime, but don
 
 `nn_selector_belongsToProtocol` returns whether or not a selector belongs to a protocol, with additional arguments that inform its search pattern and return information about the selector found in the protocol. Providing default values for `instance` and `required` begin the search with those attributes, and their values on return indicate the attributes of the first match found.
 
-### `nn_property_copyAttributeList` ###
+NSNotificationCenter
+--------------------
 
-This function should have been included in the runtime. The return values of `method_getName`, `method_getImplementation`, and `method_getTypeEncoding` can be used as parameters to `class_addMethod`, same with the return values of `ivar_getName` and `ivar_getTypeEncoding` into `class_addIvar`. This lovely consistency breaks down when it comes to properties in the Objective-C runtime—the result of `property_getAttributes` is completely unsuitable for `class_addProperty`. 
-
-`nn_property_copyAttributeList` takes the result of `property_getAttributes` and returns a buffer in a format that can be used by `class_addProperty` directly, as well as easily enumerated.
+The `NNAdditions` category to `NSNotificationCenter` adds a `addWeakObserver:selector:name:object:` method which references the observer weakly so no observer removal is required—it is automatically cleaned up when the observer is deallocated.
