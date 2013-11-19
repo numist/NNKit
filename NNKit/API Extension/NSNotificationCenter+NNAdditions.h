@@ -16,7 +16,6 @@
 
 
 /*!
- * @class NSNotificationCenter
  * @category NNAdditions
  *
  * @discussion
