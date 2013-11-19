@@ -18,6 +18,6 @@
 #include <objc/runtime.h>
 
 BOOL nn_selector_belongsToProtocol(SEL selector, Protocol *protocol, BOOL *required, BOOL *instance);
-objc_property_attribute_t *nn_property_copyAttributeList(objc_property_t property, unsigned int *outCount);
+objc_property_attribute_t *nn_property_copyAttributeList(objc_property_t property, unsigned int *outCount) __attribute__((deprecated));
 
 #endif

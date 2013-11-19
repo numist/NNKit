@@ -16,7 +16,6 @@
 
 #import <objc/runtime.h>
 
-#import "runtime.h"
 #import "NNISASwizzledObject.h"
 #import "nn_autofree.h"
 
@@ -102,7 +101,7 @@ static BOOL _class_addPropertiesFromClass(Class targetClass, Class aClass)
     
     for (NSUInteger i = 0; properties && (property = properties[i]); i++) {
         unsigned attributeCount;
-        objc_property_attribute_t *attributes = nn_autofree(nn_property_copyAttributeList(property, &attributeCount));
+        objc_property_attribute_t *attributes = nn_autofree(property_copyAttributeList(property, &attributeCount));
 
         // targetClass is a brand new shiny class, so this should never fail because it already has certain properties (even though its superclass(es) might).
         if(!class_addProperty(targetClass, property_getName(property), attributes, attributeCount)) {
@@ -122,7 +121,7 @@ static BOOL _class_containsNonDynamicProperties(Class aClass)
     BOOL propertyIsDynamic = NO;
     
     for (unsigned i = 0; properties && properties[i]; i++) {
-        objc_property_attribute_t *attributes = nn_autofree(nn_property_copyAttributeList(properties[i], NULL));
+        objc_property_attribute_t *attributes = nn_autofree(property_copyAttributeList(properties[i], NULL));
         
         for (unsigned j = 0; attributes && attributes[j].name; j++) {
             if (!strcmp(attributes[j].name, "D")) { // The property is dynamic (@dynamic).

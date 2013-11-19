@@ -17,7 +17,7 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-#import "runtime.h"
+#import "nn_autofree.h"
 
 
 static SEL weakGetterForPropertyName(Class myClass, NSString *propertyName) {
@@ -33,7 +33,7 @@ static SEL weakGetterForPropertyName(Class myClass, NSString *propertyName) {
         return NO;
     }
     
-    objc_property_attribute_t *attributes = nn_property_copyAttributeList(property, NULL);
+    objc_property_attribute_t *attributes = nn_autofree(property_copyAttributeList(property, NULL));
     BOOL propertyIsWeak = NO;
     SEL getter = NSSelectorFromString(propertyName);
     for (int i = 0; attributes[i].name != NULL; ++i) {
@@ -47,7 +47,6 @@ static SEL weakGetterForPropertyName(Class myClass, NSString *propertyName) {
             return NO;
         }
     }
-    free(attributes);
     attributes = NULL;
     
     if (!propertyIsWeak) {
