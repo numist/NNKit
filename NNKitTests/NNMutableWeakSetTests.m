@@ -84,4 +84,20 @@
     XCTAssertEqual(set.count, (NSUInteger)0, @"");
 }
 
+- (void)testEnumeration;
+{
+    NSUInteger enumCount = 0;
+    NNMutableWeakSet *set = [NNMutableWeakSet new];
+    __attribute__((objc_precise_lifetime)) id foo = [NSObject new];
+    [set addObject:foo];
+    
+    for (NSObject *obj in set) {
+        enumCount++;
+        XCTAssertEqualObjects(obj, foo, @"");
+    }
+    
+    XCTAssertEqual(enumCount, set.count, @"");
+    XCTAssertEqual(set.count, (NSUInteger)1, @"");
+}
+
 @end

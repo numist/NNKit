@@ -14,6 +14,8 @@
 
 #import "NNMutableWeakSet.h"
 
+#import "_NNWeakArrayTombstone.h"
+#import "_NNMutableWeakSetEnumerator.h"
 #import "NNCleanupProxy.h"
 
 
@@ -23,42 +25,6 @@
 
 - (void)_removeObjectAllowingNil:(id)object;
 
-@end
-
-
-@interface _NNWeakArrayTombstone : NSObject
-@property (nonatomic, readonly, weak) id target;
-@property (nonatomic, readonly, assign) NSUInteger hash;
-@end
-@implementation _NNWeakArrayTombstone
-+ (_NNWeakArrayTombstone *)tombstoneWithTarget:(id)target;
-{
-    _NNWeakArrayTombstone *tombstone = [_NNWeakArrayTombstone new];
-    tombstone->_target = target;
-    return tombstone;
-}
-
-@synthesize hash = _hash;
-- (NSUInteger)hash;
-{
-    if (!self->_hash) {
-        @synchronized(self) {
-            if (!self->_hash) {
-                id target = self.target;
-                self->_hash = [target hash];
-            }
-        }
-    }
-    
-    return self->_hash;
-}
-
-- (BOOL)isEqual:(id)object;
-{
-    id target = self.target;
-    if ([target isEqual:object]) { return YES; }
-    return (uintptr_t)object == (uintptr_t)self;
-}
 @end
 
 
@@ -108,7 +74,7 @@
 
 - (NSEnumerator *)objectEnumerator;
 {
-    @throw nil;
+    return [[_NNMutableWeakSetEnumerator alloc] initWithMutableWeakSet:self];
 }
 
 #pragma mark NSMutableSet

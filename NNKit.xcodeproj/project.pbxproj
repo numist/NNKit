@@ -31,6 +31,14 @@
 		BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */; };
 		BC82B3B5183AFDB700FDD3B9 /* NNMutableWeakSetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3B4183AFDB700FDD3B9 /* NNMutableWeakSetTests.m */; };
 		BC82B3B6183AFDB700FDD3B9 /* NNMutableWeakSetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3B4183AFDB700FDD3B9 /* NNMutableWeakSetTests.m */; };
+		BC82B3B9183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3B7183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h */; };
+		BC82B3BA183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3B7183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h */; };
+		BC82B3BB183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3B8183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.m */; };
+		BC82B3BC183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3B8183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.m */; };
+		BC82B3BF183BECE900FDD3B9 /* _NNWeakArrayTombstone.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3BD183BECE900FDD3B9 /* _NNWeakArrayTombstone.h */; };
+		BC82B3C0183BECE900FDD3B9 /* _NNWeakArrayTombstone.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3BD183BECE900FDD3B9 /* _NNWeakArrayTombstone.h */; };
+		BC82B3C1183BECE900FDD3B9 /* _NNWeakArrayTombstone.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3BE183BECE900FDD3B9 /* _NNWeakArrayTombstone.m */; };
+		BC82B3C2183BECE900FDD3B9 /* _NNWeakArrayTombstone.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3BE183BECE900FDD3B9 /* _NNWeakArrayTombstone.m */; };
 		BCCA79F518075C6F00CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
 		BCCA7A1E1807608600CE36E5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D54117D9471A00A3EBD4 /* XCTest.framework */; };
 		BCCA7A1F1807608600CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
@@ -132,6 +140,10 @@
 		BC19D3701810C85B009CEC1F /* NNServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNServiceManager.m; path = Services/NNServiceManager.m; sourceTree = "<group>"; };
 		BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNServiceTests.m; sourceTree = "<group>"; };
 		BC82B3B4183AFDB700FDD3B9 /* NNMutableWeakSetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNMutableWeakSetTests.m; sourceTree = "<group>"; };
+		BC82B3B7183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _NNMutableWeakSetEnumerator.h; path = Collections/_NNMutableWeakSetEnumerator.h; sourceTree = "<group>"; };
+		BC82B3B8183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _NNMutableWeakSetEnumerator.m; path = Collections/_NNMutableWeakSetEnumerator.m; sourceTree = "<group>"; };
+		BC82B3BD183BECE900FDD3B9 /* _NNWeakArrayTombstone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _NNWeakArrayTombstone.h; path = Collections/_NNWeakArrayTombstone.h; sourceTree = "<group>"; };
+		BC82B3BE183BECE900FDD3B9 /* _NNWeakArrayTombstone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _NNWeakArrayTombstone.m; path = Collections/_NNWeakArrayTombstone.m; sourceTree = "<group>"; };
 		BCCA79F318075C6F00CE36E5 /* libNNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNNKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA79F418075C6F00CE36E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCCA7A0418075C6F00CE36E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -234,6 +246,10 @@
 		BC1243791837065E00461433 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BC82B3B7183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h */,
+				BC82B3B8183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.m */,
+				BC82B3BD183BECE900FDD3B9 /* _NNWeakArrayTombstone.h */,
+				BC82B3BE183BECE900FDD3B9 /* _NNWeakArrayTombstone.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -418,9 +434,11 @@
 				BCCB1BF41835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h in Headers */,
 				BCCA7A421807629700CE36E5 /* NNPollingObject.h in Headers */,
 				BCCA7A49180762C000CE36E5 /* nn_isaSwizzling.h in Headers */,
+				BC82B3BA183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h in Headers */,
 				BCCA7A4A180762C700CE36E5 /* NNISASwizzledObject.h in Headers */,
 				BCCA7A431807629C00CE36E5 /* NNPollingObject+Protected.h in Headers */,
 				BCCA7A45180762A800CE36E5 /* NNDelegateProxy.h in Headers */,
+				BC82B3C0183BECE900FDD3B9 /* _NNWeakArrayTombstone.h in Headers */,
 				BC19D36C1810C7F7009CEC1F /* NNTestService.h in Headers */,
 				BCCA7A48180762BB00CE36E5 /* nn_isaSwizzling_Private.h in Headers */,
 				BC1243761837051000461433 /* NNMutableWeakSet.h in Headers */,
@@ -443,9 +461,11 @@
 				BCCB1BF31835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h in Headers */,
 				BCD1D5C117DECC8E00A3EBD4 /* nn_autofree.h in Headers */,
 				BCD1D5B417D9C79F00A3EBD4 /* NNPollingObject+Protected.h in Headers */,
+				BC82B3B9183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h in Headers */,
 				BCD1D5BD17D9C88F00A3EBD4 /* NNStrongifiedProperties.h in Headers */,
 				BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */,
 				BCD1D5A917D9C72F00A3EBD4 /* despatch.h in Headers */,
+				BC82B3BF183BECE900FDD3B9 /* _NNWeakArrayTombstone.h in Headers */,
 				BC19D36B1810C7F7009CEC1F /* NNTestService.h in Headers */,
 				BCD1D58C17D9A14300A3EBD4 /* nn_isaSwizzling_Private.h in Headers */,
 				BC1243751837051000461433 /* NNMutableWeakSet.h in Headers */,
@@ -598,6 +618,7 @@
 				BCCA7A381807626200CE36E5 /* NNSelfInvalidatingObject.m in Sources */,
 				BC1243781837051000461433 /* NNMutableWeakSet.m in Sources */,
 				BC124382183AEFAC00461433 /* NNCleanupProxy.m in Sources */,
+				BC82B3BC183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.m in Sources */,
 				BCCA7A391807626200CE36E5 /* NNDelegateProxy.m in Sources */,
 				BC19D3681810C6C3009CEC1F /* NNService.m in Sources */,
 				BCCA7A3A1807626200CE36E5 /* NNStrongifiedProperties.m in Sources */,
@@ -606,6 +627,7 @@
 				BCCA7A3D1807626200CE36E5 /* NNISASwizzledObject.m in Sources */,
 				BC19D3741810C85B009CEC1F /* NNServiceManager.m in Sources */,
 				BCCA7A3E1807626200CE36E5 /* NNKit.m in Sources */,
+				BC82B3C2183BECE900FDD3B9 /* _NNWeakArrayTombstone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +658,7 @@
 				BCD1D5AB17D9C72F00A3EBD4 /* runtime.c in Sources */,
 				BC1243771837051000461433 /* NNMutableWeakSet.m in Sources */,
 				BC124381183AEFAC00461433 /* NNCleanupProxy.m in Sources */,
+				BC82B3BB183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.m in Sources */,
 				BCD1D5C217DECC8E00A3EBD4 /* nn_autofree.m in Sources */,
 				BC19D3671810C6C3009CEC1F /* NNService.m in Sources */,
 				BCD1D5B317D9C79F00A3EBD4 /* NNPollingObject.m in Sources */,
@@ -644,6 +667,7 @@
 				BCD1D5BA17D9C84000A3EBD4 /* NNDelegateProxy.m in Sources */,
 				BC19D3731810C85B009CEC1F /* NNServiceManager.m in Sources */,
 				BCD1D58E17D9A14300A3EBD4 /* nn_isaSwizzling.m in Sources */,
+				BC82B3C1183BECE900FDD3B9 /* _NNWeakArrayTombstone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
