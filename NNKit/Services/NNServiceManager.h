@@ -61,7 +61,7 @@
  * An instance of the requested service. <code>nil</code> if the service has
  * not been registered with this service manager.
  */
-- (id<NNService>)instanceForService:(Class)service;
+- (NNService *)instanceForService:(Class)service;
 
 /*!
  * @method subscribeToService:

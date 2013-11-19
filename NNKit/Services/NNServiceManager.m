@@ -22,13 +22,7 @@ static NSMutableSet *claimedServices;
 
 static BOOL _serviceIsValid(Class service)
 {
-    do {
-        if (class_conformsToProtocol(service, @protocol(NNService))) {
-            return YES;
-        }
-    } while ((service = class_getSuperclass(service)));
-    
-    return NO;
+    return [service isSubclassOfClass:[NNService class]];
 }
 
 
@@ -36,8 +30,9 @@ static BOOL _serviceIsValid(Class service)
 
 @property (nonatomic, assign) NSUInteger subscriberCount;
 @property (nonatomic, assign, readonly) NNServiceType type;
-@property (nonatomic, strong, readonly) id<NNService> instance;
+@property (nonatomic, strong, readonly) NNService *instance;
 @property (nonatomic, strong, readonly) NSSet *dependencies;
+@property (nonatomic, strong, readonly) Protocol *subscriberProtocol;
 
 - (instancetype)initWithService:(Class)service;
 
@@ -53,7 +48,9 @@ static BOOL _serviceIsValid(Class service)
     
     self->_instance = [service sharedService];
     self->_type = self->_instance.serviceType;
-    self->_dependencies = self->_instance.dependencies ?: [NSSet set];
+    self->_dependencies = [self->_instance respondsToSelector:@selector(dependencies)] ? (self->_instance.dependencies ?: [NSSet set]) : [NSSet set];
+    self->_subscriberProtocol = [self->_instance respondsToSelector:@selector(subscriberProtocol)] ? self->_instance.subscriberProtocol : @protocol(NSObject);
+    #pragma message "verify that the protocol's methods only ever return void"
 
     return self;
 }
@@ -162,7 +159,7 @@ static BOOL _serviceIsValid(Class service)
     [self _startServiceIfReady:service];
 }
 
-- (id<NNService>)instanceForService:(Class)service;
+- (NNService *)instanceForService:(Class)service;
 {
     // May be nil if service is not registered!
     return SERVICEINFO(service).instance;
@@ -225,7 +222,7 @@ static BOOL _serviceIsValid(Class service)
 {
     NSParameterAssert(![self.runningServices containsObject:service]);
 
-    id<NNService> instance = SERVICEINFO(service).instance;
+    NNService *instance = SERVICEINFO(service).instance;
     if ([instance respondsToSelector:@selector(startService)]) {
         [instance startService];
     }
@@ -246,7 +243,7 @@ static BOOL _serviceIsValid(Class service)
         [self _stopServiceIfDone:dependantClass];
     }
     
-    id<NNService> instance = SERVICEINFO(service).instance;
+    NNService *instance = SERVICEINFO(service).instance;
     if ([instance respondsToSelector:@selector(stopService)]) {
         [instance stopService];
     }

@@ -31,15 +31,12 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
 
 
 /*!
- * @protocol NNService
+ * @class NNService
  *
  * @discussion
- * Protocol that all services must implement to be supported by a
- * <code>NNServiceManager</code>.
  */
-@protocol NNService <NSObject>
+@interface NNService : NSObject
 
-@required
 /*!
  * @method sharedService
  *
@@ -55,7 +52,7 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @method serviceType
  *
  * @discussion
- * The type of the service. Must not be NNServiceTypeNone.
+ * The type of the service. Must be overridden. Must not return NNServiceTypeNone.
  */
 - (NNServiceType)serviceType;
 
@@ -69,16 +66,23 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  *
  * @result
  * Returns a set of <code>Class</code>es that this service depends on to run.
- * Can be <code>nil</code>.
+ * Default implementation returns nil;
  */
 - (NSSet *)dependencies;
 
-@optional
+/*!
+ * @method subscriberProtocol
+ *
+ * @discussion
+ * Protocol for subscribers to conform to. Default implementation returns <code>@protocol(NSObject)</code>.
+ */
+- (Protocol *)subscriberProtocol;
+
 /*!
  * @method startService
  *
  * @discussion
- * Called when the service is started. Optional.
+ * Called when the service is started.
  */
 - (void)startService;
 
@@ -86,22 +90,8 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @method stopService
  *
  * @discussion
- * Called when the service is stopped. Optional.
+ * Called when the service is stopped.
  */
 - (void)stopService;
-
-@end
-
-
-/*!
- * @class NNService
- *
- * @discussion
- * The <code>NNService</code> class contains generic implementations for most of
- * the methods in the <code>NNService</code> protocol. Only
- * <code>serviceType</code> still needs to be overridden for a service to be
- * legal.
- */
-@interface NNService : NSObject <NNService>
 
 @end

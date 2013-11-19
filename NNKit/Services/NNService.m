@@ -28,7 +28,7 @@
         instances = [NSMutableDictionary new];
     });
     
-    id<NNService> result;
+    NNService *result;
     
     @synchronized(instances) {
         result = [instances objectForKey:self];
@@ -54,6 +54,21 @@
 - (id<NSFastEnumeration>)dependencies;
 {
     return nil;
+}
+
+- (Protocol *)subscriberProtocol;
+{
+    return @protocol(NSObject);
+}
+
+- (void)startService;
+{
+    
+}
+
+- (void)stopService;
+{
+    
 }
 
 @end
