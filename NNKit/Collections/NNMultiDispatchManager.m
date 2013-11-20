@@ -56,19 +56,21 @@
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation;
 {
-    NSAssert(strstr(anInvocation.methodSignature.methodReturnType, "v"), @"Method return type must be void.");
-    dispatch_block_t dispatch = ^{
-        for (id obj in self.observers) {
-            if ([obj respondsToSelector:anInvocation.selector]) {
-                [anInvocation invokeWithTarget:obj];
+    if (self.enabled) {
+        NSAssert(strstr(anInvocation.methodSignature.methodReturnType, "v"), @"Method return type must be void.");
+        dispatch_block_t dispatch = ^{
+            for (id obj in self.observers) {
+                if ([obj respondsToSelector:anInvocation.selector]) {
+                    [anInvocation invokeWithTarget:obj];
+                }
             }
+        };
+        if (anInvocation.methodSignature.isOneway) {
+            [anInvocation retainArguments];
+            dispatch_async(dispatch_get_main_queue(), dispatch);
+        } else {
+            despatch_sync_main_reentrant(dispatch);
         }
-    };
-    if (anInvocation.methodSignature.isOneway) {
-        [anInvocation retainArguments];
-        dispatch_async(dispatch_get_main_queue(), dispatch);
-    } else {
-        despatch_sync_main_reentrant(dispatch);
     }
     
     anInvocation.target = nil;

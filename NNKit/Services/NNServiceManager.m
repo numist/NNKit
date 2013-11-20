@@ -56,7 +56,6 @@ static BOOL _serviceIsValid(Class service)
     self->_type = self->_instance.serviceType;
     self->_dependencies = [self->_instance respondsToSelector:@selector(dependencies)] ? (self->_instance.dependencies ?: [NSSet set]) : [NSSet set];
     self->_subscriberProtocol = [self->_instance respondsToSelector:@selector(subscriberProtocol)] ? self->_instance.subscriberProtocol : @protocol(NSObject);
-    #pragma message "verify that the protocol's methods only ever return void"
 
     return self;
 }
@@ -239,6 +238,7 @@ static BOOL _serviceIsValid(Class service)
         [instance startService];
     }
     [self.runningServices addObject:service];
+    SERVICEINFO(service).instance.subscriberDispatcher.enabled = YES;
     
     for (Class dependantClass in self.dependantServices[service]) {
         [self _startServiceIfReady:dependantClass];
@@ -249,6 +249,7 @@ static BOOL _serviceIsValid(Class service)
 {
     NSParameterAssert([self.runningServices containsObject:service]);
     
+    SERVICEINFO(service).instance.subscriberDispatcher.enabled = NO;
     [self.runningServices removeObject:service];
     
     for (Class dependantClass in self.dependantServices[service]) {

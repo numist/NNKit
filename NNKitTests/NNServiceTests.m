@@ -87,6 +87,7 @@ static BOOL serviceDRunning = NO;
 - (void)stopService { NSAssert(serviceDRunning, @""); serviceDRunning = NO; }
 @end
 
+// Service E has no dependencies, runs on demand
 static BOOL serviceERunning = NO;
 @protocol TestServiceEProtocol <NSObject>
 - (void)foo:(id)sender;
@@ -101,6 +102,7 @@ static BOOL serviceERunning = NO;
 }
 - (void)stopService {
     serviceERunning = NO;
+    [(id)self.subscriberDispatcher foo:self];
 }
 @end
 
@@ -210,6 +212,7 @@ unsigned eventsDispatched;
     }
     (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
     XCTAssertFalse(serviceERunning, @"");
+    XCTAssertEqual(eventsDispatched, (unsigned)1, @"");
 }
 
 @end

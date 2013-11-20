@@ -11,6 +11,8 @@
 
 @interface NNMultiDispatchManager : NSObject
 
+@property (nonatomic, assign, readwrite, getter = isEnabled, setter = setIsEnabled:) BOOL enabled;
+
 - (instancetype)initWithProtocol:(Protocol *)protocol;
 
 - (void)addObserver:(id)observer;
