@@ -18,7 +18,7 @@
 #import <mach/mach.h>
 
 
-size_t report_memory(void) {
+static size_t report_memory(void) {
     struct task_basic_info info;
     mach_msg_type_number_t size = sizeof(info);
     kern_return_t kerr = task_info(mach_task_self(),
@@ -130,7 +130,8 @@ size_t report_memory(void) {
         }
     }
 
-    XCTAssertFalse(report_memory() - memoryUsageAtStart > 1e4, @"");
+    size_t bytes = report_memory() - memoryUsageAtStart;
+    XCTAssertFalse(bytes > 1e4, @"Memory usage increased by %zu bytes by end of test", bytes);
 }
 
 @end

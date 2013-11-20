@@ -14,8 +14,24 @@
 
 #import <XCTest/XCTest.h>
 
+#import <mach/mach.h>
+
 #import "NNServiceManager.h"
 #import "NNService+Protected.h"
+
+
+static size_t report_memory(void) {
+    struct task_basic_info info;
+    mach_msg_type_number_t size = sizeof(info);
+    kern_return_t kerr = task_info(mach_task_self(),
+                                   TASK_BASIC_INFO,
+                                   (task_info_t)&info,
+                                   &size);
+    if( kerr != KERN_SUCCESS ) {
+        @throw [NSException exceptionWithName:@"wtf" reason:[NSString stringWithFormat:@"Error with task_info(): %s", mach_error_string(kerr)] userInfo:nil];
+    }
+    return info.resident_size;
+}
 
 
 /*
@@ -137,6 +153,12 @@ unsigned eventsDispatched;
     eventsDispatched = 0;
 }
 
+- (void)tearDown;
+{
+    // Give cleanup tasks scheduled on the main queue an opportunity to run.
+    (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
+}
+
 - (void)testBasic
 {
     NNServiceManager *manager = [NNServiceManager new];
@@ -187,6 +209,7 @@ unsigned eventsDispatched;
     XCTAssertTrue(serviceBRunning, @"");
     XCTAssertTrue(serviceCRunning, @"");
     manager = nil;
+    (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
     XCTAssertFalse(serviceARunning, @"");
     XCTAssertFalse(serviceBRunning, @"");
     XCTAssertFalse(serviceCRunning, @"");
@@ -238,6 +261,29 @@ unsigned eventsDispatched;
     }
     (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
     XCTAssertFalse(serviceERunning, @"");
+}
+
+- (void)testMemoryLeaks;
+{
+    NNServiceManager *manager = [NNServiceManager new];
+    [manager registerService:[TestServiceD self]];
+    [manager registerService:[TestServiceE self]];
+    XCTAssertFalse(serviceERunning, @"");
+    __attribute__((objc_precise_lifetime)) TestServiceESubscriber *foo = [TestServiceESubscriber new];
+    
+    unsigned iterations;
+    size_t memoryUsageAtStart = report_memory();
+    for (iterations = 0; iterations < 1e4; ++iterations) {
+        @autoreleasepool {
+            [manager addSubscriber:foo forService:[TestServiceE self]];
+            [manager removeSubscriber:foo forService:[TestServiceE self]];
+            // Allow the main dispatch queue an opportunity to run its async blocks
+            (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
+        }
+    }
+    
+    size_t bytes = report_memory() - memoryUsageAtStart;
+    XCTAssertFalse(bytes > 1e4, @"Memory usage increased by %zu bytes by end of test", bytes);
 }
 
 @end
