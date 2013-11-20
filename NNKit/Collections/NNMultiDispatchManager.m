@@ -93,7 +93,7 @@
     }
     
     // Recurse to include other protocols to which this protocol adopts
-    Protocol * __unsafe_unretained *adoptions = protocol_copyProtocolList(protocol, &totalCount);
+    Protocol * __unsafe_unretained *adoptions = (Protocol * __unsafe_unretained*)nn_autofree(protocol_copyProtocolList(protocol, &totalCount));
     for (unsigned j = 0; j < totalCount; j++) {
         [self _cacheMethodSignaturesForProcotol:adoptions[j]];
     }
