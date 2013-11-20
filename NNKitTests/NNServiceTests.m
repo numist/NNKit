@@ -15,7 +15,7 @@
 #import <XCTest/XCTest.h>
 
 #import "NNServiceManager.h"
-#import "NNService.h"
+#import "NNService+Protected.h"
 
 
 /*
@@ -87,11 +87,49 @@ static BOOL serviceDRunning = NO;
 - (void)stopService { NSAssert(serviceDRunning, @""); serviceDRunning = NO; }
 @end
 
+static BOOL serviceERunning = NO;
+@protocol TestServiceEProtocol <NSObject>
+- (void)foo:(id)sender;
+@end
+@interface TestServiceE : NNService @end
+@implementation TestServiceE
+- (NNServiceType)serviceType { return NNServiceTypeOnDemand; }
+- (Protocol *)subscriberProtocol { return @protocol(TestServiceEProtocol); }
+- (void)startService {
+    serviceERunning = YES;
+    [(id)self.subscriberDispatcher foo:self];
+}
+- (void)stopService {
+    serviceERunning = NO;
+}
+@end
+
+
+unsigned eventsDispatched;
+
+
+@interface TestServiceESubscriber : NSObject <TestServiceEProtocol>
+@end
+@implementation TestServiceESubscriber
+- (void)foo:(id)sender;
+{
+    eventsDispatched++;
+}
+@end
+
+
 @interface NNServiceTests : XCTestCase
 
 @end
 
 @implementation NNServiceTests
+
+- (void)setUp;
+{
+    [super setUp];
+    
+    eventsDispatched = 0;
+}
 
 - (void)testBasic
 {
@@ -120,22 +158,22 @@ static BOOL serviceDRunning = NO;
     [manager registerService:[TestServiceB self]];
     XCTAssertFalse(serviceARunning, @"");
     XCTAssertFalse(serviceBRunning, @"");
-    [manager subscribeToService:[TestServiceA self]];
+    [manager addSubscriber:self forService:[TestServiceA self]];
     XCTAssertTrue(serviceARunning, @"");
     XCTAssertTrue(serviceBRunning, @"");
-    [manager subscribeToService:[TestServiceA self]];
+    [manager addSubscriber:self forService:[TestServiceA self]];
     XCTAssertTrue(serviceARunning, @"");
     XCTAssertTrue(serviceBRunning, @"");
-    [manager unsubscribeFromService:[TestServiceA self]];
+    [manager removeSubscriber:self forService:[TestServiceA self]];
     XCTAssertTrue(serviceARunning, @"");
     XCTAssertTrue(serviceBRunning, @"");
     [manager registerService:[TestServiceC self]];
     XCTAssertTrue(serviceCRunning, @"");
-    [manager unsubscribeFromService:[TestServiceA self]];
+    [manager removeSubscriber:self forService:[TestServiceA self]];
     XCTAssertFalse(serviceARunning, @"");
     XCTAssertFalse(serviceBRunning, @"");
     XCTAssertFalse(serviceCRunning, @"");
-    [manager subscribeToService:[TestServiceA self]];
+    [manager addSubscriber:self forService:[TestServiceA self]];
     XCTAssertTrue(serviceARunning, @"");
     XCTAssertTrue(serviceBRunning, @"");
     XCTAssertTrue(serviceCRunning, @"");
@@ -143,6 +181,35 @@ static BOOL serviceDRunning = NO;
     XCTAssertFalse(serviceARunning, @"");
     XCTAssertFalse(serviceBRunning, @"");
     XCTAssertFalse(serviceCRunning, @"");
+}
+
+- (void)testWeakSubscribers
+{
+    NNServiceManager *manager = [NNServiceManager new];
+    [manager registerService:[TestServiceA self]];
+    XCTAssertFalse(serviceARunning, @"");
+    @autoreleasepool {
+        __attribute__((objc_precise_lifetime)) id foo = [NSObject new];
+        [manager addSubscriber:foo forService:[TestServiceA self]];
+        XCTAssertTrue(serviceARunning, @"");
+    }
+    (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
+    XCTAssertFalse(serviceARunning, @"");
+}
+
+- (void)testSubscriberDispatch
+{
+    NNServiceManager *manager = [NNServiceManager new];
+    [manager registerService:[TestServiceE self]];
+    XCTAssertFalse(serviceARunning, @"");
+    @autoreleasepool {
+        __attribute__((objc_precise_lifetime)) TestServiceESubscriber *foo = [TestServiceESubscriber new];
+        [manager addSubscriber:foo forService:[TestServiceE self]];
+        XCTAssertTrue(serviceERunning, @"");
+        XCTAssertEqual(eventsDispatched, (unsigned)1, @"");
+    }
+    (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
+    XCTAssertFalse(serviceERunning, @"");
 }
 
 @end

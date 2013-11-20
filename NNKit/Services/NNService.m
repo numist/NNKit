@@ -12,9 +12,17 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "NNService.h"
+#import "NNService+Protected.h"
 
 #import "NNServiceManager.h"
+#import "NNMultiDispatchManager.h"
+
+
+@interface NNService ()
+
+@property (nonatomic, readonly, strong) NNMultiDispatchManager *subscriberDispatcher;
+
+@end
 
 
 @implementation NNService
@@ -39,6 +47,15 @@
     }
     
     return result;
+}
+
+- (id)init;
+{
+    if (!(self = [super init])) { return nil; }
+    
+    self->_subscriberDispatcher = [[NNMultiDispatchManager alloc] initWithProtocol:self.subscriberProtocol];
+    
+    return self;
 }
 
 - (id<NSFastEnumeration>)notificationNames;

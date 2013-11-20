@@ -64,27 +64,37 @@
 - (NNService *)instanceForService:(Class)service;
 
 /*!
- * @method subscribeToService:
+ * @method addSubscriber:forService::
  *
  * @discussion
  * Increments the service's subscriber count. Services that are run on demand
  * will be started by calls to this method if there were not other subscribers.
  *
+ * Subscribers are automatically removed if they are deallocated while
+ * subscribed to the service.
+ *
+ * @param subscriber
+ * The object that is interested in the service. If the service defines a
+ * specificl protocol with +subscriberProtocol, the subscriber must conform to it.
+ *
  * @param service
  * The service to which the caller is subscribing.
  */
-- (void)subscribeToService:(Class)service;
+- (void)addSubscriber:(id)subscriber forService:(Class)service;
 
 /*!
- * @method unsubscribeFromService:
+ * @method removeSubscriber:forService:
  *
  * @discussion
  * Decrements the service's subscriber count. Services that are run on demand
  * will be stopped by calls to this method when the subscriber count reaches zero.
  *
+ * @param subscriber
+ * The object that is no longer interested in the service.
+ *
  * @param service
  * The service to which the caller is unsubscribing.
  */
-- (void)unsubscribeFromService:(Class)service;
+- (void)removeSubscriber:(id)subscriber forService:(Class)service;
 
 @end

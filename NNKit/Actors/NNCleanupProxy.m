@@ -53,6 +53,12 @@
     return result;
 }
 
++ (void)cleanupAfterTarget:(id)target withBlock:(void (^)())block;
+{
+    NNCleanupProxy *result = [NNCleanupProxy cleanupProxyForTarget:target];
+    result.cleanupBlock = block;
+}
+
 - (void)dealloc;
 {
     if (self->_cleanupBlock) {

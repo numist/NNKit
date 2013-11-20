@@ -20,6 +20,7 @@ dispatch_group_t group;
 - (oneway void)bar:(id)sender;
 @optional
 - (void)baz:(id)sender;
+- (id)qux:(id)sender;
 @end
 
 
@@ -159,6 +160,22 @@ dispatch_group_t group;
     
     [(id<NNMultiDispatchManagerTestProtocol>)manager foo:self];
     XCTAssertEqual(callCount, (unsigned)2, @"");
+}
+
+- (void)testIllegalReturnType
+{
+    NNMultiDispatchManager *manager = [[NNMultiDispatchManager alloc] initWithProtocol:@protocol(NNMultiDispatchManagerTestProtocol)];
+    __attribute__((objc_precise_lifetime)) id foo1 = [NNMultiDispatchManagerTestObject new];
+    __attribute__((objc_precise_lifetime)) id foo2 = [NNMultiDispatchManagerTestObject new];
+    __attribute__((objc_precise_lifetime)) id foo3 = [NNMultiDispatchManagerTestObject2 new];
+    __attribute__((objc_precise_lifetime)) id foo4 = [NNMultiDispatchManagerTestObject2 new];
+    [manager addObserver:foo1];
+    [manager addObserver:foo2];
+    [manager addObserver:foo3];
+    [manager addObserver:foo4];
+    
+    XCTAssertThrows((void)[(id<NNMultiDispatchManagerTestProtocol>)manager qux:self], @"");
+    XCTAssertEqual(callCount, (unsigned)0, @"");
 }
 
 @end

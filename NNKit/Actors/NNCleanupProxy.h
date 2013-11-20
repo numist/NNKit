@@ -51,6 +51,8 @@
  */
 + (NNCleanupProxy *)cleanupProxyForTarget:(id)target conformingToProtocol:(Protocol *)protocol;
 
++ (void)cleanupAfterTarget:(id)target withBlock:(void (^)())block;
+
 /*!
  * @property cleanupBlock
  *

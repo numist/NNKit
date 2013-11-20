@@ -16,6 +16,11 @@
 
 #import <objc/runtime.h>
 
+#import "NNCleanupProxy.h"
+#import "NNMultiDispatchManager+Protected.h"
+#import "NNMutableWeakSet.h"
+#import "NNService+Protected.h"
+
 
 static NSMutableSet *claimedServices;
 
@@ -28,7 +33,7 @@ static BOOL _serviceIsValid(Class service)
 
 @interface _NNServiceInfo : NSObject
 
-@property (nonatomic, assign) NSUInteger subscriberCount;
+@property (nonatomic, strong, readonly) NNMutableWeakSet *subscribers;
 @property (nonatomic, assign, readonly) NNServiceType type;
 @property (nonatomic, strong, readonly) NNService *instance;
 @property (nonatomic, strong, readonly) NSSet *dependencies;
@@ -46,6 +51,7 @@ static BOOL _serviceIsValid(Class service)
     NSParameterAssert(_serviceIsValid(service));
     if (!(self = [super init])) { return nil; }
     
+    self->_subscribers = [NNMutableWeakSet new];
     self->_instance = [service sharedService];
     self->_type = self->_instance.serviceType;
     self->_dependencies = [self->_instance respondsToSelector:@selector(dependencies)] ? (self->_instance.dependencies ?: [NSSet set]) : [NSSet set];
@@ -165,21 +171,27 @@ static BOOL _serviceIsValid(Class service)
     return SERVICEINFO(service).instance;
 }
 
-- (void)subscribeToService:(Class)service;
+- (void)addSubscriber:(id)subscriber forService:(Class)service;
 {
     NSParameterAssert(SERVICEINFO(service));
-    NSParameterAssert(SERVICEINFO(service).type == NNServiceTypeOnDemand);
+    NSParameterAssert([subscriber conformsToProtocol:SERVICEINFO(service).subscriberProtocol]);
     
-    SERVICEINFO(service).subscriberCount++;
+    [SERVICEINFO(service).subscribers addObject:subscriber];
+    [SERVICEINFO(service).instance.subscriberDispatcher addObserver:subscriber];
+    __weak typeof(self) weakSelf = self;
+    [NNCleanupProxy cleanupAfterTarget:subscriber withBlock:^{ dispatch_async(dispatch_get_main_queue(), ^{
+        typeof(self) self = weakSelf;
+        [self _stopServiceIfDone:service];
+    }); }];
     [self _startServiceIfReady:service];
 }
 
-- (void)unsubscribeFromService:(Class)service;
+- (void)removeSubscriber:(id)subscriber forService:(Class)service;
 {
     NSParameterAssert(SERVICEINFO(service));
-    NSParameterAssert(SERVICEINFO(service).type == NNServiceTypeOnDemand);
 
-    SERVICEINFO(service).subscriberCount--;
+    [SERVICEINFO(service).subscribers removeObject:subscriber];
+    [SERVICEINFO(service).instance.subscriberDispatcher removeObserver:subscriber];
     [self _stopServiceIfDone:service];
 }
 
@@ -191,7 +203,7 @@ static BOOL _serviceIsValid(Class service)
         return;
     }
     
-    if (SERVICEINFO(service).type == NNServiceTypeOnDemand && SERVICEINFO(service).subscriberCount == 0) {
+    if (SERVICEINFO(service).type == NNServiceTypeOnDemand && SERVICEINFO(service).subscribers.count == 0) {
         return;
     }
     
@@ -210,7 +222,7 @@ static BOOL _serviceIsValid(Class service)
     }
 
     BOOL dependenciesMet = [SERVICEINFO(service).dependencies isSubsetOfSet:self.runningServices];
-    BOOL serviceIsWanted = SERVICEINFO(service).type != NNServiceTypeOnDemand || SERVICEINFO(service).subscriberCount > 0;
+    BOOL serviceIsWanted = SERVICEINFO(service).type != NNServiceTypeOnDemand || SERVICEINFO(service).subscribers.count > 0;
     if (dependenciesMet && serviceIsWanted) {
         return;
     }
