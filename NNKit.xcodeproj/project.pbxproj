@@ -37,6 +37,12 @@
 		BC82B3C2183BECE900FDD3B9 /* _NNWeakArrayTombstone.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3BE183BECE900FDD3B9 /* _NNWeakArrayTombstone.m */; };
 		BC82B3C9183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
 		BC82B3CA183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
+		BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC82B3D6183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC82B3D7183C29B600FDD3B9 /* NNMultiDispatchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */; };
+		BC82B3D8183C29B600FDD3B9 /* NNMultiDispatchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */; };
+		BC82B3DA183C317000FDD3B9 /* NNMultiDispatchManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */; };
+		BC82B3DB183C317000FDD3B9 /* NNMultiDispatchManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */; };
 		BCCA79F518075C6F00CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
 		BCCA7A1E1807608600CE36E5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D54117D9471A00A3EBD4 /* XCTest.framework */; };
 		BCCA7A1F1807608600CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
@@ -141,6 +147,9 @@
 		BC82B3BD183BECE900FDD3B9 /* _NNWeakArrayTombstone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _NNWeakArrayTombstone.h; path = Collections/_NNWeakArrayTombstone.h; sourceTree = "<group>"; };
 		BC82B3BE183BECE900FDD3B9 /* _NNWeakArrayTombstone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _NNWeakArrayTombstone.m; path = Collections/_NNWeakArrayTombstone.m; sourceTree = "<group>"; };
 		BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNCleanupProxyTests.m; sourceTree = "<group>"; };
+		BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNMultiDispatchManager.h; path = Collections/NNMultiDispatchManager.h; sourceTree = "<group>"; };
+		BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManager.m; path = Collections/NNMultiDispatchManager.m; sourceTree = "<group>"; };
+		BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManagerTests.m; path = NNKitTests/NNMultiDispatchManagerTests.m; sourceTree = SOURCE_ROOT; };
 		BCCA79F318075C6F00CE36E5 /* libNNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNNKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA79F418075C6F00CE36E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCCA7A0418075C6F00CE36E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -233,6 +242,8 @@
 		BC1243631837022700461433 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
+				BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */,
+				BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */,
 				BC1243731837051000461433 /* NNMutableWeakSet.h */,
 				BC1243741837051000461433 /* NNMutableWeakSet.m */,
 				BC1243791837065E00461433 /* Supporting Files */,
@@ -337,6 +348,7 @@
 			children = (
 				BCD1D59117D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m */,
 				BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */,
+				BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */,
 				BC82B3B4183AFDB700FDD3B9 /* NNMutableWeakSetTests.m */,
 				BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */,
 				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
@@ -432,6 +444,7 @@
 				BCCA7A49180762C000CE36E5 /* nn_isaSwizzling.h in Headers */,
 				BC82B3BA183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h in Headers */,
 				BCCA7A4A180762C700CE36E5 /* NNISASwizzledObject.h in Headers */,
+				BC82B3D6183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */,
 				BCCA7A431807629C00CE36E5 /* NNPollingObject+Protected.h in Headers */,
 				BCCA7A45180762A800CE36E5 /* NNDelegateProxy.h in Headers */,
 				BC82B3C0183BECE900FDD3B9 /* _NNWeakArrayTombstone.h in Headers */,
@@ -458,6 +471,7 @@
 				BCD1D5B417D9C79F00A3EBD4 /* NNPollingObject+Protected.h in Headers */,
 				BC82B3B9183BEBF800FDD3B9 /* _NNMutableWeakSetEnumerator.h in Headers */,
 				BCD1D5BD17D9C88F00A3EBD4 /* NNStrongifiedProperties.h in Headers */,
+				BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */,
 				BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */,
 				BCD1D5A917D9C72F00A3EBD4 /* despatch.h in Headers */,
 				BC82B3BF183BECE900FDD3B9 /* _NNWeakArrayTombstone.h in Headers */,
@@ -607,6 +621,7 @@
 				BCCA7A351807626200CE36E5 /* despatch.m in Sources */,
 				BCCA7A361807626200CE36E5 /* runtime.c in Sources */,
 				BCCA7A371807626200CE36E5 /* NNPollingObject.m in Sources */,
+				BC82B3D8183C29B600FDD3B9 /* NNMultiDispatchManager.m in Sources */,
 				BCCB1BF61835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m in Sources */,
 				BCCA7A381807626200CE36E5 /* NNSelfInvalidatingObject.m in Sources */,
 				BC1243781837051000461433 /* NNMutableWeakSet.m in Sources */,
@@ -633,6 +648,7 @@
 				BC82B3CA183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */,
 				BCCB1BFF1835FD9A0029EBF6 /* NNWeakObserverTests.m in Sources */,
 				BCCA7A321807622200CE36E5 /* NNDelegateProxyTests.m in Sources */,
+				BC82B3DB183C317000FDD3B9 /* NNMultiDispatchManagerTests.m in Sources */,
 				BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCCA7A331807622200CE36E5 /* NNStrongifiedPropertiesTests.m in Sources */,
 				BCCA7A341807622200CE36E5 /* nn_isaSwizzlingTests.m in Sources */,
@@ -647,6 +663,7 @@
 				BCD1D5AA17D9C72F00A3EBD4 /* despatch.m in Sources */,
 				BCD1D5BE17D9C88F00A3EBD4 /* NNStrongifiedProperties.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
+				BC82B3D7183C29B600FDD3B9 /* NNMultiDispatchManager.m in Sources */,
 				BCCB1BF51835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m in Sources */,
 				BCD1D5AB17D9C72F00A3EBD4 /* runtime.c in Sources */,
 				BC1243771837051000461433 /* NNMutableWeakSet.m in Sources */,
@@ -673,6 +690,7 @@
 				BC82B3C9183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */,
 				BCCB1BFE1835FD9A0029EBF6 /* NNWeakObserverTests.m in Sources */,
 				BCD1D58017D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m in Sources */,
+				BC82B3DA183C317000FDD3B9 /* NNMultiDispatchManagerTests.m in Sources */,
 				BC19D3A01811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */,
 				BCD1D59C17D9BAB000A3EBD4 /* NNPollingObjectTests.m in Sources */,

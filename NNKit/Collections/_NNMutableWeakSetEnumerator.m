@@ -27,10 +27,9 @@
 
 @interface _NNMutableWeakSetEnumerator ()
 
-@property (nonatomic, readonly, strong) NSEnumerator *backingEnumerator;
+@property (nonatomic, readonly, strong) NSEnumerator *tombstoneEnumerator;
 
 @end
-
 
 
 @implementation _NNMutableWeakSetEnumerator
@@ -39,7 +38,7 @@
 {
     if (!(self = [super init])) { return nil; }
     
-    self->_backingEnumerator = set.backingStore.objectEnumerator;
+    self->_tombstoneEnumerator = set.backingStore.objectEnumerator.allObjects.objectEnumerator;
     
     return self;
 }
@@ -48,7 +47,7 @@
 {
     NSMutableArray *result = [NSMutableArray new];
     
-    for (_NNWeakArrayTombstone *tombstone in self.backingEnumerator.allObjects) {
+    for (_NNWeakArrayTombstone *tombstone in self.tombstoneEnumerator.allObjects) {
         id obj = tombstone.target;
         if (obj) {
             [result addObject:obj];
@@ -64,7 +63,7 @@
     _NNWeakArrayTombstone *tombstone;
     
     do {
-        tombstone = self.backingEnumerator.nextObject;
+        tombstone = self.tombstoneEnumerator.nextObject;
         obj = tombstone.target;
     } while (!obj && tombstone);
     
