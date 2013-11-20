@@ -1,5 +1,5 @@
 //
-//  NNService.h
+//  NNService+Protected.h
 //  NNKit
 //
 //  Created by Scott Perry on 10/17/13.
