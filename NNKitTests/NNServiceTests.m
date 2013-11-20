@@ -203,7 +203,7 @@ unsigned eventsDispatched;
 {
     NNServiceManager *manager = [NNServiceManager new];
     [manager registerService:[TestServiceE self]];
-    XCTAssertFalse(serviceARunning, @"");
+    XCTAssertFalse(serviceERunning, @"");
     @autoreleasepool {
         __attribute__((objc_precise_lifetime)) TestServiceESubscriber *foo = [TestServiceESubscriber new];
         [manager addSubscriber:foo forService:[TestServiceE self]];

@@ -53,6 +53,7 @@ static BOOL _serviceIsValid(Class service)
     
     self->_subscribers = [NNMutableWeakSet new];
     self->_instance = [service sharedService];
+    self->_instance.subscriberDispatcher.enabled = NO;
     self->_type = self->_instance.serviceType;
     self->_dependencies = [self->_instance respondsToSelector:@selector(dependencies)] ? (self->_instance.dependencies ?: [NSSet set]) : [NSSet set];
     self->_subscriberProtocol = [self->_instance respondsToSelector:@selector(subscriberProtocol)] ? self->_instance.subscriberProtocol : @protocol(NSObject);
@@ -234,11 +235,13 @@ static BOOL _serviceIsValid(Class service)
     NSParameterAssert(![self.runningServices containsObject:service]);
 
     NNService *instance = SERVICEINFO(service).instance;
+    
+    [self.runningServices addObject:service];
+    instance.subscriberDispatcher.enabled = YES;
+    
     if ([instance respondsToSelector:@selector(startService)]) {
         [instance startService];
     }
-    [self.runningServices addObject:service];
-    SERVICEINFO(service).instance.subscriberDispatcher.enabled = YES;
     
     for (Class dependantClass in self.dependantServices[service]) {
         [self _startServiceIfReady:dependantClass];

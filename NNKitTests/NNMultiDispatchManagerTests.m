@@ -105,8 +105,8 @@ dispatch_group_t group;
     dispatch_group_enter(group);
     dispatch_group_enter(group);
 
-    [(id<NNMultiDispatchManagerTestProtocol>)manager bar:self];
     XCTAssertEqual(callCount, (unsigned)0, @"");
+    [(id<NNMultiDispatchManagerTestProtocol>)manager bar:self];
     
     while(!despatch_group_yield(group));
     XCTAssertEqual(callCount, (unsigned)4, @"");

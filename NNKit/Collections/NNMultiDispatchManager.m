@@ -29,6 +29,7 @@
 {
     if (!(self = [super init])) { return nil; }
     
+    self->_enabled = YES;
     self->_protocol = protocol;
     self->_signatureCache = [NSMutableDictionary new];
     [self _cacheMethodSignaturesForProcotol:protocol];
