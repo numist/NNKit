@@ -12,26 +12,12 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <XCTest/XCTest.h>
+#import "NNTestCase.h"
 
 #import <mach/mach.h>
 
 #import "NNServiceManager.h"
 #import "NNService+Protected.h"
-
-
-static size_t report_memory(void) {
-    struct task_basic_info info;
-    mach_msg_type_number_t size = sizeof(info);
-    kern_return_t kerr = task_info(mach_task_self(),
-                                   TASK_BASIC_INFO,
-                                   (task_info_t)&info,
-                                   &size);
-    if( kerr != KERN_SUCCESS ) {
-        @throw [NSException exceptionWithName:@"wtf" reason:[NSString stringWithFormat:@"Error with task_info(): %s", mach_error_string(kerr)] userInfo:nil];
-    }
-    return info.resident_size;
-}
 
 
 /*
@@ -140,7 +126,9 @@ unsigned eventsDispatched;
 @end
 
 
-@interface NNServiceTests : XCTestCase
+@interface NNServiceTests : NNTestCase
+
+@property (nonatomic, readwrite, assign) size_t memoryUsageInBytes;
 
 @end
 
@@ -271,19 +259,34 @@ unsigned eventsDispatched;
     XCTAssertFalse(serviceERunning, @"");
     __attribute__((objc_precise_lifetime)) TestServiceESubscriber *foo = [TestServiceESubscriber new];
     
-    unsigned iterations;
-    size_t memoryUsageAtStart = report_memory();
-    for (iterations = 0; iterations < 1e4; ++iterations) {
-        @autoreleasepool {
-            [manager addSubscriber:foo forService:[TestServiceE self]];
-            [manager removeSubscriber:foo forService:[TestServiceE self]];
-            // Allow the main dispatch queue an opportunity to run its async blocks
-            (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
-        }
-    }
+    [self testForMemoryLeaksWithBlock:^{
+        [manager addSubscriber:foo forService:[TestServiceE self]];
+        [manager removeSubscriber:foo forService:[TestServiceE self]];
+    } iterations:5e3];
+}
+
+- (void)testSubscribingToMultipleServices;
+{
+    NNServiceManager *manager = [NNServiceManager new];
+    [manager registerService:[TestServiceA self]];
+    XCTAssertFalse(serviceARunning, @"");
     
-    size_t bytes = report_memory() - memoryUsageAtStart;
-    XCTAssertFalse(bytes > 1e4, @"Memory usage increased by %zu bytes by end of test", bytes);
+    [manager registerService:[TestServiceD self]];
+    [manager registerService:[TestServiceE self]];
+    XCTAssertFalse(serviceERunning, @"");
+
+    @autoreleasepool {
+        __attribute__((objc_precise_lifetime)) TestServiceESubscriber *foo = [TestServiceESubscriber new];
+        [manager addSubscriber:foo forService:[TestServiceA self]];
+        [manager addSubscriber:foo forService:[TestServiceA self]];
+        [manager addSubscriber:foo forService:[TestServiceE self]];
+        (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
+        XCTAssertTrue(serviceARunning, @"");
+        XCTAssertTrue(serviceERunning, @"");
+    }
+    (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
+    XCTAssertFalse(serviceARunning, @"");
+    XCTAssertFalse(serviceERunning, @"");
 }
 
 @end

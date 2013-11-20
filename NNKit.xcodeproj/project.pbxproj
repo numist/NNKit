@@ -47,6 +47,10 @@
 		BC82B3DE183C37E500FDD3B9 /* NNService+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DC183C37E500FDD3B9 /* NNService+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC82B3E0183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */; };
 		BC82B3E1183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */; };
+		BCB1DBA6183D14B50081107F /* NNTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA5183D14B50081107F /* NNTestCase.m */; };
+		BCB1DBA7183D14B50081107F /* NNTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA5183D14B50081107F /* NNTestCase.m */; };
+		BCB1DBA9183D196E0081107F /* nn_autofreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA8183D196E0081107F /* nn_autofreeTests.m */; };
+		BCB1DBAA183D196E0081107F /* nn_autofreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA8183D196E0081107F /* nn_autofreeTests.m */; };
 		BCCA79F518075C6F00CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
 		BCCA7A1E1807608600CE36E5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D54117D9471A00A3EBD4 /* XCTest.framework */; };
 		BCCA7A1F1807608600CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
@@ -156,6 +160,9 @@
 		BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManagerTests.m; path = NNKitTests/NNMultiDispatchManagerTests.m; sourceTree = SOURCE_ROOT; };
 		BC82B3DC183C37E500FDD3B9 /* NNService+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NNService+Protected.h"; path = "Services/NNService+Protected.h"; sourceTree = "<group>"; };
 		BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NNMultiDispatchManager+Protected.h"; path = "Collections/NNMultiDispatchManager+Protected.h"; sourceTree = "<group>"; };
+		BCB1DBA4183D14B50081107F /* NNTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNTestCase.h; sourceTree = "<group>"; };
+		BCB1DBA5183D14B50081107F /* NNTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNTestCase.m; sourceTree = "<group>"; };
+		BCB1DBA8183D196E0081107F /* nn_autofreeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nn_autofreeTests.m; sourceTree = "<group>"; };
 		BCCA79F318075C6F00CE36E5 /* libNNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNNKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA79F418075C6F00CE36E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCCA7A0418075C6F00CE36E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -358,6 +365,7 @@
 				BCD1D56917D96C4500A3EBD4 /* NNDelegateProxyTests.m */,
 				BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */,
 				BC82B3B4183AFDB700FDD3B9 /* NNMutableWeakSetTests.m */,
+				BCB1DBA8183D196E0081107F /* nn_autofreeTests.m */,
 				BCD1D59B17D9BAB000A3EBD4 /* NNPollingObjectTests.m */,
 				BCD1D56717D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m */,
 				BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */,
@@ -372,6 +380,8 @@
 		BCD1D54817D9471A00A3EBD4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BCB1DBA4183D14B50081107F /* NNTestCase.h */,
+				BCB1DBA5183D14B50081107F /* NNTestCase.m */,
 				BCCA7A2F180761DB00CE36E5 /* NNKit iOS Tests-Info.plist */,
 				BCD1D54917D9471A00A3EBD4 /* NNKit Mac Tests-Info.plist */,
 			);
@@ -657,6 +667,7 @@
 			files = (
 				BCCA7A301807622200CE36E5 /* NNPollingObjectTests.m in Sources */,
 				BCCA7A311807622200CE36E5 /* NNSelfInvalidatingObjectTests.m in Sources */,
+				BCB1DBA7183D14B50081107F /* NNTestCase.m in Sources */,
 				BC82B3CA183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */,
 				BCCB1BFF1835FD9A0029EBF6 /* NNWeakObserverTests.m in Sources */,
 				BCCA7A321807622200CE36E5 /* NNDelegateProxyTests.m in Sources */,
@@ -664,6 +675,7 @@
 				BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCCA7A331807622200CE36E5 /* NNStrongifiedPropertiesTests.m in Sources */,
 				BCCA7A341807622200CE36E5 /* nn_isaSwizzlingTests.m in Sources */,
+				BCB1DBAA183D196E0081107F /* nn_autofreeTests.m in Sources */,
 				BC82B3B6183AFDB700FDD3B9 /* NNMutableWeakSetTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -699,6 +711,7 @@
 			files = (
 				BCD1D56817D963E000A3EBD4 /* NNSelfInvalidatingObjectTests.m in Sources */,
 				BCD1D59217D9A34D00A3EBD4 /* nn_isaSwizzlingTests.m in Sources */,
+				BCB1DBA6183D14B50081107F /* NNTestCase.m in Sources */,
 				BC82B3C9183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */,
 				BCCB1BFE1835FD9A0029EBF6 /* NNWeakObserverTests.m in Sources */,
 				BCD1D58017D9818500A3EBD4 /* NNStrongifiedPropertiesTests.m in Sources */,
@@ -706,6 +719,7 @@
 				BC19D3A01811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */,
 				BCD1D59C17D9BAB000A3EBD4 /* NNPollingObjectTests.m in Sources */,
+				BCB1DBA9183D196E0081107F /* nn_autofreeTests.m in Sources */,
 				BC82B3B5183AFDB700FDD3B9 /* NNMutableWeakSetTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

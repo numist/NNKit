@@ -6,8 +6,10 @@
 	<dict>
 		<key>NNKit iOS.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>10</integer>
 		</dict>
 		<key>NNKit.xcscheme_^#shared#^_</key>
 		<dict>
@@ -17,6 +19,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>BCB1DB8D183CA1850081107F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BCCA79F218075C6F00CE36E5</key>
 		<dict>
 			<key>primary</key>

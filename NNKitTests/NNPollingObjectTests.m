@@ -23,6 +23,9 @@
 @end
 
 
+dispatch_group_t pollingObjectGroup;
+
+
 @interface NNTestObject : NNPollingObject
 @end
 @implementation NNTestObject
@@ -31,12 +34,18 @@
 {
     if (!(self = [super init])) { return nil; }
     self.interval = 0.0001;
+    dispatch_group_enter(pollingObjectGroup);
     return self;
 }
 
 - (void)main;
 {
     [self postNotification:nil];
+}
+
+- (void)dealloc;
+{
+    dispatch_group_leave(pollingObjectGroup);
 }
 
 @end
@@ -46,6 +55,14 @@ static int iterations;
 
 
 @implementation NNPollingObjectTests
+
++ (void)initialize;
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        pollingObjectGroup = dispatch_group_create();
+    });
+}
 
 - (void)setUp
 {
@@ -70,7 +87,7 @@ static int iterations;
     __attribute__((objc_precise_lifetime)) NNTestObject *obj = [NNTestObject new];
     #pragma clang diagnostic pop
     
-    NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.5];
+    NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.05];
     while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
     }
@@ -82,7 +99,7 @@ static int iterations;
     __attribute__((objc_precise_lifetime)) NNTestObject *obj = [NNTestObject new];
     obj.interval = 0.0;
     
-    NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.01];
     while ([[NSDate date] compare:until] == NSOrderedAscending && iterations < 2) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
     }
@@ -96,16 +113,12 @@ static int iterations;
         #pragma clang diagnostic ignored "-Wunused-variable"
         __attribute__((objc_precise_lifetime)) NNTestObject *obj = [NNTestObject new];
         #pragma clang diagnostic pop
-        
-        NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
-        while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
-        }
     }
-    (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
     
+    while(!despatch_group_yield(pollingObjectGroup));
     iterations = 0;
-    NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.1];
+    
+    NSDate *until = [NSDate dateWithTimeIntervalSinceNow:0.05];
     while ([[NSDate date] compare:until] == NSOrderedAscending && !iterations) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:until];
     }

@@ -53,14 +53,24 @@
     return result;
 }
 
-+ (void)cleanupAfterTarget:(id)target withBlock:(void (^)())block;
++ (void)cleanupAfterTarget:(id)target withBlock:(void (^)())block withKey:(uintptr_t)key;
 {
-    NNCleanupProxy *result = [NNCleanupProxy cleanupProxyForTarget:target withKey:(uintptr_t)block];
+    NNCleanupProxy *result = [NNCleanupProxy cleanupProxyForTarget:target withKey:(uintptr_t)key];
     result.cleanupBlock = block;
+}
+
++ (void)cancelCleanupForTarget:(id)target withKey:(uintptr_t)key;
+{
+    objc_setAssociatedObject(target, (void *)key, nil, OBJC_ASSOCIATION_RETAIN);
 }
 
 - (void)dealloc;
 {
+    // If the proxy is in dealloc and the target is still live, then no cleanup is needed—the proxy has been removed or replaced.
+    if (self->_target) {
+        return;
+    }
+    
     if (self->_cleanupBlock) {
         self->_cleanupBlock();
     }

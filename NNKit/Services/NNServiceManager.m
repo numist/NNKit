@@ -211,10 +211,11 @@ static BOOL _serviceIsValid(Class service)
     [SERVICEINFO(service).subscribers addObject:subscriber];
     [SERVICEINFO(service).instance.subscriberDispatcher addObserver:subscriber];
     __weak typeof(self) weakSelf = self;
+    __weak typeof(subscriber) weakSubscriber = subscriber;
     [NNCleanupProxy cleanupAfterTarget:subscriber withBlock:^{ dispatch_async(dispatch_get_main_queue(), ^{
         typeof(self) self = weakSelf;
         [self _stopServiceIfDone:service];
-    }); }];
+    }); } withKey:((uintptr_t)service ^ (uintptr_t)self)];
     [self _startServiceIfReady:service];
 }
 
@@ -222,6 +223,8 @@ static BOOL _serviceIsValid(Class service)
 {
     NSParameterAssert(SERVICEINFO(service));
 
+    [NNCleanupProxy cancelCleanupForTarget:subscriber withKey:((uintptr_t)service ^ (uintptr_t)self)];
+    
     [SERVICEINFO(service).subscribers removeObject:subscriber];
     [SERVICEINFO(service).instance.subscriberDispatcher removeObserver:subscriber];
     [self _stopServiceIfDone:service];

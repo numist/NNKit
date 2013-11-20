@@ -96,6 +96,7 @@
 
 - (void)removeObject:(id)object;
 {
+    [NNCleanupProxy cancelCleanupForTarget:object withKey:(uintptr_t)self];
     [self.backingStore removeObject:object];
 }
 
