@@ -236,12 +236,13 @@ static BOOL _serviceIsValid(Class service)
 
     NNService *instance = SERVICEINFO(service).instance;
     
-    [self.runningServices addObject:service];
     instance.subscriberDispatcher.enabled = YES;
     
     if ([instance respondsToSelector:@selector(startService)]) {
         [instance startService];
     }
+    
+    [self.runningServices addObject:service];
     
     for (Class dependantClass in self.dependantServices[service]) {
         [self _startServiceIfReady:dependantClass];
@@ -252,17 +253,19 @@ static BOOL _serviceIsValid(Class service)
 {
     NSParameterAssert([self.runningServices containsObject:service]);
     
-    SERVICEINFO(service).instance.subscriberDispatcher.enabled = NO;
+    NNService *instance = SERVICEINFO(service).instance;
+
     [self.runningServices removeObject:service];
     
     for (Class dependantClass in self.dependantServices[service]) {
         [self _stopServiceIfDone:dependantClass];
     }
     
-    NNService *instance = SERVICEINFO(service).instance;
     if ([instance respondsToSelector:@selector(stopService)]) {
         [instance stopService];
     }
+    
+    instance.subscriberDispatcher.enabled = NO;
 }
 
 @end

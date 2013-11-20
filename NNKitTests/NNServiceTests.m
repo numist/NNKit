@@ -87,7 +87,7 @@ static BOOL serviceDRunning = NO;
 - (void)stopService { NSAssert(serviceDRunning, @""); serviceDRunning = NO; }
 @end
 
-// Service E has no dependencies, runs on demand
+// Service E depends on Service D, runs on demand
 static BOOL serviceERunning = NO;
 @protocol TestServiceEProtocol <NSObject>
 - (void)foo:(id)sender;
@@ -95,14 +95,18 @@ static BOOL serviceERunning = NO;
 @interface TestServiceE : NNService @end
 @implementation TestServiceE
 - (NNServiceType)serviceType { return NNServiceTypeOnDemand; }
+- (NSSet *)dependencies { return [NSSet setWithObject:[TestServiceD self]]; }
 - (Protocol *)subscriberProtocol { return @protocol(TestServiceEProtocol); }
 - (void)startService {
     serviceERunning = YES;
+    [self sendMessage];
+}
+- (void)sendMessage;
+{
     [(id)self.subscriberDispatcher foo:self];
 }
 - (void)stopService {
     serviceERunning = NO;
-    [(id)self.subscriberDispatcher foo:self];
 }
 @end
 
@@ -202,6 +206,7 @@ unsigned eventsDispatched;
 - (void)testSubscriberDispatch
 {
     NNServiceManager *manager = [NNServiceManager new];
+    [manager registerService:[TestServiceD self]];
     [manager registerService:[TestServiceE self]];
     XCTAssertFalse(serviceERunning, @"");
     @autoreleasepool {
@@ -209,10 +214,27 @@ unsigned eventsDispatched;
         [manager addSubscriber:foo forService:[TestServiceE self]];
         XCTAssertTrue(serviceERunning, @"");
         XCTAssertEqual(eventsDispatched, (unsigned)1, @"");
+        [(TestServiceE *)[manager instanceForService:[TestServiceE self]] sendMessage];
+        XCTAssertEqual(eventsDispatched, (unsigned)2, @"");
     }
     (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
     XCTAssertFalse(serviceERunning, @"");
-    XCTAssertEqual(eventsDispatched, (unsigned)1, @"");
+}
+
+- (void)testSubscriberDispatchWhenServiceStopped
+{
+    NNServiceManager *manager = [NNServiceManager new];
+    [manager registerService:[TestServiceE self]];
+    XCTAssertFalse(serviceERunning, @"");
+    @autoreleasepool {
+        __attribute__((objc_precise_lifetime)) TestServiceESubscriber *foo = [TestServiceESubscriber new];
+        [manager addSubscriber:foo forService:[TestServiceE self]];
+        XCTAssertFalse(serviceERunning, @"");
+        [(TestServiceE *)[manager instanceForService:[TestServiceE self]] sendMessage];
+        XCTAssertEqual(eventsDispatched, (unsigned)0, @"");
+    }
+    (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
+    XCTAssertFalse(serviceERunning, @"");
 }
 
 @end
