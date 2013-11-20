@@ -86,7 +86,6 @@
         for (unsigned j = 0; j < totalCount; j++) {
             struct objc_method_description *methodDescription = methodDescriptions + j;
             [self.signatureCache setObject:[NSMethodSignature signatureWithObjCTypes:methodDescription->types] forKey:NSStringFromSelector(methodDescription->name)];
-            NSLog(@"Added %@ to signature cache", NSStringFromSelector(methodDescription->name));
         }
     }
     
