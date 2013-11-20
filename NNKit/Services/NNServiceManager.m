@@ -203,6 +203,11 @@ static BOOL _serviceIsValid(Class service)
     NSParameterAssert(SERVICEINFO(service));
     NSParameterAssert([subscriber conformsToProtocol:SERVICEINFO(service).subscriberProtocol]);
     
+    if ([SERVICEINFO(service).subscribers containsObject:subscriber]) {
+        NSLog(@"Object %@ is already subscribed to service %@", subscriber, NSStringFromClass(service));
+        return;
+    }
+    
     [SERVICEINFO(service).subscribers addObject:subscriber];
     [SERVICEINFO(service).instance.subscriberDispatcher addObserver:subscriber];
     __weak typeof(self) weakSelf = self;

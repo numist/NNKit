@@ -64,7 +64,7 @@
     __block BOOL cleanupComplete = NO;
     @autoreleasepool {
         __attribute__((objc_precise_lifetime)) id foo = [NSObject new];
-        NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:foo];
+        NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:foo withKey:(uintptr_t)foo];
         proxy.cleanupBlock = ^{ cleanupComplete = YES; };
     }
     XCTAssertTrue(cleanupComplete, @"");
@@ -74,7 +74,7 @@
 {
     @autoreleasepool {
         __attribute__((objc_precise_lifetime)) id foo = [NNCleanupProxyTestClass new];
-        id<NNCleanupProxyTestProtocol2> proxy = (id)[NNCleanupProxy cleanupProxyForTarget:foo conformingToProtocol:@protocol(NNCleanupProxyTestProtocol2)];
+        id<NNCleanupProxyTestProtocol2> proxy = (id)[NNCleanupProxy cleanupProxyForTarget:foo conformingToProtocol:@protocol(NNCleanupProxyTestProtocol2) withKey:(uintptr_t)foo];
         XCTAssertTrue([proxy someKindOfSelectorWithObject:self], @"");
         XCTAssertTrue([proxy someKindOfSelectorWithObject2:self], @"");
     }
@@ -84,7 +84,7 @@
 {
     @autoreleasepool {
         __attribute__((objc_precise_lifetime)) id foo = [NNCleanupProxyTestClass new];
-        NNCleanupProxyTestClass *proxy = (id)[NNCleanupProxy cleanupProxyForTarget:foo];
+        NNCleanupProxyTestClass *proxy = (id)[NNCleanupProxy cleanupProxyForTarget:foo withKey:(uintptr_t)foo];
         XCTAssertThrows([proxy someKindOfSelectorWithObject:self], @"");
         XCTAssertThrows([proxy someKindOfSelectorWithObject2:self], @"");
         XCTAssertThrows([proxy anotherKindofSelectorWithObject:self], @"");
@@ -95,7 +95,7 @@
 {
     @autoreleasepool {
         __attribute__((objc_precise_lifetime)) id foo = [NNCleanupProxyTestClass new];
-        NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:foo];
+        NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:foo withKey:(uintptr_t)foo];
         [proxy cacheMethodSignatureForSelector:@selector(anotherKindofSelectorWithObject:)];
         
         NNCleanupProxyTestClass *castProxy = (id)proxy;
@@ -109,7 +109,7 @@
     
     @autoreleasepool {
         __attribute__((objc_precise_lifetime)) id foo = [NNCleanupProxyTestClass new];
-        proxy = (id)[NNCleanupProxy cleanupProxyForTarget:foo conformingToProtocol:@protocol(NNCleanupProxyTestProtocol2)];
+        proxy = (id)[NNCleanupProxy cleanupProxyForTarget:foo conformingToProtocol:@protocol(NNCleanupProxyTestProtocol2) withKey:(uintptr_t)foo];
     }
 
     XCTAssertFalse([proxy someKindOfSelectorWithObject:self], @"");

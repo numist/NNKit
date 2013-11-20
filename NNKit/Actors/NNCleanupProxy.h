@@ -40,7 +40,7 @@
  * Creates a proxy object holding a weak reference to, forwarding messages to, and with an object
  * lifetime dependant on <i>target</i>.
  */
-+ (NNCleanupProxy *)cleanupProxyForTarget:(id)target;
++ (NNCleanupProxy *)cleanupProxyForTarget:(id)target withKey:(uintptr_t)key;
 
 /*!
  * @method cleanupProxyForTarget:conformingToProtocol:
@@ -49,9 +49,9 @@
  * Creates a proxy object holding a weak reference to, forwarding messages to, and with an object
  * lifetime dependant on <i>target</i>, conforming to protocol <i>protocol</i>.
  */
-+ (NNCleanupProxy *)cleanupProxyForTarget:(id)target conformingToProtocol:(Protocol *)protocol;
++ (NNCleanupProxy *)cleanupProxyForTarget:(id)target conformingToProtocol:(Protocol *)protocol withKey:(uintptr_t)key;
 
-+ (void)cleanupAfterTarget:(id)target withBlock:(void (^)())block;
++ (void)cleanupAfterTarget:(id)target withBlock:(void (^)())block __attribute__((deprecated));
 
 /*!
  * @property cleanupBlock

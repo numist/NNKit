@@ -34,20 +34,20 @@
 
 @implementation NNCleanupProxy
 
-+ (NNCleanupProxy *)cleanupProxyForTarget:(id)target;
++ (NNCleanupProxy *)cleanupProxyForTarget:(id)target withKey:(uintptr_t)key;
 {
     NNCleanupProxy *result = [NNCleanupProxy alloc];
     result->_target = target;
     result->_signatureCache = [NSMutableDictionary new];
-    objc_setAssociatedObject(target, (__bridge void *)result, result, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(target, (void *)key, result, OBJC_ASSOCIATION_RETAIN);
     return result;
 }
 
-+ (NNCleanupProxy *)cleanupProxyForTarget:(id)target conformingToProtocol:(Protocol *)protocol;
++ (NNCleanupProxy *)cleanupProxyForTarget:(id)target conformingToProtocol:(Protocol *)protocol withKey:(uintptr_t)key;
 {
     NSParameterAssert([target conformsToProtocol:protocol]);
     
-    NNCleanupProxy *result = [NNCleanupProxy cleanupProxyForTarget:target];
+    NNCleanupProxy *result = [NNCleanupProxy cleanupProxyForTarget:target withKey:key];
     [result cacheMethodSignaturesForProcotol:protocol];
     
     return result;
@@ -55,7 +55,7 @@
 
 + (void)cleanupAfterTarget:(id)target withBlock:(void (^)())block;
 {
-    NNCleanupProxy *result = [NNCleanupProxy cleanupProxyForTarget:target];
+    NNCleanupProxy *result = [NNCleanupProxy cleanupProxyForTarget:target withKey:(uintptr_t)block];
     result.cleanupBlock = block;
 }
 

@@ -21,7 +21,7 @@
 
 - (void)addWeakObserver:(id)observer selector:(SEL)aSelector name:(NSString *)aName object:(id)anObject;
 {
-    NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:observer];
+    NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:observer withKey:([self hash] ^ ((uintptr_t)aName << 16) ^ ([anObject hash] << 32))];
     __weak NSNotificationCenter *weakCenter = self;
     __unsafe_unretained NNCleanupProxy *unsafeProxy = proxy;
     [proxy cacheMethodSignatureForSelector:aSelector];

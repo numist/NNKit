@@ -15,6 +15,21 @@
 #import <XCTest/XCTest.h>
 
 #import <NNKit/NNKit.h>
+#import <mach/mach.h>
+
+
+size_t report_memory(void) {
+    struct task_basic_info info;
+    mach_msg_type_number_t size = sizeof(info);
+    kern_return_t kerr = task_info(mach_task_self(),
+                                   TASK_BASIC_INFO,
+                                   (task_info_t)&info,
+                                   &size);
+    if( kerr != KERN_SUCCESS ) {
+        @throw [NSException exceptionWithName:@"wtf" reason:[NSString stringWithFormat:@"Error with task_info(): %s", mach_error_string(kerr)] userInfo:nil];
+    }
+    return info.resident_size;
+}
 
 
 @interface NNMutableWeakSetTests : XCTestCase
@@ -98,6 +113,24 @@
     
     XCTAssertEqual(enumCount, set.count, @"");
     XCTAssertEqual(set.count, (NSUInteger)1, @"");
+}
+
+- (void)testMemoryLeaks;
+{
+    NNMutableWeakSet *set = [NNMutableWeakSet new];
+    __attribute__((objc_precise_lifetime)) id bar = [NSObject new];
+    
+    size_t memoryUsageAtStart = report_memory();
+    
+    unsigned iterations;
+    for (iterations = 0; iterations < 1e4; ++iterations) {
+        @autoreleasepool {
+            [set addObject:bar];
+            [set removeObject:bar];
+        }
+    }
+
+    XCTAssertFalse(report_memory() - memoryUsageAtStart > 1e4, @"");
 }
 
 @end

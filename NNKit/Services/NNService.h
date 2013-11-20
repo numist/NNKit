@@ -46,7 +46,7 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @result
  * Singleton object for the service.
  */
-+ (id)sharedService;
++ (instancetype)sharedService;
 
 /*!
  * @method serviceType

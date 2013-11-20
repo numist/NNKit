@@ -82,7 +82,7 @@
 - (void)addObject:(id)object;
 {
     _NNWeakArrayTombstone *tombstone = [_NNWeakArrayTombstone tombstoneWithTarget:object];
-    NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:object];
+    NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:object withKey:(uintptr_t)self];
     
     __weak NNMutableWeakSet *weakCollection = self;
     __weak _NNWeakArrayTombstone *weakTombstone = tombstone;
