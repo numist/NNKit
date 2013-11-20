@@ -51,7 +51,7 @@
  */
 + (NNCleanupProxy *)cleanupProxyForTarget:(id)target conformingToProtocol:(Protocol *)protocol withKey:(uintptr_t)key;
 
-+ (void)cleanupAfterTarget:(id)target withBlock:(void (^)())block __attribute__((deprecated));
++ (void)cleanupAfterTarget:(id)target withBlock:(void (^)())block;
 
 /*!
  * @property cleanupBlock
