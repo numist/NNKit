@@ -36,7 +36,13 @@
  */
 + (NNServiceManager *)sharedManager;
 
-//- (void)registerAllPossibleServices;
+/*!
+ * @method registerAllPossibleServices
+ *
+ * @abstract
+ * Registers all subclasses of NNService known to the runtime with this service manager.
+ */
+- (void)registerAllPossibleServices;
 
 /*!
  * @method registerService:

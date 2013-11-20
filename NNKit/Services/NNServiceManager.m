@@ -16,6 +16,7 @@
 
 #import <objc/runtime.h>
 
+#import "nn_autofree.h"
 #import "NNCleanupProxy.h"
 #import "NNMultiDispatchManager+Protected.h"
 #import "NNMutableWeakSet.h"
@@ -100,6 +101,32 @@ static BOOL _serviceIsValid(Class service)
     });
     
     return _sharedManager;
+}
+
+- (void)registerAllPossibleServices;
+{
+    BOOL (^classIsService)(Class) = ^(Class class){
+        while ((class = class_getSuperclass(class))) {
+            if (class == objc_getClass("NNService")) {
+                return YES;
+            }
+        }
+        
+        return NO;
+    };
+    
+    int numClasses = objc_getClassList(NULL, 0);
+    Class *buffer = (__unsafe_unretained Class *)nn_autofree(malloc(numClasses * sizeof(Class *)));
+    (void)objc_getClassList(buffer, numClasses);
+    
+    for (size_t i = 0; i < numClasses; ++i) {
+        if (classIsService(buffer[i])) {
+            if ([[buffer[i] sharedService] serviceType] == NNServiceTypeNone) {
+                continue;
+            }
+            [self registerService:buffer[i]];
+        }
+    }
 }
 
 - (instancetype)init;
