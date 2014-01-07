@@ -80,12 +80,12 @@
 
 - (void)startService;
 {
-    
+    NSAssert([[NSThread currentThread] isMainThread], @"Service must be started on the main thread");
 }
 
 - (void)stopService;
 {
-    
+    NSAssert([[NSThread currentThread] isMainThread], @"Service must be stopped on the main thread");
 }
 
 @end

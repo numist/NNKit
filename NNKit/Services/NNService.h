@@ -34,6 +34,7 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @class NNService
  *
  * @discussion
+ * Discuss.
  */
 @interface NNService : NSObject
 
@@ -74,7 +75,7 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @method subscriberProtocol
  *
  * @discussion
- * Protocol for subscribers to conform to. Default implementation returns <code>@protocol(NSObject)</code>.
+ * Protocol for subscribers to conform to. Default implementation returns <code>&#64;protocol(NSObject)</code>.
  */
 - (Protocol *)subscriberProtocol;
 
@@ -84,7 +85,7 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @discussion
  * Called when the service is started.
  */
-- (void)startService;
+- (void)startService __attribute__((objc_requires_super));
 
 /*!
  * @method stopService
@@ -92,6 +93,6 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @discussion
  * Called when the service is stopped.
  */
-- (void)stopService;
+- (void)stopService __attribute__((objc_requires_super));
 
 @end

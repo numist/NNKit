@@ -66,8 +66,13 @@
     if (self.enabled) {
         NSAssert(strstr(anInvocation.methodSignature.methodReturnType, "v"), @"Method return type must be void.");
         dispatch_block_t dispatch = ^{
+            BOOL required = YES;
+            BOOL instance = YES;
+            BOOL sanity = nn_selector_belongsToProtocol(anInvocation.selector, self.protocol, &required, &instance);
+            NSAssert(sanity && instance, @"Selector %@ is not actually part of protocol %@?!", NSStringFromSelector(anInvocation.selector), NSStringFromProtocol(self.protocol));
+            
             for (id obj in self.observers) {
-                if ([obj respondsToSelector:anInvocation.selector]) {
+                if ([obj respondsToSelector:anInvocation.selector] || required) {
                     [anInvocation invokeWithTarget:obj];
                 }
             }

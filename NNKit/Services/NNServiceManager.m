@@ -162,6 +162,8 @@ static BOOL _serviceIsValid(Class service)
 
 - (void)registerService:(Class)service;
 {
+    NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
+    
     NSParameterAssert(_serviceIsValid(service));
     if (SERVICEINFO(service)) {
         NSLog(@"Service %@ was already registered with %@", NSStringFromClass(service), self);
@@ -194,12 +196,16 @@ static BOOL _serviceIsValid(Class service)
 
 - (NNService *)instanceForService:(Class)service;
 {
+    NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
+
     // May be nil if service is not registered!
     return SERVICEINFO(service).instance;
 }
 
 - (void)addSubscriber:(id)subscriber forService:(Class)service;
 {
+    NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
+
     NSParameterAssert(SERVICEINFO(service));
     NSParameterAssert([subscriber conformsToProtocol:SERVICEINFO(service).subscriberProtocol]);
     
@@ -208,10 +214,13 @@ static BOOL _serviceIsValid(Class service)
         return;
     }
     
+    if ([SERVICEINFO(service).instance.subscriberDispatcher.observers containsObject:subscriber]) {
+        NSLog(@"Object %@ is already observing service %@, promoting to subscriber", subscriber, NSStringFromClass(service));
+    }
+    
     [SERVICEINFO(service).subscribers addObject:subscriber];
     [SERVICEINFO(service).instance.subscriberDispatcher addObserver:subscriber];
     __weak typeof(self) weakSelf = self;
-    __weak typeof(subscriber) weakSubscriber = subscriber;
     [NNCleanupProxy cleanupAfterTarget:subscriber withBlock:^{ dispatch_async(dispatch_get_main_queue(), ^{
         typeof(self) self = weakSelf;
         [self _stopServiceIfDone:service];
@@ -221,13 +230,42 @@ static BOOL _serviceIsValid(Class service)
 
 - (void)removeSubscriber:(id)subscriber forService:(Class)service;
 {
+    NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
+
     NSParameterAssert(SERVICEINFO(service));
+    NSParameterAssert([SERVICEINFO(service).subscribers containsObject:subscriber]);
 
     [NNCleanupProxy cancelCleanupForTarget:subscriber withKey:((uintptr_t)service ^ (uintptr_t)self)];
     
     [SERVICEINFO(service).subscribers removeObject:subscriber];
     [SERVICEINFO(service).instance.subscriberDispatcher removeObserver:subscriber];
     [self _stopServiceIfDone:service];
+}
+
+- (void)addObserver:(id)observer forService:(Class)service;
+{
+    NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
+
+    NSParameterAssert(SERVICEINFO(service));
+    NSParameterAssert([observer conformsToProtocol:SERVICEINFO(service).subscriberProtocol]);
+    
+    if ([SERVICEINFO(service).instance.subscriberDispatcher.observers containsObject:observer]) {
+        NSLog(@"Object %@ is already observing (or subscribed to) service %@", observer, NSStringFromClass(service));
+        return;
+    }
+    
+    [SERVICEINFO(service).instance.subscriberDispatcher addObserver:observer];
+}
+
+- (void)removeObserver:(id)observer forService:(Class)service;
+{
+    NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
+
+    NSParameterAssert(SERVICEINFO(service));
+    NSParameterAssert(![SERVICEINFO(service).subscribers containsObject:observer]);
+    NSParameterAssert([SERVICEINFO(service).instance.subscriberDispatcher.observers containsObject:observer]);
+    
+    [SERVICEINFO(service).instance.subscriberDispatcher removeObserver:observer];
 }
 
 #pragma mark Private

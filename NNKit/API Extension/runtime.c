@@ -30,15 +30,15 @@ BOOL nn_selector_belongsToProtocol(SEL selector, Protocol *protocol, BOOL *requi
 
     for (int i = 0; i < (1 << 2); ++i) {
         BOOL checkRequired = required ^ (i & 1);
-        BOOL checkInstance = instance ^ (i & (1 << 1));
+        BOOL checkInstance = instance ^ ((i & (1 << 1)) >> 1);
         
         struct objc_method_description hasMethod = protocol_getMethodDescription(protocol, selector, checkRequired, checkInstance);
         if (hasMethod.name || hasMethod.types) {
             if (requiredPtr) {
-                *requiredPtr = required;
+                *requiredPtr = checkRequired;
             }
             if (instancePtr) {
-                *instancePtr = instance;
+                *instancePtr = checkInstance;
             }
             return YES;
         }
