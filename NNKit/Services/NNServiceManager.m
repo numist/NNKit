@@ -250,7 +250,11 @@ static BOOL _serviceIsValid(Class service)
 {
     NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
 
-    NSParameterAssert(SERVICEINFO(service));
+    if (!SERVICEINFO(service)) {
+        NSLog(@"Service %@ was not already known, attempting to register with %@.", NSStringFromClass(service), self);
+        [self registerService:service];
+    }
+
     NSParameterAssert([observer conformsToProtocol:SERVICEINFO(service).subscriberProtocol]);
     
     if ([SERVICEINFO(service).instance.subscriberDispatcher.observers containsObject:observer]) {
