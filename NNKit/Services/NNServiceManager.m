@@ -26,10 +26,12 @@
 static NSMutableSet *claimedServices;
 
 
+#ifndef NS_BLOCK_ASSERTIONS
 static BOOL _serviceIsValid(Class service)
 {
     return [service isSubclassOfClass:[NNService class]];
 }
+#endif
 
 
 @interface _NNServiceInfo : NSObject

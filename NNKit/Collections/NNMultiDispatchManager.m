@@ -68,8 +68,13 @@
         dispatch_block_t dispatch = ^{
             BOOL required = YES;
             BOOL instance = YES;
+            
             BOOL sanity = nn_selector_belongsToProtocol(anInvocation.selector, self.protocol, &required, &instance);
-            NSAssert(sanity && instance, @"Selector %@ is not actually part of protocol %@?!", NSStringFromSelector(anInvocation.selector), NSStringFromProtocol(self.protocol));
+#           ifdef NS_BLOCK_ASSERTIONS
+                (void)sanity;
+#           else
+                NSAssert(sanity && instance, @"Selector %@ is not actually part of protocol %@?!", NSStringFromSelector(anInvocation.selector), NSStringFromProtocol(self.protocol));
+#           endif
             
             for (id obj in self.observers) {
                 if ([obj respondsToSelector:anInvocation.selector] || required) {
