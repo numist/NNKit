@@ -743,7 +743,6 @@
 		BCCA7A1218075C6F00CE36E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/NNKit_iOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -764,7 +763,6 @@
 		BCCA7A1318075C6F00CE36E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/NNKit_iOS.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -782,7 +780,6 @@
 		BCCA7A2D1807608700CE36E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -809,7 +806,6 @@
 		BCCA7A2E1807608700CE36E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
