@@ -39,6 +39,10 @@
 		BCB1DBA7183D14B50081107F /* NNTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA5183D14B50081107F /* NNTestCase.m */; };
 		BCB1DBA9183D196E0081107F /* nn_autofreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA8183D196E0081107F /* nn_autofreeTests.m */; };
 		BCB1DBAA183D196E0081107F /* nn_autofreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA8183D196E0081107F /* nn_autofreeTests.m */; };
+		BCB8A26B18BDBB5000E4AC18 /* NSCollections+NNComprehensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB8A26918BDBB5000E4AC18 /* NSCollections+NNComprehensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCB8A26C18BDBB5000E4AC18 /* NSCollections+NNComprehensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BCB8A26918BDBB5000E4AC18 /* NSCollections+NNComprehensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BCB8A26D18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB8A26A18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m */; };
+		BCB8A26E18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB8A26A18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m */; };
 		BCCA79F518075C6F00CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
 		BCCA7A1E1807608600CE36E5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD1D54117D9471A00A3EBD4 /* XCTest.framework */; };
 		BCCA7A1F1807608600CE36E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCA79F418075C6F00CE36E5 /* Foundation.framework */; };
@@ -145,6 +149,8 @@
 		BCB1DBA4183D14B50081107F /* NNTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNTestCase.h; sourceTree = "<group>"; };
 		BCB1DBA5183D14B50081107F /* NNTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNTestCase.m; sourceTree = "<group>"; };
 		BCB1DBA8183D196E0081107F /* nn_autofreeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nn_autofreeTests.m; sourceTree = "<group>"; };
+		BCB8A26918BDBB5000E4AC18 /* NSCollections+NNComprehensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSCollections+NNComprehensions.h"; path = "Collections/NSCollections+NNComprehensions.h"; sourceTree = "<group>"; };
+		BCB8A26A18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSCollections+NNComprehensions.m"; path = "Collections/NSCollections+NNComprehensions.m"; sourceTree = "<group>"; };
 		BCCA79F318075C6F00CE36E5 /* libNNKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNNKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCA79F418075C6F00CE36E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BCCA7A0418075C6F00CE36E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -237,6 +243,8 @@
 		BC1243631837022700461433 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
+				BCB8A26918BDBB5000E4AC18 /* NSCollections+NNComprehensions.h */,
+				BCB8A26A18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m */,
 				BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */,
 				BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */,
 				BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */,
@@ -440,6 +448,7 @@
 				BC19D3721810C85B009CEC1F /* NNServiceManager.h in Headers */,
 				BCCA7A4B180762CC00CE36E5 /* NNKit.h in Headers */,
 				BCCA7A46180762AF00CE36E5 /* NNStrongifiedProperties.h in Headers */,
+				BCB8A26C18BDBB5000E4AC18 /* NSCollections+NNComprehensions.h in Headers */,
 				BC124380183AEFAC00461433 /* NNCleanupProxy.h in Headers */,
 				BCCA7A411807629100CE36E5 /* runtime.h in Headers */,
 			);
@@ -467,6 +476,7 @@
 				BC19D3711810C85B009CEC1F /* NNServiceManager.h in Headers */,
 				BCD1D5B517D9C79F00A3EBD4 /* NNSelfInvalidatingObject.h in Headers */,
 				BCD1D55717D9472D00A3EBD4 /* NNKit.h in Headers */,
+				BCB8A26B18BDBB5000E4AC18 /* NSCollections+NNComprehensions.h in Headers */,
 				BC12437F183AEFAC00461433 /* NNCleanupProxy.h in Headers */,
 				BCD1D5B217D9C79F00A3EBD4 /* NNPollingObject.h in Headers */,
 			);
@@ -613,6 +623,7 @@
 				BC124382183AEFAC00461433 /* NNCleanupProxy.m in Sources */,
 				BCCA7A391807626200CE36E5 /* NNDelegateProxy.m in Sources */,
 				BC19D3681810C6C3009CEC1F /* NNService.m in Sources */,
+				BCB8A26E18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m in Sources */,
 				BCCA7A3A1807626200CE36E5 /* NNStrongifiedProperties.m in Sources */,
 				BCCA7A3B1807626200CE36E5 /* nn_autofree.m in Sources */,
 				BCCA7A3C1807626200CE36E5 /* nn_isaSwizzling.m in Sources */,
@@ -653,6 +664,7 @@
 				BC124381183AEFAC00461433 /* NNCleanupProxy.m in Sources */,
 				BCD1D5C217DECC8E00A3EBD4 /* nn_autofree.m in Sources */,
 				BC19D3671810C6C3009CEC1F /* NNService.m in Sources */,
+				BCB8A26D18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m in Sources */,
 				BCD1D5B317D9C79F00A3EBD4 /* NNPollingObject.m in Sources */,
 				BCD1D5B617D9C79F00A3EBD4 /* NNSelfInvalidatingObject.m in Sources */,
 				BCD1D59017D9A14300A3EBD4 /* NNISASwizzledObject.m in Sources */,

@@ -1,9 +1,9 @@
 //
-//  NNKit.h
+//  NSArray+NNComprehensions.h
 //  NNKit
 //
-//  Created by Scott Perry on 09/05/13.
-//  Copyright © 2013 Scott Perry.
+//  Created by Scott Perry on 02/25/14.
+//  Copyright © 2014 Scott Perry.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 //
@@ -14,18 +14,24 @@
 
 #import <Foundation/Foundation.h>
 
-#import <NNKit/despatch.h>
-#import <NNKit/macros.h>
-#import <NNKit/runtime.h>
-#import <NNKit/nn_autofree.h>
-#import <NNKit/nn_isaSwizzling.h>
+typedef _Bool (^nn_filter_block_t)(id item);
+typedef id (^nn_map_block_t)(id item);
+typedef id (^nn_reduce_block_t)(id accumulator, id item);
 
-#import <NNKit/NSCollections+NNComprehensions.h>
-#import <NNKit/NNDelegateProxy.h>
-#import <NNKit/NNPollingObject.h>
-#import <NNKit/NNSelfInvalidatingObject.h>
-#import <NNKit/NNService.h>
-#import <NNKit/NNServiceManager.h>
-#import <NNKit/NNStrongifiedProperties.h>
+@interface NSArray (NNComprehensions)
+- (instancetype)nn_filter:(nn_filter_block_t)block;
+- (instancetype)nn_map:(nn_map_block_t)block;
+- (id)nn_reduce:(nn_reduce_block_t)block;
+@end
 
-#import <NNKit/NSNotificationCenter+NNAdditions.h>
+@interface NSSet (NNComprehensions)
+- (instancetype)nn_filter:(nn_filter_block_t)block;
+- (instancetype)nn_map:(nn_map_block_t)block;
+- (id)nn_reduce:(nn_reduce_block_t)block;
+@end
+
+@interface NSOrderedSet (NNComprehensions)
+- (instancetype)nn_filter:(nn_filter_block_t)block;
+- (instancetype)nn_map:(nn_map_block_t)block;
+- (id)nn_reduce:(nn_reduce_block_t)block;
+@end
