@@ -15,11 +15,8 @@
 #import <NNKit/NNMultiDispatchManager.h>
 
 
-@class NNMutableWeakSet;
-
-
 @interface NNMultiDispatchManager (Protected)
 
-@property (nonatomic, readonly, strong) NNMutableWeakSet *observers;
+@property (nonatomic, readonly, strong) NSHashTable *observers;
 
 @end

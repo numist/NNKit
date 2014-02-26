@@ -14,7 +14,6 @@
 
 #import "NNMultiDispatchManager.h"
 
-#import "NNMutableWeakSet.h"
 #import "despatch.h"
 #import "nn_autofree.h"
 #import "runtime.h"
@@ -24,7 +23,7 @@
 
 @property (nonatomic, readonly, assign) Protocol *protocol;
 @property (nonatomic, readonly, strong) NSMutableDictionary *signatureCache;
-@property (nonatomic, readonly, strong) NNMutableWeakSet *observers;
+@property (nonatomic, readonly, strong) NSHashTable *observers;
 
 @end
 
@@ -39,7 +38,7 @@
     self->_protocol = protocol;
     self->_signatureCache = [NSMutableDictionary new];
     [self _cacheMethodSignaturesForProcotol:protocol];
-    self->_observers = [NNMutableWeakSet new];
+    self->_observers = [NSHashTable weakObjectsHashTable];
 
     return self;
 }
@@ -64,6 +63,10 @@
 - (void)forwardInvocation:(NSInvocation *)anInvocation;
 {
     if (self.enabled) {
+        if (anInvocation.methodSignature.isOneway) {
+            [anInvocation retainArguments];
+        }
+        
         NSAssert(strstr(anInvocation.methodSignature.methodReturnType, "v"), @"Method return type must be void.");
         dispatch_block_t dispatch = ^{
             BOOL required = YES;
@@ -83,7 +86,6 @@
             }
         };
         if (anInvocation.methodSignature.isOneway) {
-            [anInvocation retainArguments];
             dispatch_async(dispatch_get_main_queue(), dispatch);
         } else {
             despatch_sync_main_reentrant(dispatch);
