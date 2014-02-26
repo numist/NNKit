@@ -37,6 +37,7 @@ static BOOL serviceCRunning = NO;
 @implementation TestServiceA
 - (NNServiceType)serviceType { return NNServiceTypeOnDemand; }
 - (void)startService {
+    [super startService];
     NSAssert(!serviceARunning, @"");
     serviceARunning = YES;
 }
@@ -45,6 +46,7 @@ static BOOL serviceCRunning = NO;
     NSAssert(!serviceBRunning, @"");
     NSAssert(serviceARunning, @"");
     serviceARunning = NO;
+    [super stopService];
 }
 @end
 
@@ -53,6 +55,7 @@ static BOOL serviceCRunning = NO;
 - (NNServiceType)serviceType { return NNServiceTypePersistent; }
 - (NSSet *)dependencies { return [NSSet setWithObject:[TestServiceA self]]; }
 - (void)startService {
+    [super startService];
     NSAssert(serviceARunning, @"");
     NSAssert(!serviceBRunning, @"");
     NSAssert(!serviceCRunning, @"");
@@ -61,6 +64,7 @@ static BOOL serviceCRunning = NO;
 - (void)stopService {
     NSAssert(serviceBRunning, @"");
     serviceBRunning = NO;
+    [super stopService];
 }
 @end
 
@@ -69,6 +73,7 @@ static BOOL serviceCRunning = NO;
 - (NNServiceType)serviceType { return NNServiceTypePersistent; }
 - (NSSet *)dependencies { return [NSSet setWithArray:@[[TestServiceA self], [TestServiceB self]]]; }
 - (void)startService {
+    [super startService];
     NSAssert(serviceARunning, @"");
     NSAssert(serviceBRunning, @"");
     NSAssert(!serviceCRunning, @"");
@@ -77,6 +82,7 @@ static BOOL serviceCRunning = NO;
 - (void)stopService {
     NSAssert(serviceCRunning, @"");
     serviceCRunning = NO;
+    [super stopService];
 }
 @end
 
@@ -85,8 +91,8 @@ static BOOL serviceDRunning = NO;
 @interface TestServiceD : NNService @end
 @implementation TestServiceD
 - (NNServiceType)serviceType { return NNServiceTypePersistent; }
-- (void)startService { NSAssert(!serviceDRunning, @""); serviceDRunning = YES; }
-- (void)stopService { NSAssert(serviceDRunning, @""); serviceDRunning = NO; }
+- (void)startService { [super startService]; NSAssert(!serviceDRunning, @""); serviceDRunning = YES; }
+- (void)stopService { NSAssert(serviceDRunning, @""); serviceDRunning = NO; [super stopService];}
 @end
 
 // Service E depends on Service D, runs on demand
@@ -100,6 +106,7 @@ static BOOL serviceERunning = NO;
 - (NSSet *)dependencies { return [NSSet setWithObject:[TestServiceD self]]; }
 - (Protocol *)subscriberProtocol { return @protocol(TestServiceEProtocol); }
 - (void)startService {
+    [super startService];
     serviceERunning = YES;
     [self sendMessage];
 }
@@ -109,6 +116,7 @@ static BOOL serviceERunning = NO;
 }
 - (void)stopService {
     serviceERunning = NO;
+    [super stopService];
 }
 @end
 

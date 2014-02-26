@@ -304,8 +304,13 @@ static BOOL _serviceIsValid(Class service)
         return;
     }
 
+    // Why is this calling count on subscribers.allObjects instead of on subscribers? Because:
+    // NSHashMap was giving a count of 1 when the actual membership of the set was 0 (count didn't update synchronously with object death). allObjects (correctly) returns an empty array in this case.
+    // This was the one feature that NNMutableWeakSet had that cost it the most in terms of performance, so it's understandable that NSHashMap doesn't support it..
+    NSUInteger actualSubscriberCount = SERVICEINFO(service).subscribers.allObjects.count;
+    
     BOOL dependenciesMet = [SERVICEINFO(service).dependencies isSubsetOfSet:self.runningServices];
-    BOOL serviceIsWanted = SERVICEINFO(service).type != NNServiceTypeOnDemand || SERVICEINFO(service).subscribers.count > 0;
+    BOOL serviceIsWanted = SERVICEINFO(service).type != NNServiceTypeOnDemand || actualSubscriberCount > 0;
     if (dependenciesMet && serviceIsWanted) {
         return;
     }
