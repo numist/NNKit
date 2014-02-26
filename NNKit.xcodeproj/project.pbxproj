@@ -33,6 +33,8 @@
 		BC82B3DE183C37E500FDD3B9 /* NNService+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DC183C37E500FDD3B9 /* NNService+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC82B3E0183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */; };
 		BC82B3E1183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */; };
+		BC961A8418BDB377009F3F94 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = BC961A8318BDB377009F3F94 /* macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC961A8518BDB377009F3F94 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = BC961A8318BDB377009F3F94 /* macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCB1DBA6183D14B50081107F /* NNTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA5183D14B50081107F /* NNTestCase.m */; };
 		BCB1DBA7183D14B50081107F /* NNTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA5183D14B50081107F /* NNTestCase.m */; };
 		BCB1DBA9183D196E0081107F /* nn_autofreeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA8183D196E0081107F /* nn_autofreeTests.m */; };
@@ -139,6 +141,7 @@
 		BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManagerTests.m; path = NNKitTests/NNMultiDispatchManagerTests.m; sourceTree = SOURCE_ROOT; };
 		BC82B3DC183C37E500FDD3B9 /* NNService+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NNService+Protected.h"; path = "Services/NNService+Protected.h"; sourceTree = "<group>"; };
 		BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NNMultiDispatchManager+Protected.h"; path = "Collections/NNMultiDispatchManager+Protected.h"; sourceTree = "<group>"; };
+		BC961A8318BDB377009F3F94 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
 		BCB1DBA4183D14B50081107F /* NNTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNTestCase.h; sourceTree = "<group>"; };
 		BCB1DBA5183D14B50081107F /* NNTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNTestCase.m; sourceTree = "<group>"; };
 		BCB1DBA8183D196E0081107F /* nn_autofreeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = nn_autofreeTests.m; sourceTree = "<group>"; };
@@ -307,6 +310,7 @@
 				BC19D3621810C63E009CEC1F /* Services */,
 				BCD1D58617D9A0AF00A3EBD4 /* Swizzling */,
 				BCD1D53917D9471A00A3EBD4 /* NNKit.h */,
+				BC961A8318BDB377009F3F94 /* macros.h */,
 				BCD1D53A17D9471A00A3EBD4 /* NNKit.m */,
 				BCD1D53317D9471A00A3EBD4 /* Supporting Files */,
 			);
@@ -429,6 +433,7 @@
 				BC82B3E1183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */,
 				BC82B3D6183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */,
 				BCCA7A431807629C00CE36E5 /* NNPollingObject+Protected.h in Headers */,
+				BC961A8518BDB377009F3F94 /* macros.h in Headers */,
 				BCCA7A45180762A800CE36E5 /* NNDelegateProxy.h in Headers */,
 				BCCA7A48180762BB00CE36E5 /* nn_isaSwizzling_Private.h in Headers */,
 				BC19D3661810C6C3009CEC1F /* NNService.h in Headers */,
@@ -455,6 +460,7 @@
 				BC82B3E0183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */,
 				BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */,
 				BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */,
+				BC961A8418BDB377009F3F94 /* macros.h in Headers */,
 				BCD1D5A917D9C72F00A3EBD4 /* despatch.h in Headers */,
 				BCD1D58C17D9A14300A3EBD4 /* nn_isaSwizzling_Private.h in Headers */,
 				BC19D3651810C6C3009CEC1F /* NNService.h in Headers */,

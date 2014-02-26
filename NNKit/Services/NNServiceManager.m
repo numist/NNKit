@@ -17,6 +17,7 @@
 #import <objc/runtime.h>
 
 #import "nn_autofree.h"
+#import "macros.h"
 #import "NNCleanupProxy.h"
 #import "NNMultiDispatchManager+Protected.h"
 #import "NNService+Protected.h"
@@ -57,8 +58,8 @@ static BOOL _serviceIsValid(Class service)
     self->_instance = [service sharedService];
     self->_instance.subscriberDispatcher.enabled = NO;
     self->_type = self->_instance.serviceType;
-    self->_dependencies = [self->_instance respondsToSelector:@selector(dependencies)] ? (self->_instance.dependencies ?: [NSSet set]) : [NSSet set];
-    self->_subscriberProtocol = [self->_instance respondsToSelector:@selector(subscriberProtocol)] ? self->_instance.subscriberProtocol : @protocol(NSObject);
+    self->_dependencies = [self->_instance respondsToSelector:NNTypedSelector(NNService, dependencies)] ? (self->_instance.dependencies ?: [NSSet set]) : [NSSet set];
+    self->_subscriberProtocol = [self->_instance respondsToSelector:NNTypedSelector(NNService, subscriberProtocol)] ? self->_instance.subscriberProtocol : @protocol(NSObject);
 
     return self;
 }
@@ -320,9 +321,7 @@ static BOOL _serviceIsValid(Class service)
     
     instance.subscriberDispatcher.enabled = YES;
     
-    if ([instance respondsToSelector:@selector(startService)]) {
-        [instance startService];
-    }
+    [instance startService];
     
     [self.runningServices addObject:service];
     
@@ -343,9 +342,7 @@ static BOOL _serviceIsValid(Class service)
         [self _stopServiceIfDone:dependantClass];
     }
     
-    if ([instance respondsToSelector:@selector(stopService)]) {
-        [instance stopService];
-    }
+    [instance stopService];
     
     instance.subscriberDispatcher.enabled = NO;
 }
