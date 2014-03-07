@@ -57,9 +57,9 @@ static BOOL _serviceIsValid(Class service)
     self->_subscribers = [NSHashTable weakObjectsHashTable];
     self->_instance = [service sharedService];
     self->_instance.subscriberDispatcher.enabled = NO;
-    self->_type = self->_instance.serviceType;
-    self->_dependencies = [self->_instance respondsToSelector:NNTypedSelector(NNService, dependencies)] ? (self->_instance.dependencies ?: [NSSet set]) : [NSSet set];
-    self->_subscriberProtocol = [self->_instance respondsToSelector:NNTypedSelector(NNService, subscriberProtocol)] ? self->_instance.subscriberProtocol : @protocol(NSObject);
+    self->_type = [service serviceType];
+    self->_dependencies = [service dependencies] ?: [NSSet set];
+    self->_subscriberProtocol = [service subscriberProtocol] ?: @protocol(NSObject);
 
     return self;
 }
@@ -123,7 +123,7 @@ static BOOL _serviceIsValid(Class service)
     
     for (size_t i = 0; i < numClasses; ++i) {
         if (classIsService(buffer[i])) {
-            if ([[buffer[i] sharedService] serviceType] == NNServiceTypeNone) {
+            if ([buffer[i] serviceType] == NNServiceTypeNone) {
                 continue;
             }
             [self registerService:buffer[i]];

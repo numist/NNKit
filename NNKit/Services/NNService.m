@@ -49,33 +49,28 @@
     return result;
 }
 
-- (id)init;
-{
-    if (!(self = [super init])) { return nil; }
-    
-    self->_subscriberDispatcher = [[NNMultiDispatchManager alloc] initWithProtocol:self.subscriberProtocol];
-    
-    return self;
-}
-
-- (id<NSFastEnumeration>)notificationNames;
-{
-    return nil;
-}
-
-- (NNServiceType)serviceType;
++ (NNServiceType)serviceType;
 {
     return NNServiceTypeNone;
 }
 
-- (id<NSFastEnumeration>)dependencies;
++ (NSSet *)dependencies;
 {
-    return nil;
+    return [NSSet set];
 }
 
-- (Protocol *)subscriberProtocol;
++ (Protocol *)subscriberProtocol;
 {
     return @protocol(NSObject);
+}
+
+- (id)init;
+{
+    if (!(self = [super init])) { return nil; }
+    
+    self->_subscriberDispatcher = [[NNMultiDispatchManager alloc] initWithProtocol:self.class.subscriberProtocol];
+    
+    return self;
 }
 
 - (void)startService;
