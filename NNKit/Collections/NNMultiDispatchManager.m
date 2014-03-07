@@ -45,6 +45,7 @@
 
 - (void)addObserver:(id)observer;
 {
+    NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
     NSParameterAssert([observer conformsToProtocol:self.protocol]);
     
     [self.observers addObject:observer];
@@ -52,6 +53,8 @@
 
 - (void)removeObserver:(id)observer;
 {
+    NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
+
     [self.observers removeObject:observer];
 }
 
@@ -79,7 +82,9 @@
                 NSAssert(sanity && instance, @"Selector %@ is not actually part of protocol %@?!", NSStringFromSelector(anInvocation.selector), NSStringFromProtocol(self.protocol));
 #           endif
             
-            for (id obj in self.observers) {
+            // This loops over .observers.allObjects to retain the members of the collection for the duration of the loop. Intentional mutations to the collection were being avoided, but object deallocation was unpredictably mutating the collection during fast enumeration.
+            // In fact, there should probably be a radar about using fast enumeration on weak collections…
+            for (id obj in self.observers.allObjects) {
                 if ([obj respondsToSelector:anInvocation.selector] || required) {
                     [anInvocation invokeWithTarget:obj];
                 }

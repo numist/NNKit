@@ -69,6 +69,10 @@
  */
 - (NNService *)instanceForService:(Class)service;
 
+#pragma message "Docs!"
+- (void)addObserver:(id)observer forService:(Class)service;
+- (void)removeObserver:(id)observer forService:(Class)service;
+
 /*!
  * @method addSubscriber:forService::
  *
@@ -102,9 +106,5 @@
  * The service to which the caller is unsubscribing.
  */
 - (void)removeSubscriber:(id)subscriber forService:(Class)service;
-
-// These do not affect the demand on the service, so it may be stopped while observers are present.
-- (void)addObserver:(id)observer forService:(Class)service;
-- (void)removeObserver:(id)observer forService:(Class)service;
 
 @end
