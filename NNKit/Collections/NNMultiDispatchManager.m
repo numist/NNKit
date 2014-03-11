@@ -16,6 +16,7 @@
 
 #import "despatch.h"
 #import "nn_autofree.h"
+#import "NSInvocation+NNCopying.h"
 #import "runtime.h"
 
 
@@ -67,6 +68,8 @@
 {
     if (self.enabled) {
         if (anInvocation.methodSignature.isOneway) {
+            // If we're going async, copy the invocation to avoid multiple threads calling -invoke or otherwise acting in a thread-unsafe manner.
+            anInvocation = [anInvocation nn_copy];
             [anInvocation retainArguments];
         }
         
