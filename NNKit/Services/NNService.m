@@ -18,24 +18,6 @@
 #import "NNMultiDispatchManager.h"
 
 
-#import <objc/runtime.h>
-#define NNMemoize(block) _NNMemoize(self, _cmd, block)
-id _NNMemoize(id self, SEL _cmd, id (^block)()) {
-    id result;
-    void *key = (void *)((uintptr_t)(__bridge void *)self ^ (uintptr_t)(void *)_cmd ^ (uintptr_t)&_NNMemoize);
-    
-    @synchronized(self) {
-        result = objc_getAssociatedObject(self, key);
-        if (!result) {
-            result = block();
-            objc_setAssociatedObject(self, key, result, OBJC_ASSOCIATION_COPY_NONATOMIC);
-        }
-    }
-    
-    return result;
-}
-
-
 @interface NNService ()
 
 @property (nonatomic, readonly, strong) NNMultiDispatchManager *subscriberDispatcher;
