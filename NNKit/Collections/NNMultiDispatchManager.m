@@ -68,7 +68,7 @@
 {
     if (self.enabled) {
         if (anInvocation.methodSignature.isOneway) {
-            // If we're going async, copy the invocation to avoid concurrency problems with this method's parameter.
+            // If we're going async, copy the invocation to avoid multiple threads calling -invoke or otherwise acting in a thread-unsafe manner.
             anInvocation = [anInvocation nn_copy];
             [anInvocation retainArguments];
         }
@@ -93,7 +93,6 @@
                 }
             }
         };
-        
         if (anInvocation.methodSignature.isOneway) {
             dispatch_async(dispatch_get_main_queue(), dispatch);
         } else {
