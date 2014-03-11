@@ -21,6 +21,8 @@
 		BC19D3741810C85B009CEC1F /* NNServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D3701810C85B009CEC1F /* NNServiceManager.m */; };
 		BC19D3A01811BBC9009CEC1F /* NNServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */; };
 		BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */; };
+		BC275C0A18CE9D9D00761247 /* NSInvocation+NNCopying.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */; };
+		BC275C0B18CE9DA200761247 /* NSInvocation+NNCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC82B3C9183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
 		BC82B3CA183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
 		BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -139,6 +141,8 @@
 		BC19D36F1810C85B009CEC1F /* NNServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNServiceManager.h; path = Services/NNServiceManager.h; sourceTree = "<group>"; };
 		BC19D3701810C85B009CEC1F /* NNServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNServiceManager.m; path = Services/NNServiceManager.m; sourceTree = "<group>"; };
 		BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNServiceTests.m; sourceTree = "<group>"; };
+		BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+NNCopying.h"; path = "API Extension/NSInvocation+NNCopying.h"; sourceTree = "<group>"; };
+		BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+NNCopying.m"; path = "API Extension/NSInvocation+NNCopying.m"; sourceTree = "<group>"; };
 		BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNCleanupProxyTests.m; sourceTree = "<group>"; };
 		BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNMultiDispatchManager.h; path = Collections/NNMultiDispatchManager.h; sourceTree = "<group>"; };
 		BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManager.m; path = Collections/NNMultiDispatchManager.m; sourceTree = "<group>"; };
@@ -401,6 +405,8 @@
 		BCD1D58117D9940500A3EBD4 /* API extension */ = {
 			isa = PBXGroup;
 			children = (
+				BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */,
+				BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */,
 				BCD1D5A517D9C72F00A3EBD4 /* despatch.h */,
 				BCD1D5A617D9C72F00A3EBD4 /* despatch.m */,
 				BCD1D5A817D9C72F00A3EBD4 /* runtime.h */,
@@ -468,6 +474,7 @@
 				BC82B3DD183C37E500FDD3B9 /* NNService+Protected.h in Headers */,
 				BC82B3E0183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */,
 				BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */,
+				BC275C0B18CE9DA200761247 /* NSInvocation+NNCopying.h in Headers */,
 				BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */,
 				BC961A8418BDB377009F3F94 /* macros.h in Headers */,
 				BCD1D5A917D9C72F00A3EBD4 /* despatch.h in Headers */,
@@ -655,6 +662,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC275C0A18CE9D9D00761247 /* NSInvocation+NNCopying.m in Sources */,
 				BCD1D5AA17D9C72F00A3EBD4 /* despatch.m in Sources */,
 				BCD1D5BE17D9C88F00A3EBD4 /* NNStrongifiedProperties.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,

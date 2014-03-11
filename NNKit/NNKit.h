@@ -21,6 +21,7 @@
 #import <NNKit/nn_isaSwizzling.h>
 
 #import <NNKit/NSCollections+NNComprehensions.h>
+#import <NNKit/NSInvocation+NNCopying.h>
 #import <NNKit/NNDelegateProxy.h>
 #import <NNKit/NNPollingObject.h>
 #import <NNKit/NNSelfInvalidatingObject.h>
