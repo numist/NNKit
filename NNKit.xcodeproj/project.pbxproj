@@ -23,6 +23,8 @@
 		BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */; };
 		BC275C0A18CE9D9D00761247 /* NSInvocation+NNCopying.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */; };
 		BC275C0B18CE9DA200761247 /* NSInvocation+NNCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC275C7618CFE4BD00761247 /* NNComprehensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */; };
+		BC275C7718CFE4BD00761247 /* NNComprehensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */; };
 		BC82B3C9183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
 		BC82B3CA183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
 		BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -141,6 +143,7 @@
 		BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNServiceTests.m; sourceTree = "<group>"; };
 		BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+NNCopying.h"; path = "API Extension/NSInvocation+NNCopying.h"; sourceTree = "<group>"; };
 		BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+NNCopying.m"; path = "API Extension/NSInvocation+NNCopying.m"; sourceTree = "<group>"; };
+		BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNComprehensionTests.m; sourceTree = "<group>"; };
 		BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNCleanupProxyTests.m; sourceTree = "<group>"; };
 		BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNMultiDispatchManager.h; path = Actors/NNMultiDispatchManager.h; sourceTree = "<group>"; };
 		BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManager.m; path = Actors/NNMultiDispatchManager.m; sourceTree = "<group>"; };
@@ -347,6 +350,7 @@
 				BCCB1BFD1835FD9A0029EBF6 /* NNWeakObserverTests.m */,
 				BCD1D54817D9471A00A3EBD4 /* Supporting Files */,
 				BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */,
+				BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */,
 			);
 			path = NNKitTests;
 			sourceTree = "<group>";
@@ -648,6 +652,7 @@
 				BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCCA7A331807622200CE36E5 /* NNStrongifiedPropertiesTests.m in Sources */,
 				BCCA7A341807622200CE36E5 /* nn_isaSwizzlingTests.m in Sources */,
+				BC275C7718CFE4BD00761247 /* NNComprehensionTests.m in Sources */,
 				BCB1DBAA183D196E0081107F /* nn_autofreeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -690,6 +695,7 @@
 				BC19D3A01811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */,
 				BCD1D59C17D9BAB000A3EBD4 /* NNPollingObjectTests.m in Sources */,
+				BC275C7618CFE4BD00761247 /* NNComprehensionTests.m in Sources */,
 				BCB1DBA9183D196E0081107F /* nn_autofreeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
