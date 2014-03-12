@@ -41,3 +41,8 @@ NSNotificationCenter
 --------------------
 
 The `NNAdditions` category to `NSNotificationCenter` adds a `addWeakObserver:selector:name:object:` method which references the observer weakly so no observer removal is required—it is automatically cleaned up when the observer is deallocated.
+
+NSInvocation
+------------
+
+The `NNCopying` category to `NSInvocation` adds an `nn_copy` method which returns a copy of the receiver.
