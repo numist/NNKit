@@ -14,7 +14,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef _Bool (^nn_filter_block_t)(id item);
+typedef BOOL (^nn_filter_block_t)(id item);
 typedef id (^nn_map_block_t)(id item);
 typedef id (^nn_reduce_block_t)(id accumulator, id item);
 
