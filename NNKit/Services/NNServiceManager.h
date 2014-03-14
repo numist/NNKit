@@ -69,8 +69,37 @@
  */
 - (NNService *)instanceForService:(Class)service;
 
-#pragma message "Docs!"
+/*!
+ * @method addObserver:forService:
+ *
+ * @discussion
+ * Adds an observer to the service's notification group. Observers must conform
+ * to the protocol specified by the service's subscriberProtocol.
+ *
+ * Observers are automatically removed if they are deallocated while observing
+ * the service.
+ *
+ * @param observer
+ * The object that is interested in the service's events. The observer must
+ * conform to the service's subscriberProtocol.
+ *
+ * @param service
+ * The service that the caller wishes to observe.
+ */
 - (void)addObserver:(id)observer forService:(Class)service;
+
+/*!
+ * @method removeSubscriber:forService:
+ *
+ * @discussion
+ * Removes the observer from the service's notification group.
+ *
+ * @param subscriber
+ * The object that is no longer interested in the service.
+ *
+ * @param service
+ * The service from which the caller is unsubscribing.
+ */
 - (void)removeObserver:(id)observer forService:(Class)service;
 
 /*!
@@ -84,8 +113,8 @@
  * subscribed to the service.
  *
  * @param subscriber
- * The object that is interested in the service. If the service defines a
- * specificl protocol with +subscriberProtocol, the subscriber must conform to it.
+ * The object that is interested in the service's events. As with observers, the
+ * subscriber must conform to the service's subscriberProtocol.
  *
  * @param service
  * The service to which the caller is subscribing.
@@ -103,7 +132,7 @@
  * The object that is no longer interested in the service.
  *
  * @param service
- * The service to which the caller is unsubscribing.
+ * The service from which the caller is unsubscribing.
  */
 - (void)removeSubscriber:(id)subscriber forService:(Class)service;
 

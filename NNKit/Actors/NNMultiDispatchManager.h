@@ -1,5 +1,5 @@
 //
-//  NNMultiDispatchManager+Protected.h
+//  NNMultiDispatchManager.h
 //  NNKit
 //
 //  Created by Scott Perry on 11/19/13.
@@ -12,11 +12,17 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <NNKit/NNMultiDispatchManager.h>
+#import <Foundation/Foundation.h>
 
 
-@interface NNMultiDispatchManager (Protected)
+@interface NNMultiDispatchManager : NSObject
 
-@property (nonatomic, readonly, strong) NSHashTable *observers;
+@property (nonatomic, assign, readwrite, getter = isEnabled, setter = setIsEnabled:) BOOL enabled;
+
+- (instancetype)initWithProtocol:(Protocol *)protocol;
+
+- (void)addObserver:(id)observer;
+- (BOOL)hasObserver:(id)observer;
+- (void)removeObserver:(id)observer;
 
 @end
