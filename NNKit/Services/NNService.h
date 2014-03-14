@@ -53,9 +53,9 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @method serviceType
  *
  * @discussion
- * The type of the service. Must be overridden. Must not return NNServiceTypeNone.
+ * The type of the service. Must be overridden. Valid services must not return NNServiceTypeNone.
  */
-- (NNServiceType)serviceType;
++ (NNServiceType)serviceType;
 
 /*!
  * @method dependencies
@@ -69,7 +69,7 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * Returns a set of <code>Class</code>es that this service depends on to run.
  * Default implementation returns nil;
  */
-- (NSSet *)dependencies;
++ (NSSet *)dependencies;
 
 /*!
  * @method subscriberProtocol
@@ -77,7 +77,7 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @discussion
  * Protocol for subscribers to conform to. Default implementation returns <code>&#64;protocol(NSObject)</code>.
  */
-- (Protocol *)subscriberProtocol;
++ (Protocol *)subscriberProtocol;
 
 /*!
  * @method startService

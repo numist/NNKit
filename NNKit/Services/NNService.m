@@ -49,33 +49,43 @@
     return result;
 }
 
++ (NNServiceType)serviceType;
+{
+    if ([self instancesRespondToSelector:_cmd]) {
+        NSLog(@"%@: instance method %@ should be implemented as a class method", self, NSStringFromSelector(_cmd));
+        return [[self sharedService] serviceType];
+    }
+    
+    return NNServiceTypeNone;
+}
+
++ (NSSet *)dependencies;
+{
+    if ([self instancesRespondToSelector:_cmd]) {
+        NSLog(@"%@: instance method %@ should be implemented as a class method", self, NSStringFromSelector(_cmd));
+        return [[self sharedService] dependencies];
+    }
+
+    return [NSSet set];
+}
+
++ (Protocol *)subscriberProtocol;
+{
+    if ([self instancesRespondToSelector:_cmd]) {
+        NSLog(@"%@: instance method %@ should be implemented as a class method", self, NSStringFromSelector(_cmd));
+        return [[self sharedService] subscriberProtocol];
+    }
+
+    return @protocol(NSObject);
+}
+
 - (id)init;
 {
     if (!(self = [super init])) { return nil; }
     
-    self->_subscriberDispatcher = [[NNMultiDispatchManager alloc] initWithProtocol:self.subscriberProtocol];
+    self->_subscriberDispatcher = [[NNMultiDispatchManager alloc] initWithProtocol:self.class.subscriberProtocol];
     
     return self;
-}
-
-- (id<NSFastEnumeration>)notificationNames;
-{
-    return nil;
-}
-
-- (NNServiceType)serviceType;
-{
-    return NNServiceTypeNone;
-}
-
-- (id<NSFastEnumeration>)dependencies;
-{
-    return nil;
-}
-
-- (Protocol *)subscriberProtocol;
-{
-    return @protocol(NSObject);
 }
 
 - (void)startService;

@@ -6,7 +6,7 @@ NNKit provides a framework for services running in your application, including d
 What makes a service
 --------------------
 
-Services are classes that inherit from `NNService` whose instances respond to `serviceType` with a type other than `NNServiceTypeNone`. The other two types are:
+Services are classes that inherit from `NNService` and respond to `serviceType` with a type other than `NNServiceTypeNone`. The other two types are:
 
 * `NNServiceTypePersistent`: the service will run as long as its dependencies (if any) are running.
 * `NNServiceTypeOnDemand`: the service will run as long as its dependencies (if any) are running and at least one object has subscribed to the service using the service manager's `addSubscriber:forService:` method.
@@ -19,7 +19,7 @@ Service dependencies are defined by the `dependencies` method, which returns an 
 Subscriber (and observer) message dispatch
 ------------------------------------------
 
-Instances of services that dispatch messages to their subscribers must respond to `subscriberProtocol` with the appropriate protocol. Subscribers must conform to this protocol and will be checked at runtime. Sending a message to subscribers can be accomplished with code resembling the following:
+Services whose instances dispatch messages to their subscribers must respond to `subscriberProtocol` with the appropriate protocol. Subscribers must conform to this protocol and will be checked at runtime. Sending a message to subscribers can be accomplished with code resembling the following:
 
 ``` objective-c
 - (void)sendMessage;
