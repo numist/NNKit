@@ -19,7 +19,7 @@
 #import "nn_autofree.h"
 #import "macros.h"
 #import "NNCleanupProxy.h"
-#import "NNMultiDispatchManager+Protected.h"
+#import "NNMultiDispatchManager.h"
 #import "NNService+Protected.h"
 
 
@@ -214,10 +214,6 @@ static BOOL _serviceIsValid(Class service)
     
     NSParameterAssert([observer conformsToProtocol:SERVICEINFO(service).subscriberProtocol]);
     
-    if ([SERVICEINFO(service).instance.subscriberDispatcher.observers containsObject:observer]) {
-        return;
-    }
-    
     [SERVICEINFO(service).instance.subscriberDispatcher addObserver:observer];
 }
 
@@ -226,7 +222,7 @@ static BOOL _serviceIsValid(Class service)
     NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
     NSParameterAssert(SERVICEINFO(service));
     NSParameterAssert(![SERVICEINFO(service).subscribers containsObject:observer]);
-    NSParameterAssert([SERVICEINFO(service).instance.subscriberDispatcher.observers containsObject:observer]);
+    NSParameterAssert([SERVICEINFO(service).instance.subscriberDispatcher hasObserver:observer]);
     
     [SERVICEINFO(service).instance.subscriberDispatcher removeObserver:observer];
 }

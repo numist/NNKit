@@ -20,30 +20,36 @@
 {
     NSMethodSignature *signature = [self methodSignature];
     NSUInteger const arguments = signature.numberOfArguments;
-    
+
     NSInvocation *result = [NSInvocation invocationWithMethodSignature:signature];
-    
+
     void *heapBuffer = NULL;
     size_t heapBufferSize = 0;
-    
+
     NSUInteger alignp = 0;
     for (NSUInteger i = 0; i < arguments; i++) {
         char *type = [signature getArgumentTypeAtIndex:i];
         NSGetSizeAndAlignment(type, NULL, &alignp);
-        
+
         if (alignp > heapBufferSize) {
             heapBuffer = heapBuffer
                        ? realloc(heapBuffer, alignp)
                        : malloc(alignp);
             heapBufferSize = alignp;
         }
-        
+
         [self getArgument:heapBuffer atIndex:i];
 		[result setArgument:heapBuffer atIndex:i];
     }
-    
+
     if (heapBuffer) {
         free(heapBuffer);
+    }
+
+    result.target = self.target;
+
+    if (self.argumentsRetained) {
+        [result retainArguments];
     }
 
     return result;

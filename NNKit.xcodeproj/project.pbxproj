@@ -23,6 +23,8 @@
 		BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */; };
 		BC275C0A18CE9D9D00761247 /* NSInvocation+NNCopying.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */; };
 		BC275C0B18CE9DA200761247 /* NSInvocation+NNCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC275C7618CFE4BD00761247 /* NNComprehensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */; };
+		BC275C7718CFE4BD00761247 /* NNComprehensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */; };
 		BC82B3C9183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
 		BC82B3CA183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
 		BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,8 +35,6 @@
 		BC82B3DB183C317000FDD3B9 /* NNMultiDispatchManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */; };
 		BC82B3DD183C37E500FDD3B9 /* NNService+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DC183C37E500FDD3B9 /* NNService+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC82B3DE183C37E500FDD3B9 /* NNService+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DC183C37E500FDD3B9 /* NNService+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BC82B3E0183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */; };
-		BC82B3E1183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */; };
 		BC961A8418BDB377009F3F94 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = BC961A8318BDB377009F3F94 /* macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC961A8518BDB377009F3F94 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = BC961A8318BDB377009F3F94 /* macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCB1DBA6183D14B50081107F /* NNTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA5183D14B50081107F /* NNTestCase.m */; };
@@ -143,12 +143,12 @@
 		BC19D39F1811BBC9009CEC1F /* NNServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNServiceTests.m; sourceTree = "<group>"; };
 		BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+NNCopying.h"; path = "API Extension/NSInvocation+NNCopying.h"; sourceTree = "<group>"; };
 		BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+NNCopying.m"; path = "API Extension/NSInvocation+NNCopying.m"; sourceTree = "<group>"; };
+		BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNComprehensionTests.m; sourceTree = "<group>"; };
 		BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNCleanupProxyTests.m; sourceTree = "<group>"; };
-		BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNMultiDispatchManager.h; path = Collections/NNMultiDispatchManager.h; sourceTree = "<group>"; };
-		BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManager.m; path = Collections/NNMultiDispatchManager.m; sourceTree = "<group>"; };
+		BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNMultiDispatchManager.h; path = Actors/NNMultiDispatchManager.h; sourceTree = "<group>"; };
+		BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManager.m; path = Actors/NNMultiDispatchManager.m; sourceTree = "<group>"; };
 		BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManagerTests.m; path = NNKitTests/NNMultiDispatchManagerTests.m; sourceTree = SOURCE_ROOT; };
 		BC82B3DC183C37E500FDD3B9 /* NNService+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NNService+Protected.h"; path = "Services/NNService+Protected.h"; sourceTree = "<group>"; };
-		BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NNMultiDispatchManager+Protected.h"; path = "Collections/NNMultiDispatchManager+Protected.h"; sourceTree = "<group>"; };
 		BC961A8318BDB377009F3F94 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
 		BCB1DBA4183D14B50081107F /* NNTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NNTestCase.h; sourceTree = "<group>"; };
 		BCB1DBA5183D14B50081107F /* NNTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNTestCase.m; sourceTree = "<group>"; };
@@ -249,9 +249,6 @@
 			children = (
 				BCB8A26918BDBB5000E4AC18 /* NSCollections+NNComprehensions.h */,
 				BCB8A26A18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m */,
-				BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */,
-				BC82B3DF183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h */,
-				BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */,
 			);
 			name = Collections;
 			sourceTree = "<group>";
@@ -353,6 +350,7 @@
 				BCCB1BFD1835FD9A0029EBF6 /* NNWeakObserverTests.m */,
 				BCD1D54817D9471A00A3EBD4 /* Supporting Files */,
 				BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */,
+				BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */,
 			);
 			path = NNKitTests;
 			sourceTree = "<group>";
@@ -382,6 +380,8 @@
 			children = (
 				BC12437D183AEFAC00461433 /* NNCleanupProxy.h */,
 				BC12437E183AEFAC00461433 /* NNCleanupProxy.m */,
+				BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */,
+				BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */,
 				BCD1D5AD17D9C79F00A3EBD4 /* NNPollingObject.h */,
 				BCD1D5AF17D9C79F00A3EBD4 /* NNPollingObject+Protected.h */,
 				BCD1D5AE17D9C79F00A3EBD4 /* NNPollingObject.m */,
@@ -444,7 +444,6 @@
 				BCCA7A49180762C000CE36E5 /* nn_isaSwizzling.h in Headers */,
 				BCCA7A4A180762C700CE36E5 /* NNISASwizzledObject.h in Headers */,
 				BC82B3DE183C37E500FDD3B9 /* NNService+Protected.h in Headers */,
-				BC82B3E1183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */,
 				BC82B3D6183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */,
 				BCCA7A431807629C00CE36E5 /* NNPollingObject+Protected.h in Headers */,
 				BC961A8518BDB377009F3F94 /* macros.h in Headers */,
@@ -472,7 +471,6 @@
 				BCD1D5B417D9C79F00A3EBD4 /* NNPollingObject+Protected.h in Headers */,
 				BCD1D5BD17D9C88F00A3EBD4 /* NNStrongifiedProperties.h in Headers */,
 				BC82B3DD183C37E500FDD3B9 /* NNService+Protected.h in Headers */,
-				BC82B3E0183C39A700FDD3B9 /* NNMultiDispatchManager+Protected.h in Headers */,
 				BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */,
 				BC275C0B18CE9DA200761247 /* NSInvocation+NNCopying.h in Headers */,
 				BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */,
@@ -654,6 +652,7 @@
 				BC19D3A11811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCCA7A331807622200CE36E5 /* NNStrongifiedPropertiesTests.m in Sources */,
 				BCCA7A341807622200CE36E5 /* nn_isaSwizzlingTests.m in Sources */,
+				BC275C7718CFE4BD00761247 /* NNComprehensionTests.m in Sources */,
 				BCB1DBAA183D196E0081107F /* nn_autofreeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -696,6 +695,7 @@
 				BC19D3A01811BBC9009CEC1F /* NNServiceTests.m in Sources */,
 				BCD1D56A17D96C4500A3EBD4 /* NNDelegateProxyTests.m in Sources */,
 				BCD1D59C17D9BAB000A3EBD4 /* NNPollingObjectTests.m in Sources */,
+				BC275C7618CFE4BD00761247 /* NNComprehensionTests.m in Sources */,
 				BCB1DBA9183D196E0081107F /* nn_autofreeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
