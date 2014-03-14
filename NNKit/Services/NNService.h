@@ -53,7 +53,7 @@ typedef NS_ENUM(uint8_t, NNServiceType) {
  * @method serviceType
  *
  * @discussion
- * The type of the service. Must be overridden. Must not return NNServiceTypeNone.
+ * The type of the service. Must be overridden. Valid services must not return NNServiceTypeNone.
  */
 + (NNServiceType)serviceType;
 
