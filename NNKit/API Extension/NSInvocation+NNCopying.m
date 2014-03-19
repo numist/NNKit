@@ -28,7 +28,7 @@
 
     NSUInteger alignp = 0;
     for (NSUInteger i = 0; i < arguments; i++) {
-        char *type = [signature getArgumentTypeAtIndex:i];
+        const char *type = [signature getArgumentTypeAtIndex:i];
         NSGetSizeAndAlignment(type, NULL, &alignp);
 
         if (alignp > heapBufferSize) {
