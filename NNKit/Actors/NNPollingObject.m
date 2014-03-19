@@ -47,7 +47,7 @@
 
 - (instancetype)init;
 {
-    return [self initWithQueue:dispatch_get_global_queue(0, 0)];
+    return [self initWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
 }
 
 - (void)workerLoop;

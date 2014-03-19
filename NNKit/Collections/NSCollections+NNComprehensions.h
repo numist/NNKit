@@ -18,20 +18,17 @@ typedef BOOL (^nn_filter_block_t)(id item);
 typedef id (^nn_map_block_t)(id item);
 typedef id (^nn_reduce_block_t)(id accumulator, id item);
 
-@interface NSArray (NNComprehensions)
+@protocol NNCollection <NSObject>
 - (instancetype)nn_filter:(nn_filter_block_t)block;
 - (instancetype)nn_map:(nn_map_block_t)block;
 - (id)nn_reduce:(nn_reduce_block_t)block;
 @end
 
-@interface NSSet (NNComprehensions)
-- (instancetype)nn_filter:(nn_filter_block_t)block;
-- (instancetype)nn_map:(nn_map_block_t)block;
-- (id)nn_reduce:(nn_reduce_block_t)block;
+@interface NSArray (NNComprehensions) <NNCollection>
 @end
 
-@interface NSOrderedSet (NNComprehensions)
-- (instancetype)nn_filter:(nn_filter_block_t)block;
-- (instancetype)nn_map:(nn_map_block_t)block;
-- (id)nn_reduce:(nn_reduce_block_t)block;
+@interface NSSet (NNComprehensions) <NNCollection>
+@end
+
+@interface NSOrderedSet (NNComprehensions) <NNCollection>
 @end
