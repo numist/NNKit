@@ -35,7 +35,7 @@ static BOOL serviceCRunning = NO;
 
 @interface TestServiceA : NNService @end
 @implementation TestServiceA
-- (NNServiceType)serviceType { return NNServiceTypeOnDemand; }
++ (NNServiceType)serviceType { return NNServiceTypeOnDemand; }
 - (void)startService {
     [super startService];
     NSAssert(!serviceARunning, @"");
@@ -52,8 +52,8 @@ static BOOL serviceCRunning = NO;
 
 @interface TestServiceB : NNService @end
 @implementation TestServiceB
-- (NNServiceType)serviceType { return NNServiceTypePersistent; }
-- (NSSet *)dependencies { return [NSSet setWithObject:[TestServiceA self]]; }
++ (NNServiceType)serviceType { return NNServiceTypePersistent; }
++ (NSSet *)dependencies { return [NSSet setWithObject:[TestServiceA self]]; }
 - (void)startService {
     [super startService];
     NSAssert(serviceARunning, @"");
@@ -70,8 +70,8 @@ static BOOL serviceCRunning = NO;
 
 @interface TestServiceC : NNService @end
 @implementation TestServiceC
-- (NNServiceType)serviceType { return NNServiceTypePersistent; }
-- (NSSet *)dependencies { return [NSSet setWithArray:@[[TestServiceA self], [TestServiceB self]]]; }
++ (NNServiceType)serviceType { return NNServiceTypePersistent; }
++ (NSSet *)dependencies { return [NSSet setWithArray:@[[TestServiceA self], [TestServiceB self]]]; }
 - (void)startService {
     [super startService];
     NSAssert(serviceARunning, @"");
@@ -90,7 +90,7 @@ static BOOL serviceCRunning = NO;
 static BOOL serviceDRunning = NO;
 @interface TestServiceD : NNService @end
 @implementation TestServiceD
-- (NNServiceType)serviceType { return NNServiceTypePersistent; }
++ (NNServiceType)serviceType { return NNServiceTypePersistent; }
 - (void)startService { [super startService]; NSAssert(!serviceDRunning, @""); serviceDRunning = YES; }
 - (void)stopService { NSAssert(serviceDRunning, @""); serviceDRunning = NO; [super stopService];}
 @end
@@ -102,9 +102,9 @@ static BOOL serviceERunning = NO;
 @end
 @interface TestServiceE : NNService @end
 @implementation TestServiceE
-- (NNServiceType)serviceType { return NNServiceTypeOnDemand; }
-- (NSSet *)dependencies { return [NSSet setWithObject:[TestServiceD self]]; }
-- (Protocol *)subscriberProtocol { return @protocol(TestServiceEProtocol); }
++ (NNServiceType)serviceType { return NNServiceTypeOnDemand; }
++ (NSSet *)dependencies { return [NSSet setWithObject:[TestServiceD self]]; }
++ (Protocol *)subscriberProtocol { return @protocol(TestServiceEProtocol); }
 - (void)startService {
     [super startService];
     serviceERunning = YES;
