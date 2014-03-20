@@ -94,7 +94,7 @@
  * @discussion
  * Removes the observer from the service's notification group.
  *
- * @param subscriber
+ * @param observer
  * The object that is no longer interested in the service.
  *
  * @param service
