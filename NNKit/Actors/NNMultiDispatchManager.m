@@ -22,7 +22,6 @@
 
 @interface NNMultiDispatchManager ()
 
-@property (nonatomic, readonly, assign) Protocol *protocol;
 @property (nonatomic, readonly, strong) NSMutableDictionary *signatureCache;
 @property (nonatomic, readonly, strong) NSHashTable *observers;
 

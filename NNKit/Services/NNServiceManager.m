@@ -210,6 +210,7 @@ static BOOL _serviceIsValid(Class service)
     if (!SERVICEINFO(service)) {
         NSLog(@"Service %@ was not already known, attempting to register with %@.", NSStringFromClass(service), self);
         [self registerService:service];
+        NSAssert(SERVICEINFO(service), @"Failed to register service %@ with %@", NSStringFromClass(service), self);
     }
     
     NSParameterAssert([observer conformsToProtocol:SERVICEINFO(service).subscriberProtocol]);

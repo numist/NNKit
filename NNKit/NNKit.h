@@ -23,6 +23,7 @@
 #import <NNKit/NSCollections+NNComprehensions.h>
 #import <NNKit/NSInvocation+NNCopying.h>
 #import <NNKit/NNDelegateProxy.h>
+#import <NNKit/NNMultiDispatchManager.h>
 #import <NNKit/NNPollingObject.h>
 #import <NNKit/NNSelfInvalidatingObject.h>
 #import <NNKit/NNService.h>
