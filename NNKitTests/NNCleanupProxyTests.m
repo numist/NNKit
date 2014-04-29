@@ -118,8 +118,8 @@
         proxy = (id)[NNCleanupProxy cleanupProxyForTarget:foo conformingToProtocol:@protocol(NNCleanupProxyTestProtocol2) withKey:(uintptr_t)foo];
     }
 
-    XCTAssertFalse([proxy someKindOfSelectorWithObject:self], @"");
-    XCTAssertFalse([proxy someKindOfSelectorWithObject2:self], @"");
+    XCTAssertThrows([proxy someKindOfSelectorWithObject:self], @"");
+    XCTAssertThrows([proxy someKindOfSelectorWithObject2:self], @"");
     XCTAssertThrows([proxy anotherKindofSelectorWithObject:self], @"");
 }
 

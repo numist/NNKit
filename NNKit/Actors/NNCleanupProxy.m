@@ -99,23 +99,13 @@
 
 #pragma mark Message forwarding
 
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+- (id)forwardingTargetForSelector:(SEL)aSelector;
 {
-    NSMethodSignature *signature = [self.signatureCache objectForKey:NSStringFromSelector(aSelector)];
-
-    NSAssert(signature, @"Selector %@ was not pre-declared to proxy. Cache signatures before use with cacheMethodSignatureForSelector: while the target is still valid.", NSStringFromSelector(aSelector));
-    
-    if (!signature) {
-        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"Unrecognized selector sent to instance %p", self] userInfo:nil];
+    if ([self.signatureCache objectForKey:NSStringFromSelector(aSelector)]) {
+        return self.target;
     }
     
-    return signature;
-}
-
-- (void)forwardInvocation:(NSInvocation *)invocation;
-{
-    invocation.target = self.target;
-    [invocation invoke];
+    return self;
 }
 
 #pragma mark NNCleanupProxy
