@@ -35,6 +35,8 @@
 		BC82B3DB183C317000FDD3B9 /* NNMultiDispatchManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3D9183C317000FDD3B9 /* NNMultiDispatchManagerTests.m */; };
 		BC82B3DD183C37E500FDD3B9 /* NNService+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DC183C37E500FDD3B9 /* NNService+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC82B3DE183C37E500FDD3B9 /* NNService+Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3DC183C37E500FDD3B9 /* NNService+Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC85E88E18E78331001DF986 /* NSInvocation+NNCopying.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */; };
+		BC85E89318E78519001DF986 /* NSInvocation+NNCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC961A8418BDB377009F3F94 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = BC961A8318BDB377009F3F94 /* macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC961A8518BDB377009F3F94 /* macros.h in Headers */ = {isa = PBXBuildFile; fileRef = BC961A8318BDB377009F3F94 /* macros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCB1DBA6183D14B50081107F /* NNTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = BCB1DBA5183D14B50081107F /* NNTestCase.m */; };
@@ -455,6 +457,7 @@
 				BCCA7A46180762AF00CE36E5 /* NNStrongifiedProperties.h in Headers */,
 				BCB8A26C18BDBB5000E4AC18 /* NSCollections+NNComprehensions.h in Headers */,
 				BC124380183AEFAC00461433 /* NNCleanupProxy.h in Headers */,
+				BC85E89318E78519001DF986 /* NSInvocation+NNCopying.h in Headers */,
 				BCCA7A411807629100CE36E5 /* runtime.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,6 +622,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC85E88E18E78331001DF986 /* NSInvocation+NNCopying.m in Sources */,
 				BCCA7A351807626200CE36E5 /* despatch.m in Sources */,
 				BCCA7A361807626200CE36E5 /* runtime.c in Sources */,
 				BCCA7A371807626200CE36E5 /* NNPollingObject.m in Sources */,
@@ -728,7 +732,6 @@
 					"$(inherited)",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)/Private";
 				PUBLIC_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
@@ -744,7 +747,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NNKit/$(TARGET_NAME)-Prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)/Private";
 				PUBLIC_HEADERS_FOLDER_PATH = "/usr/local/include/$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
@@ -756,7 +758,7 @@
 		BCCA7A2D1807608700CE36E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/libNNKit.a";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -772,6 +774,11 @@
 				INFOPLIST_FILE = "NNKitTests/NNKit iOS Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -782,7 +789,7 @@
 		BCCA7A2E1807608700CE36E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NNKit.framework/Versions/A/NNKit";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/libNNKit.a";
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -794,6 +801,11 @@
 				INFOPLIST_FILE = "NNKitTests/NNKit iOS Tests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -837,6 +849,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CFLAGS = "-Wno-incompatible-pointer-types";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 			};
@@ -872,6 +885,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CFLAGS = "-Wno-incompatible-pointer-types";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = macosx;
 			};

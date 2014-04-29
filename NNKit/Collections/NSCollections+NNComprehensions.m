@@ -15,8 +15,8 @@
 #import "NSCollections+NNComprehensions.h"
 
 #define FILTER_DECLARATION() - (instancetype)nn_filter:(nn_filter_block_t)block
-#define FILTER_DEFINITION() \
-    id result = [[[self class] new] mutableCopy]; \
+#define FILTER_DEFINITION(__type__) \
+    id result = [[[__type__ class] new] mutableCopy]; \
     for (id object in self) { \
         if (block(object)) { \
             [result addObject:object]; \
@@ -25,8 +25,8 @@
     return result
 
 #define MAP_DECLARATION() - (instancetype)nn_map:(nn_map_block_t)block
-#define MAP_DEFINITION() \
-    id result = [[[self class] new] mutableCopy]; \
+#define MAP_DEFINITION(__type__) \
+    id result = [[[__type__ class] new] mutableCopy]; \
     for (id object in self) { \
         [result addObject:block(object)]; \
     } \
@@ -34,7 +34,7 @@
 
 
 #define REDUCE_DECLARATION() - (id)nn_reduce:(nn_reduce_block_t)block
-#define REDUCE_DEFINITION() \
+#define REDUCE_DEFINITION(__type__) \
     id accumulator = nil; \
     for (id object in self) { \
         accumulator = block(accumulator, object); \
@@ -46,17 +46,17 @@
 
 FILTER_DECLARATION();
 {
-    FILTER_DEFINITION();
+    FILTER_DEFINITION(NSArray);
 }
 
 MAP_DECLARATION();
 {
-    MAP_DEFINITION();
+    MAP_DEFINITION(NSArray);
 }
 
 REDUCE_DECLARATION();
 {
-    REDUCE_DEFINITION();
+    REDUCE_DEFINITION(NSArray);
 }
 
 @end
@@ -65,17 +65,17 @@ REDUCE_DECLARATION();
 
 FILTER_DECLARATION();
 {
-    FILTER_DEFINITION();
+    FILTER_DEFINITION(NSSet);
 }
 
 MAP_DECLARATION();
 {
-    MAP_DEFINITION();
+    MAP_DEFINITION(NSSet);
 }
 
 REDUCE_DECLARATION();
 {
-    REDUCE_DEFINITION();
+    REDUCE_DEFINITION(NSSet);
 }
 
 @end
@@ -84,17 +84,17 @@ REDUCE_DECLARATION();
 
 FILTER_DECLARATION();
 {
-    FILTER_DEFINITION();
+    FILTER_DEFINITION(NSOrderedSet);
 }
 
 MAP_DECLARATION();
 {
-    MAP_DEFINITION();
+    MAP_DEFINITION(NSOrderedSet);
 }
 
 REDUCE_DECLARATION();
 {
-    REDUCE_DEFINITION();
+    REDUCE_DEFINITION(NSOrderedSet);
 }
 
 @end
