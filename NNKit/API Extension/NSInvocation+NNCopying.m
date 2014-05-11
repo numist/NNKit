@@ -33,7 +33,7 @@
 
         if (alignp > heapBufferSize) {
             heapBuffer = heapBuffer
-                       ? realloc(heapBuffer, alignp)
+                       ? reallocf(heapBuffer, alignp)
                        : malloc(alignp);
             heapBufferSize = alignp;
         }
