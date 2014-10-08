@@ -20,7 +20,7 @@
 
 @interface NNService ()
 
-@property (nonatomic, readonly, strong) NNMultiDispatchManager *subscriberDispatcher;
+@property (atomic, readonly, strong) NNMultiDispatchManager *subscriberDispatcher;
 
 @end
 

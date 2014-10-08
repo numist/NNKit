@@ -53,6 +53,8 @@
 
 - (BOOL)hasObserver:(id)observer;
 {
+    NSAssert([NSThread isMainThread], @"Boundary call was not made on main thread");
+
     return [self.observers containsObject:observer];
 }
 
