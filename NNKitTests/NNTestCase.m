@@ -42,7 +42,8 @@ static size_t report_memory(void) {
 {
     XCTAssertTrue(iterations > 4096, @"Memory leak tests are not accurate with iteration counts less than 4096!");
     
-    size_t bytes_expected = iterations;
+    // One short per iteration is allowed to leak because that's basically impossible.
+    size_t bytes_expected = iterations * 2;
     size_t memory_usage_at_start = report_memory();
     
     while (--iterations != 0) {
