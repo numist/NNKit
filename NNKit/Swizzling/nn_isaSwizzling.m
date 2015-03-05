@@ -25,7 +25,7 @@ static NSString *_prefixForSwizzlingClass(Class aClass) __attribute__((nonnull(1
 static NSString * _classNameForObjectWithSwizzlingClass(id anObject, Class aClass) __attribute__((nonnull(1, 2), pure));
 static BOOL _class_addInstanceMethodsFromClass(Class target, Class source) __attribute__((nonnull(1, 2)));
 static BOOL _class_addProtocolsFromClass(Class targetClass, Class aClass) __attribute__((nonnull(1,2)));
-static BOOL _class_containsNonDynamicProperties(Class aClass) __attribute__((nonnull(1)));
+static void _class_checkForNonDynamicProperties(Class aClass) __attribute__((nonnull(1)));
 static BOOL _class_containsIvars(Class aClass) __attribute__((nonnull(1)));
 static Class _targetClassForObjectWithSwizzlingClass(id anObject, Class aClass) __attribute__((nonnull(1, 2)));
 static BOOL _object_swizzleIsa(id anObject, Class aClass) __attribute__((nonnull(1, 2)));
@@ -104,16 +104,10 @@ static BOOL _class_addPropertiesFromClass(Class targetClass, Class aClass)
         unsigned attributeCount;
         objc_property_attribute_t *attributes = nn_autofree(property_copyAttributeList(property, &attributeCount));
 
-        // targetClass is a brand new shiny class, so this should never fail because it already has certain properties (even though its superclass(es) might).
+        // targetClass is a brand new shiny class that we created, so this should never fail.
         if(!class_addProperty(targetClass, property_getName(property), attributes, attributeCount)) {
-            success = NO;
-            if (osIsYosemite()) {
-                class_replaceProperty(targetClass, property_getName(property), attributes, attributeCount);
-                success = YES;
-            }
-            if (!success) {
-                break;
-            }
+            // But JUST IN CASE (see: numist/NNKit#17)
+            class_replaceProperty(targetClass, property_getName(property), attributes, attributeCount);
         }
     }
     
@@ -122,30 +116,19 @@ static BOOL _class_addPropertiesFromClass(Class targetClass, Class aClass)
 
 #pragma mark Swizzling safety checks
 
-static BOOL _class_containsNonDynamicProperties(Class aClass)
+static void _class_checkForNonDynamicProperties(Class aClass)
 {
     objc_property_t *properties = nn_autofree(class_copyPropertyList(aClass, NULL));
-    BOOL propertyIsDynamic = NO;
-    
+
     for (unsigned i = 0; properties && properties[i]; i++) {
         objc_property_attribute_t *attributes = nn_autofree(property_copyAttributeList(properties[i], NULL));
         
         for (unsigned j = 0; attributes && attributes[j].name; j++) {
             if (!strcmp(attributes[j].name, "D")) { // The property is dynamic (@dynamic).
-                propertyIsDynamic = YES;
-                break;
+                NSLog(@"Warning: Swizzling class %s contains non-dynamic property %s", class_getName(aClass), property_getName(properties[i]));
             }
         }
-        
-        attributes = NULL;
-        
-        if (!propertyIsDynamic) {
-            NSLog(@"Swizzling class %s cannot contain non-dynamic properties", class_getName(aClass));
-            return YES;
-        }
     }
-    
-    return NO;
 }
 
 static BOOL _class_containsIvars(Class aClass)
@@ -171,10 +154,7 @@ static Class _targetClassForObjectWithSwizzlingClass(id anObject, Class aClass)
             success = NO;
         }
         
-        if (!osIsYosemite() && _class_containsNonDynamicProperties(aClass)) {
-            NSLog(@"Swizzling class %s cannot contain non-dynamic properties not inherited from its superclass", swizzlingClassName);
-            success = NO;
-        }
+        _class_checkForNonDynamicProperties(aClass);
         
         if (_class_containsIvars(aClass)) {
             NSLog(@"Swizzling class %s cannot contain ivars not inherited from its superclass", swizzlingClassName);

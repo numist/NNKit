@@ -13,17 +13,3 @@
 //
 
 #import "NNKit.h"
-
-#include <errno.h>
-#include <sys/sysctl.h>
-
-_Bool osIsYosemite() {
-    const char * const yosemiteVersionNumeric = "14";
-    char str[256];
-    size_t size = sizeof(str);
-    int ret = sysctlbyname("kern.osversion", str, &size, NULL, 0);
-    assert(ret == 0);
-    // First character after the numeric is a letter (not a three-digit major version)
-    if (str[strlen(yosemiteVersionNumeric)] < 65 || str[strlen(yosemiteVersionNumeric)] > 90) { return false; }
-    return !strncmp(yosemiteVersionNumeric, str, strlen(yosemiteVersionNumeric));
-}
