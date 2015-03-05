@@ -18,6 +18,7 @@
 
 #import "NNISASwizzledObject.h"
 #import "nn_autofree.h"
+#import "macros.h"
 
 
 static NSString *_prefixForSwizzlingClass(Class aClass) __attribute__((nonnull(1), pure));
@@ -106,7 +107,13 @@ static BOOL _class_addPropertiesFromClass(Class targetClass, Class aClass)
         // targetClass is a brand new shiny class, so this should never fail because it already has certain properties (even though its superclass(es) might).
         if(!class_addProperty(targetClass, property_getName(property), attributes, attributeCount)) {
             success = NO;
-            break;
+            if (osIsYosemite()) {
+                class_replaceProperty(targetClass, property_getName(property), attributes, attributeCount);
+                success = YES;
+            }
+            if (!success) {
+                break;
+            }
         }
     }
     
@@ -155,21 +162,26 @@ static Class _targetClassForObjectWithSwizzlingClass(id anObject, Class aClass)
     Class targetClass = objc_getClass(_classNameForObjectWithSwizzlingClass(anObject, aClass).UTF8String);
     
     if (!targetClass) {
+        BOOL success = YES;
         const char *swizzlingClassName = class_getName(aClass);
 
         Class sharedAncestor = class_getSuperclass(aClass);
         if (![anObject isKindOfClass:sharedAncestor]) {
             NSLog(@"Target object %@ must be a subclass of %@ to be swizzled with class %s.", anObject, sharedAncestor, swizzlingClassName);
-            return Nil;
+            success = NO;
         }
         
-        if (_class_containsNonDynamicProperties(aClass)) {
+        if (!osIsYosemite() && _class_containsNonDynamicProperties(aClass)) {
             NSLog(@"Swizzling class %s cannot contain non-dynamic properties not inherited from its superclass", swizzlingClassName);
-            return Nil;
+            success = NO;
         }
         
         if (_class_containsIvars(aClass)) {
             NSLog(@"Swizzling class %s cannot contain ivars not inherited from its superclass", swizzlingClassName);
+            success = NO;
+        }
+
+        if (!success) {
             return Nil;
         }
         

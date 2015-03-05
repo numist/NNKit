@@ -125,7 +125,8 @@
 - (void)testSwizzledBasicStrongGetter
 {
     NNSwizzledStrongifierTestClass *obj = [NNSwizzledStrongifierTestClass new];
-    nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    BOOL swizzled = nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    XCTAssertTrue(swizzled);
     id boo = [NSObject new];
     obj.foo = boo;
     XCTAssertEqual([obj strongFoo], boo, @"Basic weak property did not resolve a strong getter.");
@@ -135,7 +136,8 @@
 - (void)testSwizzledCapitalizedStrongGetter
 {
     NNSwizzledStrongifierTestClass *obj = [NNSwizzledStrongifierTestClass new];
-    nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    BOOL swizzled = nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    XCTAssertTrue(swizzled);
     id boo = [NSObject new];
     obj.TLA = boo;
     XCTAssertEqual([obj strongTLA], boo, @"Capitalized weak property did not resolve a strong getter.");
@@ -159,7 +161,8 @@
 - (void)testSwizzledNilling
 {
     NNSwizzledStrongifierTestClass *obj = [NNSwizzledStrongifierTestClass new];
-    nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    BOOL swizzled = nn_object_swizzleIsa(obj, [NNStrongifiedProperties class]);
+    XCTAssertTrue(swizzled);
     @autoreleasepool {
         id boo = [NSObject new];
         obj.foo = boo;

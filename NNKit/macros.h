@@ -30,3 +30,5 @@
 #define NNSelfSelector1(selectorName) NNSelector1(self, selectorName)
 #define NNTypedSelector1(ObjectClass, selectorName) NNSelector1(((ObjectClass *)nil), selectorName)
 #define NNProtocolSelector1(Protocol, selectorName) NNSelector1(((id <Protocol>)nil), selectorName)
+
+_Bool osIsYosemite();
