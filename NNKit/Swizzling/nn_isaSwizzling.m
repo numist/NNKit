@@ -76,7 +76,7 @@ static void _class_addPropertiesFromClass(Class targetClass, Class aClass)
         unsigned attributeCount;
         objc_property_attribute_t *attributes = nn_autofree(property_copyAttributeList(property, &attributeCount));
 
-        // targetClass is a brand new shiny class that we created, so this should never fail.
+        // targetClass is a brand new shiny class, so this should never fail because it already has certain properties (even though its superclass(es) might).
         if(!class_addProperty(targetClass, property_getName(property), attributes, attributeCount)) {
             // numist/NNKit#17
             NSLog(@"Warning: Replacing property %s previously defined by class %@?", property_getName(property), NSStringFromClass(targetClass));
@@ -90,7 +90,7 @@ static void _class_addPropertiesFromClass(Class targetClass, Class aClass)
 static void _class_checkForNonDynamicProperties(Class aClass)
 {
     objc_property_t *properties = nn_autofree(class_copyPropertyList(aClass, NULL));
-
+    
     for (unsigned i = 0; properties && properties[i]; i++) {
         objc_property_attribute_t *attributes = nn_autofree(property_copyAttributeList(properties[i], NULL));
         
@@ -131,7 +131,7 @@ static Class _targetClassForObjectWithSwizzlingClass(id anObject, Class aClass)
             NSLog(@"Swizzling class %s cannot contain ivars not inherited from its superclass", swizzlingClassName);
             success = NO;
         }
-
+        
         if (!success) {
             return Nil;
         }
