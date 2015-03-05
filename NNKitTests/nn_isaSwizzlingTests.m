@@ -57,6 +57,10 @@
 @interface ISAExtraProtocol : NSObject <ISAExtraProtocol, NSCacheDelegate> @end
 @implementation ISAExtraProtocol - (void)foo { NSLog(@"foooooo! "); } @end
 
+// Class ISANameConflicts can be used for swizzling any NSObject and provides a class and instance method with the same selector
+@protocol ISANameConflicts <NSObject> - (BOOL)isClassMethod; + (BOOL)isClassMethod; @end
+@interface ISANameConflicts : NSObject <ISANameConflicts> @end
+@implementation ISANameConflicts - (BOOL)isClassMethod { return NO; } + (BOOL)isClassMethod { return YES; } @end
 
 @interface nn_isaSwizzlingTests : XCTestCase
 
@@ -181,6 +185,16 @@
     XCTAssertNoThrow([(id<ISAGood>)bar foo], @"foooooo!");
     XCTAssertNoThrow([bar doesNotRecognizeSelector:nil], @"FAUX NOES!");
     
+    XCTAssertEqual([bar class], [NSObject class], @"Object should report itself as still being an NSObject");
+}
+
+- (void)testSelectorNameConflicts;
+{
+    NSObject *bar = [[NSObject alloc] init];
+    XCTAssertTrue(nn_object_swizzleIsa(bar, [ISANameConflicts class]), @"Failed to swizzle object");
+    
+    XCTAssertFalse([(id<ISANameConflicts>)bar isClassMethod], @"Instance method was swizzled with the class method");
+    XCTAssertTrue([object_getClass(bar) isClassMethod], @"Class method was swizzled with the instance method");
     XCTAssertEqual([bar class], [NSObject class], @"Object should report itself as still being an NSObject");
 }
 
