@@ -25,6 +25,10 @@
 		BC275C0B18CE9DA200761247 /* NSInvocation+NNCopying.h in Headers */ = {isa = PBXBuildFile; fileRef = BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BC275C7618CFE4BD00761247 /* NNComprehensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */; };
 		BC275C7718CFE4BD00761247 /* NNComprehensionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */; };
+		BC6055AD1906FABD00FDCF6D /* NNTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = BC6055AB1906FABD00FDCF6D /* NNTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC6055AE1906FABD00FDCF6D /* NNTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = BC6055AB1906FABD00FDCF6D /* NNTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BC6055AF1906FABD00FDCF6D /* NNTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6055AC1906FABD00FDCF6D /* NNTimer.m */; };
+		BC6055B01906FABD00FDCF6D /* NNTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BC6055AC1906FABD00FDCF6D /* NNTimer.m */; };
 		BC82B3C9183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
 		BC82B3CA183C1BC300FDD3B9 /* NNCleanupProxyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */; };
 		BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -146,6 +150,8 @@
 		BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+NNCopying.h"; path = "API Extension/NSInvocation+NNCopying.h"; sourceTree = "<group>"; };
 		BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+NNCopying.m"; path = "API Extension/NSInvocation+NNCopying.m"; sourceTree = "<group>"; };
 		BC275C7518CFE4BD00761247 /* NNComprehensionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNComprehensionTests.m; sourceTree = "<group>"; };
+		BC6055AB1906FABD00FDCF6D /* NNTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNTimer.h; path = "API Extension/NNTimer.h"; sourceTree = "<group>"; };
+		BC6055AC1906FABD00FDCF6D /* NNTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNTimer.m; path = "API Extension/NNTimer.m"; sourceTree = "<group>"; };
 		BC82B3C8183C1BC300FDD3B9 /* NNCleanupProxyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NNCleanupProxyTests.m; sourceTree = "<group>"; };
 		BC82B3D3183C29B600FDD3B9 /* NNMultiDispatchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NNMultiDispatchManager.h; path = Actors/NNMultiDispatchManager.h; sourceTree = "<group>"; };
 		BC82B3D4183C29B600FDD3B9 /* NNMultiDispatchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NNMultiDispatchManager.m; path = Actors/NNMultiDispatchManager.m; sourceTree = "<group>"; };
@@ -407,12 +413,14 @@
 		BCD1D58117D9940500A3EBD4 /* API extension */ = {
 			isa = PBXGroup;
 			children = (
-				BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */,
-				BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */,
 				BCD1D5A517D9C72F00A3EBD4 /* despatch.h */,
 				BCD1D5A617D9C72F00A3EBD4 /* despatch.m */,
 				BCD1D5A817D9C72F00A3EBD4 /* runtime.h */,
 				BCD1D5A717D9C72F00A3EBD4 /* runtime.c */,
+				BC6055AB1906FABD00FDCF6D /* NNTimer.h */,
+				BC6055AC1906FABD00FDCF6D /* NNTimer.m */,
+				BC275C0818CE9D1A00761247 /* NSInvocation+NNCopying.h */,
+				BC275C0918CE9D1A00761247 /* NSInvocation+NNCopying.m */,
 				BCCB1BF11835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.h */,
 				BCCB1BF21835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m */,
 			);
@@ -446,6 +454,7 @@
 				BCCA7A49180762C000CE36E5 /* nn_isaSwizzling.h in Headers */,
 				BCCA7A4A180762C700CE36E5 /* NNISASwizzledObject.h in Headers */,
 				BC82B3DE183C37E500FDD3B9 /* NNService+Protected.h in Headers */,
+				BC6055AE1906FABD00FDCF6D /* NNTimer.h in Headers */,
 				BC82B3D6183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */,
 				BCCA7A431807629C00CE36E5 /* NNPollingObject+Protected.h in Headers */,
 				BC961A8518BDB377009F3F94 /* macros.h in Headers */,
@@ -474,6 +483,7 @@
 				BCD1D5B417D9C79F00A3EBD4 /* NNPollingObject+Protected.h in Headers */,
 				BCD1D5BD17D9C88F00A3EBD4 /* NNStrongifiedProperties.h in Headers */,
 				BC82B3DD183C37E500FDD3B9 /* NNService+Protected.h in Headers */,
+				BC6055AD1906FABD00FDCF6D /* NNTimer.h in Headers */,
 				BC82B3D5183C29B600FDD3B9 /* NNMultiDispatchManager.h in Headers */,
 				BC275C0B18CE9DA200761247 /* NSInvocation+NNCopying.h in Headers */,
 				BCD1D5AC17D9C72F00A3EBD4 /* runtime.h in Headers */,
@@ -634,6 +644,7 @@
 				BC19D3681810C6C3009CEC1F /* NNService.m in Sources */,
 				BCB8A26E18BDBB5000E4AC18 /* NSCollections+NNComprehensions.m in Sources */,
 				BCCA7A3A1807626200CE36E5 /* NNStrongifiedProperties.m in Sources */,
+				BC6055B01906FABD00FDCF6D /* NNTimer.m in Sources */,
 				BCCA7A3B1807626200CE36E5 /* nn_autofree.m in Sources */,
 				BCCA7A3C1807626200CE36E5 /* nn_isaSwizzling.m in Sources */,
 				BCCA7A3D1807626200CE36E5 /* NNISASwizzledObject.m in Sources */,
@@ -670,6 +681,7 @@
 				BCD1D5BE17D9C88F00A3EBD4 /* NNStrongifiedProperties.m in Sources */,
 				BCD1D53B17D9471A00A3EBD4 /* NNKit.m in Sources */,
 				BC82B3D7183C29B600FDD3B9 /* NNMultiDispatchManager.m in Sources */,
+				BC6055AF1906FABD00FDCF6D /* NNTimer.m in Sources */,
 				BCCB1BF51835F3E80029EBF6 /* NSNotificationCenter+NNAdditions.m in Sources */,
 				BCD1D5AB17D9C72F00A3EBD4 /* runtime.c in Sources */,
 				BC124381183AEFAC00461433 /* NNCleanupProxy.m in Sources */,

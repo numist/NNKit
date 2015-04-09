@@ -1,9 +1,9 @@
 //
-//  NNKit.h
+//  NNTimer.h
 //  NNKit
 //
-//  Created by Scott Perry on 09/05/13.
-//  Copyright © 2013 Scott Perry.
+//  Created by Scott Perry on 04/22/14.
+//  Copyright © 2014 Scott Perry.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 //
@@ -14,21 +14,14 @@
 
 #import <Foundation/Foundation.h>
 
-#import <NNKit/despatch.h>
-#import <NNKit/macros.h>
-#import <NNKit/runtime.h>
-#import <NNKit/nn_autofree.h>
-#import <NNKit/nn_isaSwizzling.h>
+@interface NNTimer : NSObject
 
-#import <NNKit/NSCollections+NNComprehensions.h>
-#import <NNKit/NSInvocation+NNCopying.h>
-#import <NNKit/NNDelegateProxy.h>
-#import <NNKit/NNMultiDispatchManager.h>
-#import <NNKit/NNPollingObject.h>
-#import <NNKit/NNSelfInvalidatingObject.h>
-#import <NNKit/NNService.h>
-#import <NNKit/NNServiceManager.h>
-#import <NNKit/NNStrongifiedProperties.h>
-#import <NNKit/NNTimer.h>
++ (NNTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)seconds block:(dispatch_block_t)block queue:(dispatch_queue_t)queue;
++ (NNTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)seconds target:(id)target selector:(SEL)aSelector userInfo:(id)userInfo queue:(dispatch_queue_t)queue;
 
-#import <NNKit/NSNotificationCenter+NNAdditions.h>
+@property (nonatomic, assign, readwrite) NSTimeInterval timeInterval;
+@property (nonatomic, strong, readwrite) id userInfo;
+
+- (void)fire;
+
+@end
