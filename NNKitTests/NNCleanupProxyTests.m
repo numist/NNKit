@@ -31,6 +31,16 @@
 @interface NNCleanupProxyTestClass : NSObject <NNCleanupProxyTestProtocol2>
 @end
 @implementation NNCleanupProxyTestClass
+- (NSUInteger)hash;
+{
+    return (uintptr_t)self;
+}
+
+- (BOOL)isEqual:(NSObject *)object;
+{
+    return self.hash == object.hash;
+}
+
 - (BOOL)someKindOfSelectorWithObject:(id)foo;
 {
     return YES;
@@ -52,18 +62,6 @@
 
 
 @implementation NNCleanupProxyTests
-
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
 
 - (void)testCleanupBlock;
 {
@@ -121,6 +119,31 @@
     XCTAssertThrows([proxy someKindOfSelectorWithObject:self], @"");
     XCTAssertThrows([proxy someKindOfSelectorWithObject2:self], @"");
     XCTAssertThrows([proxy anotherKindofSelectorWithObject:self], @"");
+}
+
+- (void)testCachingInvalidMethod;
+{
+    @autoreleasepool {
+        __attribute__((objc_precise_lifetime)) id foo = [NNCleanupProxyTestClass new];
+        NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:foo withKey:(uintptr_t)foo];
+        XCTAssertThrows([proxy cacheMethodSignatureForSelector:@selector(testCachingInvalidMethod)]);
+    }
+}
+
+- (void)testProxyMatchesObject;
+{
+    @autoreleasepool {
+        __attribute__((objc_precise_lifetime)) id foo = [NNCleanupProxyTestClass new];
+        NNCleanupProxy *proxy = [NNCleanupProxy cleanupProxyForTarget:foo withKey:(uintptr_t)foo];
+        
+        XCTAssertTrue([foo isEqual:proxy]);
+        NSSet *set = [NSSet setWithObject:proxy];
+        XCTAssertTrue([set containsObject:foo]);
+
+        XCTAssertTrue([proxy isEqual:foo]);
+        set = [NSSet setWithObject:foo];
+        XCTAssertTrue([set containsObject:proxy]);
+    }
 }
 
 @end

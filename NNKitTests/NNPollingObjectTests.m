@@ -125,6 +125,17 @@ static int iterations;
     XCTAssert(iterations == 0, @"Object continued polling after it was released!");
 }
 
+- (void)testNoSubclassing;
+{
+    @autoreleasepool {
+        dispatch_queue_t q = dispatch_queue_create("testQ", DISPATCH_QUEUE_SERIAL);
+        dispatch_suspend(q);
+        NNPollingObject *obj = [[NNPollingObject alloc] initWithQueue:q];
+        obj.interval = -1;
+        XCTAssertThrows([obj main]);
+    }
+}
+
 - (void)objectNotification:(NSNotification *)notification;
 {
     XCTAssert([[NSThread currentThread] isMainThread], @"Poll notification was not dispatched on the main thread!");

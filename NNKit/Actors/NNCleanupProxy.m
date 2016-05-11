@@ -36,18 +36,18 @@
 
 + (NNCleanupProxy *)cleanupProxyForTarget:(id)target withKey:(uintptr_t)key;
 {
-    NNCleanupProxy *result = [NNCleanupProxy alloc];
-    result->_target = target;
-    result->_signatureCache = [NSMutableDictionary new];
-    objc_setAssociatedObject(target, (void *)key, result, OBJC_ASSOCIATION_RETAIN);
-    return result;
+    return [self cleanupProxyForTarget:target conformingToProtocol:@protocol(NSObject) withKey:key];
 }
 
 + (NNCleanupProxy *)cleanupProxyForTarget:(id)target conformingToProtocol:(Protocol *)protocol withKey:(uintptr_t)key;
 {
     NSParameterAssert([target conformsToProtocol:protocol]);
     
-    NNCleanupProxy *result = [NNCleanupProxy cleanupProxyForTarget:target withKey:key];
+    NNCleanupProxy *result = [NNCleanupProxy alloc];
+    result->_target = target;
+    result->_signatureCache = [NSMutableDictionary new];
+    objc_setAssociatedObject(target, (void *)key, result, OBJC_ASSOCIATION_RETAIN);
+
     [result cacheMethodSignaturesForProcotol:protocol];
     
     return result;
@@ -81,11 +81,9 @@
 @synthesize hash = _hash;
 - (NSUInteger)hash;
 {
-    if (!self->_hash) {
-        @synchronized(self) {
-            if (!self->_hash) {
-                self->_hash = self.target.hash;
-            }
+    @synchronized(self) {
+        if (!self->_hash) {
+            self->_hash = self.target.hash;
         }
     }
     
@@ -117,9 +115,7 @@
     if (signature) {
         [self.signatureCache setObject:signature forKey:NSStringFromSelector(aSelector)];
     } else {
-        NSAssert(!self.target, @"Target was non-nil, but method signature lookup failed anyway?");
-        
-        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"Unable to get method signature from target of instance %p", self] userInfo:nil];
+        @throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"Unable to get method signature for selector %@ from target of instance %p", NSStringFromSelector(aSelector), self] userInfo:nil];
     }
 }
 

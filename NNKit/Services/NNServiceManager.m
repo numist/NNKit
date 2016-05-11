@@ -123,9 +123,6 @@ static BOOL _serviceIsValid(Class service)
     
     for (size_t i = 0; i < numClasses; ++i) {
         if (classIsService(buffer[i])) {
-            if ([buffer[i] serviceType] == NNServiceTypeNone) {
-                continue;
-            }
             [self registerService:buffer[i]];
         }
     }
@@ -160,6 +157,17 @@ static BOOL _serviceIsValid(Class service)
     }
 }
 
+#pragma mark - NSObject
+
+- (NSString *)description;
+{
+    NSMutableString *result = [NSMutableString stringWithFormat:@"<%@: %p>, services:", NSStringFromClass([self class]), self];
+    for (Class service in self->_lookup) {
+        [result appendFormat:@"\n\t%@: %@", ([self->_runningServices containsObject:service] ? @"running" : @"stopped"), service];
+    }
+    return result;
+}
+
 #pragma mark - NNServiceManager
 
 - (void)registerService:(Class)service;
@@ -172,7 +180,6 @@ static BOOL _serviceIsValid(Class service)
     }
     
     _NNServiceInfo *info = [[_NNServiceInfo alloc] initWithService:service];
-    if (info.type == NNServiceTypeNone) { return; }
     
     @synchronized([NNServiceManager class]) {
         if ([claimedServices containsObject:service]) {

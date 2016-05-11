@@ -65,7 +65,6 @@
     BOOL requiredMethod = NO;
     nn_selector_belongsToProtocol(invocation.selector, self.protocol, &requiredMethod, NULL);
     if (!requiredMethod && ![delegate respondsToSelector:invocation.selector]) {
-        [invocation invokeWithTarget:nil];
         return;
     }
     

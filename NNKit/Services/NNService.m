@@ -51,31 +51,16 @@
 
 + (NNServiceType)serviceType;
 {
-    if ([self instancesRespondToSelector:_cmd]) {
-        NSLog(@"%@: instance method %@ should be implemented as a class method", self, NSStringFromSelector(_cmd));
-        return [[self sharedService] serviceType];
-    }
-    
-    return NNServiceTypeNone;
+    return NNServiceTypePersistent;
 }
 
 + (NSSet *)dependencies;
 {
-    if ([self instancesRespondToSelector:_cmd]) {
-        NSLog(@"%@: instance method %@ should be implemented as a class method", self, NSStringFromSelector(_cmd));
-        return [[self sharedService] dependencies];
-    }
-
     return [NSSet set];
 }
 
 + (Protocol *)subscriberProtocol;
 {
-    if ([self instancesRespondToSelector:_cmd]) {
-        NSLog(@"%@: instance method %@ should be implemented as a class method", self, NSStringFromSelector(_cmd));
-        return [[self sharedService] subscriberProtocol];
-    }
-
     return @protocol(NSObject);
 }
 

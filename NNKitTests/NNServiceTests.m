@@ -52,7 +52,6 @@ static BOOL serviceCRunning = NO;
 
 @interface TestServiceB : NNService @end
 @implementation TestServiceB
-+ (NNServiceType)serviceType { return NNServiceTypePersistent; }
 + (NSSet *)dependencies { return [NSSet setWithObject:[TestServiceA self]]; }
 - (void)startService {
     [super startService];
@@ -270,7 +269,7 @@ unsigned eventsDispatched;
     [self testForMemoryLeaksWithBlock:^{
         [manager addSubscriber:foo forService:[TestServiceE self]];
         [manager removeSubscriber:foo forService:[TestServiceE self]];
-    } iterations:5e3];
+    } iterations:5e4];
 }
 
 - (void)testSubscribingToMultipleServices;
@@ -295,6 +294,14 @@ unsigned eventsDispatched;
     (void)[[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate date]];
     XCTAssertFalse(serviceARunning, @"");
     XCTAssertFalse(serviceERunning, @"");
+}
+
+// This test must run last.
+- (void)testZSharedManager;
+{
+    NNServiceManager *manager = [NNServiceManager sharedManager];
+    [manager registerService:[TestServiceA self]];
+    NSLog(@"%@", manager);
 }
 
 @end

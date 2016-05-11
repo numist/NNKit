@@ -24,7 +24,6 @@
  * object subscribes to the service.
  */
 typedef NS_ENUM(uint8_t, NNServiceType) {
-    NNServiceTypeNone,
     NNServiceTypePersistent,
     NNServiceTypeOnDemand,
 };

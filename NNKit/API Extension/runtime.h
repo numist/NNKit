@@ -17,6 +17,31 @@
 
 #include <objc/runtime.h>
 
+#import <NNKit/macros.h>
+
+// Memory-backed property generation for categories
+#define NNSynthesizeObjectStorage(type, name, getter, setter) \
+- (type)getter { return objc_getAssociatedObject(self, NNSelfSelector(getter)); } \
+- (void)setter(type)name { \
+    int association = [NNMemoize(^{ \
+        objc_property_t property = class_getProperty([self class], #name); \
+        int association = OBJC_ASSOCIATION_ASSIGN; \
+        char *value = NULL; \
+        if ((value = property_copyAttributeValue(property, "W"))) { \
+            free(value); \
+            @throw [NSException exceptionWithName:@"oops" reason:@"Not implemented" userInfo:nil]; \
+        } else if ((value = property_copyAttributeValue(property, "C"))) { \
+            free(value); \
+            association = OBJC_ASSOCIATION_COPY; \
+        } else if ((value = property_copyAttributeValue(property, "&"))) { \
+            free(value); \
+            association = OBJC_ASSOCIATION_RETAIN; \
+        } \
+        return @(association); \
+    }) intValue]; \
+    objc_setAssociatedObject(self, NNSelfSelector(getter), name, association); \
+}
+
 /*!
  * @function nn_selector_belongsToProtocol
  *
@@ -48,13 +73,5 @@
  * <code>NO</code> otherwise.
  */
 BOOL nn_selector_belongsToProtocol(SEL selector, Protocol *protocol, BOOL *required, BOOL *instance);
-
-/*!
- * @function nn_property_copyAttributeList
- *
- * @abstract
- * Deprecated. Use <code>property_copyAttributeList()</code> instead.
- */
-objc_property_attribute_t *nn_property_copyAttributeList(objc_property_t property, unsigned int *outCount) __attribute__((deprecated));
 
 #endif

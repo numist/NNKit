@@ -18,11 +18,6 @@
 #include <stdlib.h>
 
 
-objc_property_attribute_t *nn_property_copyAttributeList(objc_property_t property, unsigned int *outCount)
-{
-    return property_copyAttributeList(property, outCount);
-}
-
 BOOL nn_selector_belongsToProtocol(SEL selector, Protocol *protocol, BOOL *requiredPtr, BOOL *instancePtr)
 {
     BOOL required = requiredPtr ? !!*requiredPtr : NO;
