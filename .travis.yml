@@ -1,3 +1,4 @@
 language: objective-c
 xcode_project: NNKit.xcodeproj
 xcode_scheme: NNKit
+osx_image: xcode7
