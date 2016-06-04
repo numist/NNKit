@@ -14,6 +14,7 @@
 
 #import "NNMultiDispatchManager.h"
 
+#import "NNWeakSet.h"
 #import "despatch.h"
 #import "nn_autofree.h"
 #import "NSInvocation+NNCopying.h"
@@ -23,7 +24,7 @@
 @interface NNMultiDispatchManager ()
 
 @property (nonatomic, readonly, strong) NSMutableDictionary *signatureCache;
-@property (nonatomic, readonly, strong) NSHashTable *observers;
+@property (nonatomic, readonly, strong) NNWeakSet *observers;
 
 @end
 
@@ -38,7 +39,7 @@
     self->_protocol = protocol;
     self->_signatureCache = [NSMutableDictionary new];
     [self _cacheMethodSignaturesForProcotol:protocol];
-    self->_observers = [NSHashTable weakObjectsHashTable];
+    self->_observers = [NNWeakSet new];
 
     return self;
 }
@@ -153,9 +154,7 @@
         NSAssert(sanity && instance, @"Selector %@ is not actually part of protocol %@?!", NSStringFromSelector(anInvocation.selector), NSStringFromProtocol(self.protocol));
 #endif
         
-        // This loops over .observers.allObjects to retain the members of the collection for the duration of the loop. Intentional mutations to the collection were being avoided, but object deallocation was unpredictably mutating the collection during fast enumeration.
-        // In fact, there should probably be a radar about using fast enumeration on weak collections…
-        for (id obj in self.observers.allObjects) {
+        for (id obj in self.observers) {
             if ([obj respondsToSelector:anInvocation.selector] || required) {
                 [anInvocation invokeWithTarget:obj];
             }

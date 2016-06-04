@@ -21,6 +21,7 @@
 #import "NNCleanupProxy.h"
 #import "NNMultiDispatchManager.h"
 #import "NNService+Protected.h"
+#import "NNWeakSet.h"
 
 
 static NSMutableSet *claimedServices;
@@ -36,7 +37,7 @@ static BOOL _serviceIsValid(Class service)
 
 @interface _NNServiceInfo : NSObject
 
-@property (nonatomic, strong, readonly) NSHashTable *subscribers;
+@property (nonatomic, strong, readonly) NNWeakSet *subscribers;
 @property (nonatomic, assign, readonly) NNServiceType type;
 @property (nonatomic, strong, readonly) NNService *instance;
 @property (nonatomic, strong, readonly) NSSet *dependencies;
@@ -54,7 +55,7 @@ static BOOL _serviceIsValid(Class service)
     NSParameterAssert(_serviceIsValid(service));
     if (!(self = [super init])) { return nil; }
     
-    self->_subscribers = [NSHashTable weakObjectsHashTable];
+    self->_subscribers = [NNWeakSet new];
     self->_instance = [service sharedService];
     self->_instance.subscriberDispatcher.enabled = NO;
     self->_type = [service serviceType];

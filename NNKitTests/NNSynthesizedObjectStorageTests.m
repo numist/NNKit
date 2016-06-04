@@ -87,7 +87,6 @@ NNSynthesizeObjectStorage(id<NSCopying>, prop_nc, prop_nc, setProp_nc:)
         self.prop_na = obj;
         XCTAssertEqual(self.prop_na, obj);
     }
-    XCTAssertNotNil(self.prop_na);
 }
 
 #warning This is not implemented yet.

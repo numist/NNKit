@@ -1,9 +1,9 @@
 //
-//  NNKit.h
+//  NNWeakSet.h
 //  NNKit
 //
-//  Created by Scott Perry on 09/05/13.
-//  Copyright © 2013 Scott Perry.
+//  Created by Scott Perry on 06/04/16.
+//  Copyright © 2016 Scott Perry.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 //
@@ -14,21 +14,22 @@
 
 #import <Foundation/Foundation.h>
 
-#import <NNKit/despatch.h>
-#import <NNKit/macros.h>
-#import <NNKit/runtime.h>
-#import <NNKit/nn_autofree.h>
-#import <NNKit/nn_isaSwizzling.h>
+/*!
+ * @class NNMutableWeakSet
+ *
+ * @abstract
+ * Provides a set-type collection that references its members weakly.
+ *
+ * @discussion
+ * NNWeakSet implements the same API as NSMutableSet, but holds weak
+ * references to its members.
+ *
+ * No compaction is required, members are automatically removed when they are
+ * deallocated.
+ *
+ * This collection type may be slower than NSHashTable, but it also has
+ * fewer bugs.
+ */
+@interface NNWeakSet<T> : NSMutableSet
 
-#import <NNKit/NSCollections+NNComprehensions.h>
-#import <NNKit/NSInvocation+NNCopying.h>
-#import <NNKit/NNDelegateProxy.h>
-#import <NNKit/NNMultiDispatchManager.h>
-#import <NNKit/NNPollingObject.h>
-#import <NNKit/NNSelfInvalidatingObject.h>
-#import <NNKit/NNService.h>
-#import <NNKit/NNServiceManager.h>
-#import <NNKit/NNStrongifiedProperties.h>
-#import <NNKit/NNWeakSet.h>
-
-#import <NNKit/NSNotificationCenter+NNAdditions.h>
+@end
