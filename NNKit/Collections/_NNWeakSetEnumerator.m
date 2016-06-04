@@ -38,7 +38,7 @@
 {
     if (!(self = [super init])) { return nil; }
     
-    self->_tombstoneEnumerator = set.backingStore.objectEnumerator.allObjects.objectEnumerator;
+    self->_tombstoneEnumerator = [set.backingStore.copy objectEnumerator];
     
     return self;
 }

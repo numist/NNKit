@@ -148,12 +148,14 @@
     @synchronized(self) {
         BOOL required = YES;
         BOOL instance = YES;
-        
-#ifndef NS_BLOCK_ASSERTIONS
         BOOL sanity = nn_selector_belongsToProtocol(anInvocation.selector, self.protocol, &required, &instance);
+
+#ifndef NS_BLOCK_ASSERTIONS
         NSAssert(sanity && instance, @"Selector %@ is not actually part of protocol %@?!", NSStringFromSelector(anInvocation.selector), NSStringFromProtocol(self.protocol));
+#else
+        (void)sanity;
 #endif
-        
+
         for (id obj in self.observers) {
             if ([obj respondsToSelector:anInvocation.selector] || required) {
                 [anInvocation invokeWithTarget:obj];

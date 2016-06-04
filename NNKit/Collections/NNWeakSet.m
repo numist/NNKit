@@ -64,17 +64,23 @@
 
 - (NSUInteger)count;
 {
-    return self.backingStore.count;
+    @synchronized(self.backingStore) {
+        return self.backingStore.count;
+    }
 }
 
 - (id)member:(id)object;
 {
-    return ((_NNWeakArrayTombstone *)[self.backingStore member:object]).target;
+    @synchronized(self.backingStore) {
+        return ((_NNWeakArrayTombstone *)[self.backingStore member:object]).target;
+    }
 }
 
 - (NSEnumerator *)objectEnumerator;
 {
-    return [[_NNWeakSetEnumerator alloc] initWithWeakSet:self];
+    @synchronized(self.backingStore) {
+        return [[_NNWeakSetEnumerator alloc] initWithWeakSet:self];
+    }
 }
 
 #pragma mark NSMutableSet
@@ -91,13 +97,17 @@
         [collection _removeObjectAllowingNil:weakTombstone];
     };
     
-    [self.backingStore addObject:tombstone];
+    @synchronized(self.backingStore) {
+        [self.backingStore addObject:tombstone];
+    }
 }
 
 - (void)removeObject:(id)object;
 {
     [NNCleanupProxy cancelCleanupForTarget:object withKey:(uintptr_t)self];
-    [self.backingStore removeObject:object];
+    @synchronized(self.backingStore) {
+        [self.backingStore removeObject:object];
+    }
 }
 
 #pragma mark Private
@@ -106,7 +116,9 @@
 {
     if (!object) { return; }
     
-    [self.backingStore removeObject:object];
+    @synchronized(self.backingStore) {
+        [self.backingStore removeObject:object];
+    }
 }
 
 @end
